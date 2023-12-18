@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -21,6 +22,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'last_login_at',
+        'status',
+        'role'
     ];
 
     /**
@@ -29,6 +33,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'uuid',
         'password',
         'remember_token',
     ];
@@ -40,6 +45,13 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_login_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Relation with Post model
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }
