@@ -27,7 +27,7 @@ class TagController extends Controller
         ->orderBy('id', 'ASC')
         ->paginate(10);
         
-        return view('parts.tag.index', compact('tags'));
+        return view('admin.tag', compact('tags'));
     }
 
     /**
@@ -38,7 +38,24 @@ class TagController extends Controller
         /**
          * mengembalikkan view create tag
          */
-        return view('parts.tag.create');
+        return view('admin.create.tag');
+    }
+
+    /**
+     * Store the data.
+     */
+    public function store(TagRequest $request): RedirectResponse
+    {
+        $request->validated();
+
+        Tag::create([
+            'title' => '#'.$request->input('title'),
+            'meta_title' => $request->input('meta__title'),
+            'slug' => $request->input('slug'),
+        ]);
+
+        session()->flash("success", "Tag successfully created!");
+        return redirect()->route('admin.tag');
     }
 
     /**

@@ -24,7 +24,7 @@ class CategoryController extends Controller
         ->orderBy('id', 'ASC')
         ->paginate(10);
         
-        return view('parts.category.index', compact('categories'));
+        return view('admin.category', compact('categories'));
     }
 
     /**
@@ -32,7 +32,24 @@ class CategoryController extends Controller
      */
     public function create(): View
     {
-        return view('parts.category.create');
+        return view('admin.create.category');
+    }
+
+    /**
+     * Store the data.
+     */
+    public function store(CategoryRequest $request): RedirectResponse
+    {
+        $request->validated();
+
+        Category::create([
+            'title' => '#'.$request->input('title'),
+            'meta_title' => $request->input('meta__title'),
+            'slug' => $request->input('slug'),
+        ]);
+
+        session()->flash("success", "Category successfully created!");
+        return redirect()->route('admin.category');
     }
 
     /**

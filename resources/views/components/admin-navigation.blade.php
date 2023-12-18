@@ -46,10 +46,13 @@
                                     <a href="{{ route('post.create') }}" class="block px-4 py-2 hover:bg-zinc-900 hover:text-yellow-400 transition-colors duration-300 ease-in-out">Create New Post</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin.create') }}" class="block px-4 py-2 hover:bg-zinc-900 hover:text-yellow-400 transition-colors duration-300 ease-in-out">Create New Tag & Category</a>
+                                    <a href="{{ route('category.create') }}" class="block px-4 py-2 hover:bg-zinc-900 hover:text-yellow-400 transition-colors duration-300 ease-in-out">Create New Category</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin.usersCreate') }}" class="block px-4 py-2 hover:bg-zinc-900 hover:text-yellow-400 transition-colors duration-300 ease-in-out">Create New Admin Account</a>
+                                    <a href="{{ route('tag.create') }}" class="block px-4 py-2 hover:bg-zinc-900 hover:text-yellow-400 transition-colors duration-300 ease-in-out">Create New Tag</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.create') }}" class="block px-4 py-2 hover:bg-zinc-900 hover:text-yellow-400 transition-colors duration-300 ease-in-out">Create New Admin Account</a>
                                 </li>
                             </ul>
                         </div>
@@ -64,7 +67,8 @@
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
                     </button>
-                    {{-- dropdown --}}
+                    
+                    {{-- Dropdown --}}
                     <div id="admin__dropdown__divider" class="z-20 hidden bg-yellow-400 divide-y divide-gray-900 rounded-lg shadow-lg w-44">
                         <ul class="py-2 text-sm text-gray-900" aria-labelledby="admin__dropdown">
                             <li>

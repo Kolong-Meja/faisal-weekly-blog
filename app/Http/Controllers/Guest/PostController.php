@@ -65,7 +65,7 @@ class PostController extends Controller
             $post_image->reading_duration = $reading_duration;
         }
         
-        return view('parts.home.post.index', compact('post_images'));
+        return view('guest.post', compact('post_images'));
     }
     /**
      * Display the specified resource.

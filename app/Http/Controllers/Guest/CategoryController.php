@@ -21,6 +21,6 @@ class CategoryController extends Controller
             ->get();
         }
 
-        return view('parts.home.category.index', compact('categories'));
+        return view('guest.category', compact('categories'));
     }
 }

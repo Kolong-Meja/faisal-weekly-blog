@@ -21,6 +21,6 @@ class TagController extends Controller
             ->get();
         }
         
-        return view('parts.home.tag.index', compact('tags'));
+        return view('guest.tag', compact('tags'));
     }
 }

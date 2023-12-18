@@ -26,7 +26,7 @@ class FeedbackController extends Controller
         ->orderBy('id', 'ASC')
         ->paginate(10);
         
-        return view('parts.feedback.index', compact('feedbacks'));
+        return view('admin.feedback', compact('feedbacks'));
     }
 
     /**

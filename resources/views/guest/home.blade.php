@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     {{-- Head component --}}
-    @include('head')
+    @include('layouts.head')
 </head>
 <body>
     <div class="home__main__section">

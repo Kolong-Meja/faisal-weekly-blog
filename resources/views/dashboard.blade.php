@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    @include('head')
+    @include('layouts.head')
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -25,7 +25,7 @@
                 }
             } 
         @endphp
-        <x-admin-navbar :greetingMessage="$greetingWord"/>
+        <x-admin-navigation :greetingMessage="$greetingWord"/>
         {{-- Page Heading --}}
         <header class="bg-zinc-900">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">

@@ -32,41 +32,12 @@ class AdminController extends Controller
         
         $data = $posts->values();
         
-        return view('parts.dashboard', compact('labels', 'data'));
+        return view('dashboard', compact('labels', 'data'));
     }
+
     /**
-     * We want to make the tag and the category created in on form
+     * Users table view page.
      */
-    public function create(): View
-    {
-        return view('parts.admin.create');
-    }
-
-    public function store(
-        TagRequest $tag_request, 
-        CategoryRequest $category_request
-        ): RedirectResponse
-    {
-        $tag_request->validated();
-        
-        Tag::create([
-            'title' => '#'.$tag_request->input('tag-title'),
-            'meta_title' => $tag_request->input('meta-tag-title'),
-            'slug' => $tag_request->input('tag-slug'),
-        ]);
-        
-        $category_request->validated();
-        
-        Category::create([
-            'title' => $category_request->input('title'),
-            'meta_title' => $category_request->input('meta_title'),
-            'slug' => $category_request->input('slug'),
-        ]);
-        
-        session()->flash('success', 'Tag and Category successfully created');
-        return redirect()->route('admin.index');
-    }
-
     public function users(): View
     {
         $users = User::select('id', 'name', 
@@ -77,22 +48,18 @@ class AdminController extends Controller
         )->orderBy('id', 'ASC')
         ->paginate(10);
 
-        return view('parts.admin.users', compact('users'));
+        return view('admin.users', compact('users'));
     }
 
-    public function usersCreate(): View | RedirectResponse
+    /**
+     * We want to make the tag and the category created in on form
+     */
+    public function create(): View
     {
-        $userRole = Auth::user()->role;
-
-        if ($userRole != 'super admin') {
-            session()->flash("error", "You don't have permission to create new account.");
-            return redirect()->route('admin.index');
-        }
-
-        return view('parts.admin.users-create');
+        return view('admin.create.users');
     }
 
-    public function usersCreateStore(UserRequest $request): RedirectResponse
+    public function store(UserRequest $request): RedirectResponse
     {
         $request->validated();
 
@@ -108,7 +75,7 @@ class AdminController extends Controller
         return redirect()->route("admin.users");
     }
 
-    public function destroyUser(string $id): RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
         $userRole = Auth::user()->role;
 

@@ -38,11 +38,9 @@ Route::get('/categories', [CategoryHomeController::class, 'categories'])->name('
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
-    Route::get('/users/create', [AdminController::class, 'usersCreate'])->name('admin.usersCreate');
-    Route::post('users', [AdminController::class, 'usersCreateStore'])->name('admin.usersCreateStore');
-    Route::delete('/users/{id}', [AdminController::class, 'destroyUser'])->name('admin.delete');
-    Route::get('/data/create', [AdminController::class, 'create'])->name('admin.create');
-    Route::post('/data', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/users/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/users', [AdminController::class, 'store'])->name('admin.store');
+    Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
 
     // Profile route
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -58,17 +56,21 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::patch('/post/{slug}', [PostController::class, 'update'])->name('post.update');
     Route::delete('/post/{id}', [PostController::class, 'destroy'])->name('post.delete');
 
+     // Category route
+     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+     Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
+     Route::post('category', [CategoryController::class, 'store'])->name('category.store');
+     Route::get('/category/{slug}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+     Route::patch('/category/{slug}', [CategoryController::class, 'update'])->name('category.update');
+     Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
+
     // Tag route
     Route::get('/tag', [TagController::class, 'index'])->name('tag.index');
+    Route::get('/tag/create', [TagController::class, 'create'])->name('tag.create');
+    Route::post('tag', [TagController::class, 'store'])->name('tag.store');
     Route::get('/tag/{slug}/edit', [TagController::class, 'edit'])->name('tag.edit');
     Route::patch('/tag/{slug}', [TagController::class, 'update'])->name('tag.update');
     Route::delete('/tag/{id}', [TagController::class, 'destroy'])->name('tag.delete');
-
-    // Category route
-    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
-    Route::get('/category/{slug}/edit', [CategoryController::class, 'edit'])->name('category.edit');
-    Route::patch('/category/{slug}', [CategoryController::class, 'update'])->name('category.update');
-    Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
 
     // Feedback route
     Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback.index');

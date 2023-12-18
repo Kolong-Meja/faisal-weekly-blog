@@ -11,7 +11,7 @@ class AdminNavigation extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $greetingMessage){
+    public function __construct(public string $greetingMessage) {
         $this->greetingMessage = $greetingMessage;
     }
 

@@ -38,7 +38,7 @@ class PostController extends Controller
             $post->short_title = Str::limit($post->title, 100);
             $post->short_sub_title = Str::limit($post->sub_title, 100);
         }
-        return view('parts.post.index', compact('posts'));
+        return view('admin.post', compact('posts'));
     }
 
     public function detail(string $slug): View
@@ -66,7 +66,7 @@ class PostController extends Controller
         
         $reading_duration = ceil($word_count / 300);
 
-        return view('parts.post.detail', compact('post_image', 'post_user', 'post_tags', 'post_date', 'reading_duration'
+        return view('admin.detail.post', compact('post_image', 'post_user', 'post_tags', 'post_date', 'reading_duration'
         ));
     }
     
@@ -99,7 +99,7 @@ class PostController extends Controller
             ->select('id', 'title')
             ->get();
         
-        return view('parts.post.create', compact(['tags', 'categories', 'author_id']));
+        return view('admin.create.post', compact(['tags', 'categories', 'author_id']));
     }
     /**
      * Store a newly created resource in storage.
@@ -147,7 +147,7 @@ class PostController extends Controller
         $post->images()->attach($image->id);
         
         session()->flash('success', 'Post successfully created');
-        return redirect()->route('post.index');
+        return redirect()->route('admin.post');
     }
     /**
      * Show the form for editing the specified resource.

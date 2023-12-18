@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    @include('parts.head')
+    @include('layouts.head')
     <style>
         body, #welcome-msg {
             font-family: Arial, Helvetica, sans-serif;

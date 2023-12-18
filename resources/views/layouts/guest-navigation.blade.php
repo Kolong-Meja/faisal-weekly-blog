@@ -1,29 +1,30 @@
 <nav class="home__navbar">
     <div class="home__navbar__position">
         <div class="home__navbar__logo__position">
-            <a id="home__navbar__logo__link" href="{{ route('home.index') }}">
+            <a id="home__navbar__logo__link" class="btn btn-ghost" href="{{ route('home.index') }}">
                 <img src="{{ asset('images/faisal_daily_blog.png') }}" alt="Faisal Daily Blog Logo" id="home__navbar__logo__image">
             </a>
         </div>
         <div class="home__navbar__list__position">
-            <ul id="home__navbar__list__link">
-                <li class="home__navbar__list">
-                    <a class="home__navbar__link" title="Menu" data-model-target="home__navbar__link__modal" data-modal-toggle="home__navbar__link__modal">
-                        <span class="material-symbols-outlined flex items-center">
+            <ul id="home__navbar__list__link" class="menu menu-horizontal">
+                <li>
+                    <a id="home__navbar__link" data-model-target="home__navbar__link__modal" data-modal-toggle="home__navbar__link__modal">
+                        <span class="material-symbols-outlined" id="home__navbar__link__menu__icon">
                             menu
                         </span>
                     </a>
                 </li>
-                <li class="home__navbar__list">
-                    <a class="home__navbar__link" title="Donate Me" href="https://saweria.co/faisalramadhan08">Donate</a>
+                <li>
+                    <a id="home__navbar__link" href="https://saweria.co/faisalramadhan08">Donate</a>
                 </li>
-                <li class="home__navbar__list">
-                    <a class="home__navbar__link" title="My Portfolio" href="{{ route('home.portfolio') }}">Portfolio</a>
+                <li>
+                    <a id="home__navbar__link" href="{{ route('home.portfolio') }}">Portfolio</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
 
 <div id="home__navbar__link__modal" tabindex="-1" aria-hidden="true" class="hidden h-[calc(100%-1rem)]">
     <div class="home__navbar__link__modal__block">

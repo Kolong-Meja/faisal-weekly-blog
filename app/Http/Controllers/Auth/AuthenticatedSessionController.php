@@ -29,15 +29,14 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        $user = $request->user();
         
-        $user->update([
+        $request->user()->createToken('auth_token')->plainTextToken;
+        
+        $request->user()->update([
             'last_login_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'status' => 'online'
         ]);
         
-        $user->createToken('auth_token')->plainTextToken;
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -46,18 +45,12 @@ class AuthenticatedSessionController extends Controller
      * Destroy an authenticated session.
      */
     public function destroy(Request $request): RedirectResponse
-    {
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        }
-
-        Auth::guard('web')->logout();
-        
-        $user = $request->user();
-        
-        $user->update([
+    {   
+        $request->user()->update([
             'status' => 'offline'
         ]);
+
+        Auth::guard('web')->logout();
         
         $request->session()->invalidate();
         
