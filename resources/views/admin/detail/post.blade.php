@@ -39,7 +39,7 @@
                     </div>
                     <div class="px-6 py-4">
                         <h2 class="text-gray-900 text-xl font-bold mb-3 md:text-2xl">{{ $post_user->title }}</h2>
-                        <h3 class="text-neutral-500 text-lg mb-3 md:text-xl">{{ $post_user->sub_title }}</h3>
+                        <h3 class="text-neutral-500 text-lg mb-3 md:text-xl">{{ $post_user->description }}</h3>
                         <p class="mb-5 text-sm text-gray-900 md:text-[16px]">Written by <b>{{ $post_user->user->name }}</b></p>
                         <p class="mb-5 text-sm text-gray-900 md:text-[16px]">{{ $reading_duration }} minutes read | {{ $post_date }}</p>
                         <p class="text-md leading-relaxedwhitespace-pre-wrap md:text-lg">{!! $post_user->content !!}</p>

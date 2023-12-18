@@ -84,7 +84,7 @@
                                                 <th scope="col" class="p-4">ID</th>
                                                 <th scope="col" class="p-4">Author</th>
                                                 <th scope="col" class="p-4">Title</th>
-                                                <th scope="col" class="p-4">Sub Title</th>
+                                                <th scope="col" class="p-4">Description</th>
                                                 <th scope="col" class="p-4">Meta Title</th>
                                                 <th scope="col" class="p-4">Slug</th>
                                                 <th scope="col" class="p-4">Keywords</th>
@@ -106,7 +106,7 @@
                                                         {{ $post->short_title }}
                                                     </td>
                                                     <td class="px-6 py-3">
-                                                        {{ $post->short_sub_title }}
+                                                        {{ $post->short_description }}
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         {{ $post->meta_title }}

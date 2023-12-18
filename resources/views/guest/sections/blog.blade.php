@@ -18,7 +18,7 @@
                                         <img id="home__post__card__image" src="{{ asset('images/'.$post->image) }}" title="Image by: {{ $post->owner }}">
                                         <a id="home__post__card__link" href="{{ route('posts.show', $post->slug) }}">
                                             <p id="home__post__card__title">{{ $post->title }}</p>
-                                            <p id="home__post__card__subtitle">{{ $post->sub_title }}</p>
+                                            <p id="home__post__card__subtitle">{{ $post->description }}</p>
                                             <div class="home__post__card__footer">
                                                 <p id="home__post__card__footer__created__date">{{ Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}</p>
                                                 <p id="home__post__card__footer__read__duration">{{ $post->reading_duration }} Minute read</p>

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -43,13 +44,13 @@ class CategoryController extends Controller
         $request->validated();
 
         Category::create([
-            'title' => '#'.$request->input('title'),
-            'meta_title' => $request->input('meta__title'),
+            'title' => $request->input('title'),
+            'meta_title' => $request->input('meta_title'),
             'slug' => $request->input('slug'),
         ]);
 
         session()->flash("success", "Category successfully created!");
-        return redirect()->route('admin.category');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -61,7 +62,7 @@ class CategoryController extends Controller
             ->where('slug', $slug)
             ->first();
         
-        return view('parts.category.edit', compact('category'));
+        return view('admin.edit.category-edit', compact('category'));
     }
 
     /**
@@ -72,21 +73,28 @@ class CategoryController extends Controller
         string $slug
         ): RedirectResponse
     {
-        $validated = $request->validated();
+        $request->validated();
         
         $category = Category::where('slug', $slug)->first();
         
         $category->update($request->all());
         
         session()->flash('success', 'Category successfully updated');
-        return redirect('/admin/category')->with(compact('category'));
+        return redirect()->route('category.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id): RedirectResponse
-    {
+    {   
+        $authUserRole = optional(Auth::user())->role;
+
+        if ($authUserRole !== "super admin") {
+            session()->flash("error", "You don't have permission to remove category data.");
+            return redirect()->route("category.index");
+        }
+
         $category = Category::findOrFail($id);
         
         if (!$category) {

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\TagRequest;
+use App\Models\Tag;
 
 class TagController extends Controller
 {
@@ -50,12 +51,12 @@ class TagController extends Controller
 
         Tag::create([
             'title' => '#'.$request->input('title'),
-            'meta_title' => $request->input('meta__title'),
+            'meta_title' => $request->input('meta_title'),
             'slug' => $request->input('slug'),
         ]);
 
         session()->flash("success", "Tag successfully created!");
-        return redirect()->route('admin.tag');
+        return redirect()->route('tag.index');
     }
 
     /**
@@ -67,7 +68,7 @@ class TagController extends Controller
         ->where('slug', $slug)
         ->first();
         
-        return view('parts.tag.edit', compact('tag'));
+        return view('admin.edit.tag-edit', compact('tag'));
     }
 
     /**
@@ -79,8 +80,11 @@ class TagController extends Controller
         ): RedirectResponse
     {
         $request->validated();
+        
         $tag = Tag::where('slug', $slug)->first();
+        
         $tag->update($request->all());
+        
         session()->flash('success', 'Tag successfully updated');
         return redirect()->route('tag.index');
     }
@@ -89,12 +93,18 @@ class TagController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id): RedirectResponse
-    {
+    { 
+        $authUserRole = optional(Auth::user())->role;
+
+        if ($authUserRole !== "super admin") {
+            session()->flash("error", "You don't have permission to remove tag data.");
+            return redirect()->route("tag.index");
+        }
+
         $tag = Tag::findOrFail($id);
         
         if (!$tag) {
             abort(404, 'Tag not found!');
-        
         }
         
         $tag->delete();

@@ -8,25 +8,22 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use App\Models\Post;
-use App\Models\Image;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\ImageRequest;
+use App\Models\Image;
+use App\Models\Post;
 use Carbon\Carbon;
 
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(): View
     {
         $posts = DB::table('posts')
         ->join('users', 'posts.user_id', '=', 'users.id')
         ->select('posts.id AS post_id', 
             'posts.title', 'posts.meta_title', 
-            'posts.sub_title', 'posts.keywords', 
+            'posts.description', 'posts.keywords', 
             'posts.slug', 'posts.created_at', 
             'posts.updated_at', 'posts.status',
             'users.id AS user_id', 'users.name AS user_name'
@@ -36,7 +33,7 @@ class PostController extends Controller
 
         foreach($posts as $post) {
             $post->short_title = Str::limit($post->title, 100);
-            $post->short_sub_title = Str::limit($post->sub_title, 100);
+            $post->short_description = Str::limit($post->description, 100);
         }
         return view('admin.post', compact('posts'));
     }
@@ -66,7 +63,12 @@ class PostController extends Controller
         
         $reading_duration = ceil($word_count / 300);
 
-        return view('admin.detail.post', compact('post_image', 'post_user', 'post_tags', 'post_date', 'reading_duration'
+        return view('admin.detail.post', compact(
+            'post_image', 
+            'post_user', 
+            'post_tags', 
+            'post_date', 
+            'reading_duration'
         ));
     }
     
@@ -114,7 +116,7 @@ class PostController extends Controller
         $post = Post::create([
             'user_id' => $req_post->input('user_id'),
             'title' => $req_post->title,
-            'sub_title' => $req_post->sub_title,
+            'description' => $req_post->sub_title,
             'meta_title' => $req_post->meta_title,
             'slug' => $req_post->slug,
             'content' => $req_post->content,
@@ -147,7 +149,7 @@ class PostController extends Controller
         $post->images()->attach($image->id);
         
         session()->flash('success', 'Post successfully created');
-        return redirect()->route('admin.post');
+        return redirect()->route('post.index');
     }
     /**
      * Show the form for editing the specified resource.
@@ -176,7 +178,13 @@ class PostController extends Controller
             array_push($data, $owner, $url);
         }
         
-        return view('parts.post.edit', compact(['post', 'tags', 'categories', 'data', 'author']));
+        return view('admin.edit.post-edit', compact([
+            'post', 
+            'tags', 
+            'categories', 
+            'data', 
+            'author'
+        ]));
     }
     /**
      * Update the specified resource in storage.
@@ -198,7 +206,7 @@ class PostController extends Controller
         $post->update([
             'user_id' => $req_post->input('user_id'),
             'title' => $req_post->title,
-            'sub_title' => $req_post->sub_title,
+            'description' => $req_post->description,
             'meta_title' => $req_post->meta_title,
             'slug' => $req_post->slug,
             'content' => $req_post->content,
@@ -249,6 +257,13 @@ class PostController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {
+        $authUserRole = optional(Auth::user())->role;
+
+        if ($authUserRole !== "super admin") {
+            session()->flash("error", "You don't have permission to remove post data.");
+            return redirect()->route("post.index");
+        }
+
         $post = Post::findOrFail($id);
         
         if (!$post) {

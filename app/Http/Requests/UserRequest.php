@@ -25,7 +25,8 @@ class UserRequest extends FormRequest
         return [
             "name" => ["required", "string", "max:255"],
             "email" => ["required", "email", "email:rfc, dns"],
-            "password" => ["required", "string", Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()]
+            "password" => ["required", "string", Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
+            "role" => ["required"]
         ];
     }
     
@@ -36,7 +37,8 @@ class UserRequest extends FormRequest
         return [
             'name.required' => 'Name is required, cannot be empty!',
             'email.required' => 'Email is required, cannot be empty!',
-            'password.required' => 'Password is required, cannot be empty!'
+            'password.required' => 'Password is required, cannot be empty!',
+            'role.required' => 'Role is required, cannot be empty!'
         ];
     }
 }

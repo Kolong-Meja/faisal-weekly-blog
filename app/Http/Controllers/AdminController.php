@@ -8,12 +8,8 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use App\Models\Tag;
-use App\Models\Category;
-use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\UserRequest;
-use App\Http\Requests\TagRequest;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -54,8 +50,15 @@ class AdminController extends Controller
     /**
      * We want to make the tag and the category created in on form
      */
-    public function create(): View
+    public function create(): View | RedirectResponse
     {
+        $authUserRole = optional(Auth::user())->role;
+
+        if ($authUserRole !== "super admin") {
+            session()->flash("error", "You don't have permission to create new admin account.");
+            return redirect()->route("admin.users");
+        }
+
         return view('admin.create.users');
     }
 
@@ -77,11 +80,11 @@ class AdminController extends Controller
 
     public function destroy(string $id): RedirectResponse
     {
-        $userRole = Auth::user()->role;
+        $authUserRole = optional(Auth::user())->role;
 
-        if ($userRole != 'super admin') {
+        if ($authUserRole !== "super admin") {
             session()->flash("error", "You don't have permission to remove admin account.");
-            return redirect()->route('admin.index');
+            return redirect()->route('admin.users');
         }
 
         $user = User::findOrFail($id);

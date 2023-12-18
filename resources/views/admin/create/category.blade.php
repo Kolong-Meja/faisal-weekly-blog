@@ -30,7 +30,7 @@
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <div name="header">
                     <h2 class="font-bold text-2xl text-center text-yellow-400 leading-tight">
-                        {{ __('Create New Account') }}
+                        {{ __('Create New Category') }}
                     </h2>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                                     <div class="grid grid-rows-1 mb-4">
                                         <div class="w-full mb-2">
                                             <div class="text-center py-2">
-                                                <h3 class="text-lg font-bold text-gray-900">Create New Category</h3>
+                                                <h3 class="text-lg font-bold text-gray-900">Create Category Form</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -55,15 +55,15 @@
                                                 @csrf
                                                 @method('POST')
                                                 <div class="grid grid-cols-1">
-                                                    <div class="grid grid-rows-4 grid-flow-col gap-y-4 mb-4">
+                                                    <div class="grid grid-rows-3 grid-flow-col gap-y-4 mb-4">
                                                         <div>
                                                             <label for="title" class="block mb-2 text-xl font-bold text-yellow-400">Title</label>
                                                             <input type="text" id="title" name="title" class="rounded-lg bg-gray-600 border-2 text-white focus:ring-yellow-400 focus:border-yellow-400 block flex-1 min-w-0 w-full text-md border-yellow-400 p-2.5 @error('title') is-invalid @enderror" placeholder="Example" required>
                                                             <div class="mt-1 text-sm text-white" id="title__help">Note: Make sure you enter the title correctly</div>
                                                         </div>
                                                         <div>
-                                                            <label for="meta__title" class="block mb-2 text-xl font-bold text-yellow-400">Meta Title</label>
-                                                            <input type="text" id="meta__title" name="meta__title" class="rounded-none rounded-r-lg bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md focus:ring-yellow-400 focus:border-yellow-400 block w-full p-2.5 @error('meta__title') is-invalid @enderror" placeholder="Example of Something" required>
+                                                            <label for="meta_title" class="block mb-2 text-xl font-bold text-yellow-400">Meta Title</label>
+                                                            <input type="text" id="meta_title" name="meta_title" class="rounded-none rounded-r-lg bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md focus:ring-yellow-400 focus:border-yellow-400 block w-full p-2.5 @error('meta_title') is-invalid @enderror" placeholder="Example of Something" required>
                                                             <div class="mt-1 text-sm text-white" id="meta__title__help">Note: Make sure you enter the meta title correctly</div>
                                                         </div>
                                                         <div>

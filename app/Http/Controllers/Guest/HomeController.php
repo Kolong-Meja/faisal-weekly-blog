@@ -33,7 +33,7 @@ class HomeController extends Controller
         
         foreach($posts as $post) {
             $post->title = Str::limit($post->title, 100);
-            $post->sub_title = Str::limit($post->sub_title, 100);
+            $post->description = Str::limit($post->description, 100);
             $word_count = str_word_count(strip_tags($post->content));
             $reading_duration = ceil($word_count / 300);
             $post->reading_duration = $reading_duration;

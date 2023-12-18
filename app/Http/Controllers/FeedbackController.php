@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Feedback;
 
@@ -33,7 +34,14 @@ class FeedbackController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id): RedirectResponse
-    {
+    {   
+        $authUserRole = optional(Auth::user())->role;
+
+        if ($authUserRole !== "super admin") {
+            session()->flash("error", "You don't have permission to remove feedback data.");
+            return redirect()->route("feedback.index");
+        }
+
         $feedback = Feedback::findOrFail($id);
         
         $feedback->delete();
