@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Carbon\Carbon;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -29,6 +30,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = $request->user();
+        
+        $user->update([
+            'last_login_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 'online'
+        ]);
+        
+        $user->createToken('auth_token')->plainTextToken;
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -37,12 +47,22 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
         Auth::guard('web')->logout();
-
+        
+        $user = $request->user();
+        
+        $user->update([
+            'status' => 'offline'
+        ]);
+        
         $request->session()->invalidate();
-
+        
         $request->session()->regenerateToken();
-
+        
         return redirect('/');
     }
 }

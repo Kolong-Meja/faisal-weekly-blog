@@ -42,19 +42,29 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
+        // Validate the request data
+        $request->validate([
+            'current-password' => ['required', function ($attribute, $value, $fail) use ($request) {
+                if (!Auth::attempt(['email' => $request->user()->email, 'password' => $value])) {
+                    $fail(__('The password is incorrect.'));
+                }
+            }],
+        ], [
+            'current-password.required' => __('The password field is required.'),
+            'current-password' => __('The password is incorrect.'),
         ]);
-
+    
+        // User authentication successful, proceed with deletion
         $user = $request->user();
-
+        
         Auth::logout();
-
+        
         $user->delete();
-
+    
         $request->session()->invalidate();
+        
         $request->session()->regenerateToken();
-
+    
         return Redirect::to('/');
     }
 }
