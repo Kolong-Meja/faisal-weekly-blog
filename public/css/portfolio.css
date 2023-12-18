@@ -1,0 +1,617 @@
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+    * {
+        box-sizing: border-box;
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    body {
+        background-color: rgb(6, 15, 26);
+    }
+    .carousel__item {
+        visibility: visible;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(31, 44, 55);
+        flex-shrink: 0;
+        position: absolute;
+        z-index: 0;
+        transition: 0.6s all linear;
+    }
+    .personal__info {
+        height: 100%;
+        display: flex;
+        margin-left: 40px;
+        margin-right: 40px;
+        justify-content: center;
+        flex-direction: column;
+        order: 1;
+        left: 0;
+    }
+    .personal_blog__info {
+        height: 100%;
+        display: flex;
+        margin-left: 40px;
+        margin-right: 40px;
+        justify-content: center;
+        flex-direction: column;
+        order: 1;
+        left: 0;
+    }
+    .sefile_cli__info {
+        height: 100%;
+        display: flex;
+        margin-left: 40px;
+        margin-right: 40px;
+        justify-content: center;
+        flex-direction: column;
+        order: 1;
+        left: 0;
+    }
+    .contact__info {
+        height: 100%;
+        display: flex;
+        margin-left: 40px;
+        margin-right: 40px;
+        justify-content: center;
+        flex-direction: column;
+        order: 1;
+        left: 0;
+    }
+    .personal_title__information {
+        margin: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 63px;
+        line-height: 45px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+    }
+    #personal_title_natural__span {
+        color: white;
+    }
+    #personal_title_bg__span {
+        color: rgb(31, 41, 55);
+        background-color: rgb(234, 179, 8);
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 5px;
+    }
+    .contact_title__information {
+        margin: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 63px;
+        line-height: 45px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+    }
+    #contact_title__underline {
+        color: white;
+        text-decoration: none;
+        position: relative;
+    }
+    #contact_title__underline span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        border-bottom: 2px solid rgb(234, 179, 8);
+        transition: width .3s;
+    }
+    #contact_title__underline:hover span {
+        width: 100%;
+    }
+    #navbar__underline {
+        color: white;
+        text-decoration: none;
+        position: relative;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    #navbar__underline span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        border-bottom: 2px solid rgb(234, 179, 8);
+        transition: width .3s;
+    }
+    #navbar__underline:hover span {
+        width: 100%;
+    }
+    .personal_blog_title__information {
+        margin: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 63px;
+        line-height: 45px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+    }
+    #personal_blog_natural__span {
+        color: white;
+    }
+    #personal_blog_bg__span {
+        color: rgb(31, 41, 55);
+        background-color: rgb(234, 179, 8);
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 5px;
+    }
+    .sefile_cli_title__information {
+        margin: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 63px;
+        line-height: 45px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+    }
+    #sefile_cli_natural__span {
+        color: white;
+    }
+    #sefile_cli_bg__span {
+        color: rgb(31, 41, 55);
+        background-color: rgb(234, 179, 8);
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 5px;
+    }
+    .personal__description {
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+        margin-top: 35px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 18px;
+        color: white;
+        line-height: 22px;
+        margin-bottom: 35px;
+    }
+    .personal_blog__description {
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+        margin-top: 35px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 18px;
+        color: white;
+        line-height: 22px;
+        margin-bottom: 35px;
+    }
+    #personal_blog__link {
+        color: white;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        transition: 300ms;
+    }
+    #personal_blog__link:hover {
+        color: rgb(31, 44, 55);
+        background-color: rgb(234, 179, 8);
+        transition-duration: 300ms;
+    }
+    .sefile_cli__description {
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+        margin-top: 35px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 18px;
+        color: white;
+        line-height: 22px;
+        margin-bottom: 35px;
+    }
+    #sefile_cli__link {
+        color: white;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        transition: 300ms;
+    }
+    #sefile_cli__link:hover {
+        color: rgb(31, 44, 55);
+        background-color: rgb(234, 179, 8);
+        transition-duration: 300ms;
+    }
+    .contact__description {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+        margin: 0 auto;
+        color: rgb(156, 163, 175);
+    }
+    .contact__description li {
+        margin: 10px;
+    }
+    .button__group {
+        position: absolute;
+        right: 0;
+        z-index: 2;
+        background-color: rgb(234, 179, 8);
+        bottom: 0;
+    }
+    .carousel__icon {
+        display: inline-block;
+        vertical-align: middle;
+        width: 16px;
+        fill: rgb(31, 41, 55);
+    }
+    .carousel__arrow {
+        cursor: pointer;
+        display: inline-block;
+        padding: 11px 15px;
+        position: relative;
+    }
+    .carousel__arrow:nth-child(1):after {
+        content:'';
+        right: -3px;
+        position: absolute;
+        width: 1px;
+        background-color: rgb(31, 41, 55);
+        height: 14px;
+        top: 50%;
+        margin-top: -7px;
+    }
+    .active {
+        z-index: 1;
+        display: flex;
+        visibility: visible;
+    }
+    .active .personal_title__information,
+    .active .personal_blog_title__information,
+    .active .sefile_cli_title__information,
+    .active .contact_title__information,
+    .active .personal__description,
+    .active .personal_blog__description,
+    .active .sefile_cli__description,
+    .active .contact__description {
+        transform: translateY(0);
+        opacity: 1;
+        transition: 0.6s all ease-in-out;
+        visibility: visible;
+    }
+    .active .carousel_item__image {
+        transition: 0.6s all ease-in-out;
+        transform: translateX(0);
+    }
+}
+
+/* Mobile Mode Active */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+    * {
+        box-sizing: border-box;
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    body {
+        background-color: rgb(6, 15, 26);
+    }
+    .carousel__item {
+        visibility: visible;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(31, 44, 55);
+        flex-shrink: 0;
+        position: absolute;
+        z-index: 0;
+        transition: 0.6s all linear;
+    }
+    .personal__info {
+        height: 100%;
+        display: flex;
+        margin-left: 40px;
+        margin-right: 40px;
+        justify-content: center;
+        flex-direction: column;
+        order: 1;
+        left: 0;
+    }
+    .personal_blog__info {
+        height: 100%;
+        display: flex;
+        margin-left: 40px;
+        margin-right: 40px;
+        justify-content: center;
+        flex-direction: column;
+        order: 1;
+        left: 0;
+    }
+    .sefile_cli__info {
+        height: 100%;
+        display: flex;
+        margin-left: 40px;
+        margin-right: 40px;
+        justify-content: center;
+        flex-direction: column;
+        order: 1;
+        left: 0;
+    }
+    .contact__info {
+        height: 100%;
+        display: flex;
+        margin-left: 40px;
+        margin-right: 40px;
+        justify-content: center;
+        flex-direction: column;
+        order: 1;
+        left: 0;
+    }
+    .personal_title__information {
+        margin: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 44px;
+        line-height: 45px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+    }
+    #personal_title_natural__span {
+        color: white;
+    }
+    #personal_title_bg__span {
+        color: rgb(31, 41, 55);
+        background-color: rgb(234, 179, 8);
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 5px;
+    }
+    .contact_title__information {
+        margin: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 48px;
+        line-height: 45px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+    }
+    #contact_title__underline {
+        color: white;
+        text-decoration: none;
+        position: relative;
+    }
+    #contact_title__underline span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        border-bottom: 2px solid rgb(234, 179, 8);
+        transition: width .3s;
+    }
+    #contact_title__underline:hover span {
+        width: 100%;
+    }
+    #navbar__underline {
+        color: white;
+        text-decoration: none;
+        position: relative;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    #navbar__underline span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        border-bottom: 2px solid rgb(234, 179, 8);
+        transition: width .3s;
+    }
+    #navbar__underline:hover span {
+        width: 100%;
+    }
+    .personal_blog_title__information {
+        margin: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 44px;
+        line-height: 45px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+    }
+    #personal_blog_natural__span {
+        color: white;
+    }
+    #personal_blog_bg__span {
+        color: rgb(31, 41, 55);
+        background-color: rgb(234, 179, 8);
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 5px;
+    }
+    .sefile_cli_title__information {
+        margin: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 44px;
+        line-height: 45px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+    }
+    #sefile_cli_natural__span {
+        color: white;
+    }
+    #sefile_cli_bg__span {
+        color: rgb(31, 41, 55);
+        background-color: rgb(234, 179, 8);
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 5px;
+    }
+    .personal__description {
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+        margin-top: 30px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        color: white;
+        line-height: 22px;
+        margin-bottom: 30px;
+    }
+    .personal_blog__description {
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+        margin-top: 30px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        color: white;
+        line-height: 22px;
+        margin-bottom: 30px;
+    }
+    #personal_blog__link {
+        color: white;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        transition: 300ms;
+    }
+    #personal_blog__link:hover {
+        color: rgb(31, 44, 55);
+        background-color: rgb(234, 179, 8);
+        transition-duration: 300ms;
+    }
+    .sefile_cli__description {
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+        margin-top: 30px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        color: white;
+        line-height: 22px;
+        margin-bottom: 30px;
+    }
+    #sefile_cli__link {
+        color: white;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        transition: 300ms;
+    }
+    #sefile_cli__link:hover {
+        color: rgb(31, 44, 55);
+        background-color: rgb(234, 179, 8);
+        transition-duration: 300ms;
+    }
+    .contact__description {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        transform: translateY(25%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s all ease-in-out;
+        margin: 0 auto;
+        color: rgb(156, 163, 175);
+    }
+    .contact__description li {
+        margin: 10px;
+    }
+    /* Animation Begin */
+    .button__group {
+        position: absolute;
+        right: 0;
+        z-index: 2;
+        background-color: rgb(234, 179, 8);
+        bottom: 0;
+    }
+    .carousel__icon {
+        display: inline-block;
+        vertical-align: middle;
+        width: 16px;
+        fill: rgb(31, 41, 55);
+    }
+    .carousel__arrow {
+        cursor: pointer;
+        display: inline-block;
+        padding: 11px 15px;
+        position: relative;
+    }
+    .carousel__arrow:nth-child(1):after {
+        content:'';
+        right: -3px;
+        position: absolute;
+        width: 1px;
+        background-color: rgb(31, 41, 55);
+        height: 14px;
+        top: 50%;
+        margin-top: -7px;
+    }
+    .active {
+        z-index: 1;
+        display: flex;
+        visibility: visible;
+    }
+    .active .personal_title__information,
+    .active .personal_blog_title__information,
+    .active .sefile_cli_title__information,
+    .active .contact_title__information,
+    .active .personal__description,
+    .active .personal_blog__description,
+    .active .sefile_cli__description,
+    .active .contact__description {
+        transform: translateY(0);
+        opacity: 1;
+        transition: 0.6s all ease-in-out;
+        visibility: visible;
+    }
+    .active .carousel_item__image {
+        transition: 0.6s all ease-in-out;
+        transform: translateX(0);
+    }
+}
