@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    {{-- Head component --}}
-    <x-head :metaTitle={{ config('app.name', 'Faisal Daily Blog') }}/>
+    @include('head')
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;

@@ -1,5 +1,5 @@
 const navbar = document.querySelector('.home__navbar');
-const homeNavbarLinks = document.querySelectorAll('.home__navbar a#home__navbar__link');
+const homeNavbarLinks = document.querySelectorAll('.home__navbar a.home__navbar__link');
 
 /**
  * 
@@ -21,7 +21,7 @@ function whenDoScrollBottom(link) {
  */
 function whenDoScrollTop(link) {
 	link.addEventListener('mouseover', function() {
-		this.style.color = "rgba(17, 24, 39, 1)";
+		this.style.color = "rgba(255, 255, 255, 1)";
 	});
 
 	link.addEventListener('mouseout', function() {

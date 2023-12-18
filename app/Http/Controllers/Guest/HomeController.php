@@ -39,7 +39,7 @@ class HomeController extends Controller
             $post->reading_duration = $reading_duration;
         }
         
-        return view('parts.home', compact('posts', 'categories'));
+        return view('guest.home', compact('posts', 'categories'));
     }
 
     public function feedback(FeedbackRequest $request): JsonResponse
