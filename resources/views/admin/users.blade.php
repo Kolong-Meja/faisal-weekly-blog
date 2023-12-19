@@ -83,14 +83,14 @@
                                         <thead class="text-xs text-yellow-400 border-b border-yellow-400 text-center uppercase bg-zinc-900">
                                             <tr>
                                                 <th scope="col" class="p-4">ID</th>
-                                                <th scope="col" class="p-4">Name</th>
+                                                <th scope="col" class="p-4">Role</th>
+                                                <th scope="col" class="p-4">Username</th>
                                                 <th scope="col" class="p-4">Email</th>
                                                 <th scope="col" class="p-4">Email Verified At</th>
                                                 <th scope="col" class="p-4">Last Login At</th>
                                                 <th scope="col" class="p-4">Created At</th>
                                                 <th scope="col" class="p-4">Updated At</th>
                                                 <th scope="col" class="p-4">Status</th>
-                                                <th scope="col" class="p-4">Role</th>
                                                 <th scope="col" class="p-4">Activity</th>
                                             </tr>
                                         </thead>
@@ -101,7 +101,10 @@
                                                         {{ $user->id }}
                                                     </td>
                                                     <td class="px-6 py-3">
-                                                        {{ $user->name }}
+                                                        {{ $user->role_title }}
+                                                    </td>
+                                                    <td class="px-6 py-3">
+                                                        {{ $user->username }}
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         {{ $user->email }}
@@ -132,9 +135,6 @@
                                                                 <span class="ml-1">{{ $user->status }}</span>
                                                             </span>
                                                         @endif
-                                                    </td>
-                                                    <td class="px-6 py-3">
-                                                        {{ $user->role }}
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         <form onsubmit="return confirm('Are you sure to remove this user?');" action="{{ route('admin.delete', $user->id) }}" method="POST">

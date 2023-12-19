@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Utils\CheckRole;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,7 @@ use App\Models\Tag;
 
 class TagController extends Controller
 {
+    private const REQUIRED_ROLE = "super admin";
     /**
      * Display a listing of the resource.
      */
@@ -64,6 +66,11 @@ class TagController extends Controller
      */
     public function edit(string $slug): View
     {
+        if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
+            session()->flash("error", "You don't have permission to create new admin account.");
+            return redirect()->route("admin.users");
+        }
+
         $tag = DB::table('tags')
         ->where('slug', $slug)
         ->first();
@@ -94,11 +101,9 @@ class TagController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     { 
-        $authUserRole = optional(Auth::user())->role;
-
-        if ($authUserRole !== "super admin") {
-            session()->flash("error", "You don't have permission to remove tag data.");
-            return redirect()->route("tag.index");
+        if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
+            session()->flash("error", "You don't have permission to create new admin account.");
+            return redirect()->route("admin.users");
         }
 
         $tag = Tag::findOrFail($id);

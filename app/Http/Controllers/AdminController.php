@@ -2,26 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Utils\CheckRole;
+use App\Models\Role;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 
 class AdminController extends Controller
 {
+    private const REQUIRED_ROLE = "super admin";
     // metode index() -> mengembalikan view dashboard
     public function index(): View
     {
         $posts = DB::table('posts')
             ->select(DB::raw("COUNT(*) as count"), 
-                DB::raw("MONTHNAME(created_at) as month_name"))
+                DB::raw("to_char(created_at, 'Month') as month_name"))
             ->whereYear('created_at', date('Y'))
             ->groupBy(DB::raw("month_name"))
-            ->orderBy('month_name', 'ASC')
+            ->orderBy(DB::raw("MIN(created_at)"), 'ASC')
             ->pluck('count', 'month_name');
         
         $labels = $posts->keys();
@@ -36,12 +38,14 @@ class AdminController extends Controller
      */
     public function users(): View
     {
-        $users = User::select('id', 'name', 
-            'email', 'email_verified_at', 
-            'password', 'created_at', 
-            'updated_at', 'last_login_at', 
-            'status', 'role'
-        )->orderBy('id', 'ASC')
+        $users = DB::table('users')
+        ->join('roles', 'users.role_id', '=', 'roles.id')
+        ->select('users.id', 'users.username', 
+                'users.email', 'users.email_verified_at', 
+                'users.last_login_at', 'users.status', 
+                'users.created_at', 'users.updated_at',
+                'roles.id AS role_id', 'roles.title AS role_title'
+        )->orderBy('users.id', 'ASC')
         ->paginate(10);
 
         return view('admin.users', compact('users'));
@@ -52,14 +56,14 @@ class AdminController extends Controller
      */
     public function create(): View | RedirectResponse
     {
-        $authUserRole = optional(Auth::user())->role;
-
-        if ($authUserRole !== "super admin") {
+        if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
             session()->flash("error", "You don't have permission to create new admin account.");
             return redirect()->route("admin.users");
         }
 
-        return view('admin.create.users');
+        $roles = Role::select('id', 'title')->get();
+
+        return view('admin.create.users', compact('roles'));
     }
 
     public function store(UserRequest $request): RedirectResponse
@@ -67,11 +71,13 @@ class AdminController extends Controller
         $request->validated();
 
         User::create([
+            "role_id" => $request->input("role"),
             "name" => $request->input("name"),
+            "username" => $request->input("username"),
             "email" => $request->input("email"),
             "password" => Hash::make($request->input("password")),
-            "role" => $request->input("role"),
-            "email_verified_at" => Carbon::now()->format('Y-m-d H:i:s')
+            "email_verified_at" => Carbon::now()->format('Y-m-d H:i:s'),
+            "status" => 'offline'
         ]);
         
         session()->flash("success", "New admin account successfully created");
@@ -80,9 +86,7 @@ class AdminController extends Controller
 
     public function destroy(string $id): RedirectResponse
     {
-        $authUserRole = optional(Auth::user())->role;
-
-        if ($authUserRole !== "super admin") {
+        if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
             session()->flash("error", "You don't have permission to remove admin account.");
             return redirect()->route('admin.users');
         }

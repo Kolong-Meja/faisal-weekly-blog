@@ -55,11 +55,16 @@
                                                 @csrf
                                                 @method('POST')
                                                 <div class="grid grid-cols-1">
-                                                    <div class="grid grid-rows-4 grid-flow-col gap-y-4 mb-4">
+                                                    <div class="grid grid-rows-5 grid-flow-col gap-y-4 mb-4">
                                                         <div>
                                                             <label for="name" class="block mb-2 text-xl font-bold text-yellow-400">Fullname</label>
-                                                            <input type="text" id="name" name="name" class="rounded-lg bg-gray-600 border-2 text-white focus:ring-yellow-400 focus:border-yellow-400 block flex-1 min-w-0 w-full text-md border-yellow-400 p-2.5 @error('name') is-invalid @enderror" placeholder="John Doe" required autocomplete="name">
+                                                            <input type="text" id="name" name="name" class="rounded-lg bg-gray-600 border-2 text-white focus:ring-yellow-400 focus:border-yellow-400 block flex-1 min-w-0 w-full text-md border-yellow-400 p-2.5 @error('name') is-invalid @enderror" placeholder="John Doe" required autocomplete="name" />
                                                             <div class="mt-1 text-sm text-white" id="name__help">Note: Make sure you enter the name correctly</div>
+                                                        </div>
+                                                        <div>
+                                                            <label for="username" class="block mb-2 text-xl font-bold text-yellow-400">Username</label>
+                                                            <input type="text" id="username" name="username" class="rounded-lg bg-gray-600 border-2 text-white focus:ring-yellow-400 focus:border-yellow-400 block flex-1 min-w-0 w-full text-md border-yellow-400 p-2.5 @error('username') is-invalid @enderror" placeholder="johndoe17" required />
+                                                            <div class="mt-1 text-sm text-white" id="name__help">Note: Combine the username with symbol and number, for security purpose, and for uniqueness.</div>
                                                         </div>
                                                         <div>
                                                             <label for="email" class="block mb-2 text-xl font-bold text-yellow-400">Email</label>
@@ -69,7 +74,7 @@
                                                                         <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
                                                                     </svg>
                                                                 </span>
-                                                                <input type="text" id="email" name="email" class="rounded-none rounded-r-lg bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md focus:ring-yellow-400 focus:border-yellow-400 block w-full p-2.5 @error('email') is-invalid @enderror" placeholder="example@test.com" required autocomplete="email">
+                                                                <input type="email" id="email" name="email" class="rounded-none rounded-r-lg bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md focus:ring-yellow-400 focus:border-yellow-400 block w-full p-2.5 @error('email') is-invalid @enderror" placeholder="example@test.com" required autocomplete="email" />
                                                             </div>
                                                             <div class="mt-1 text-sm text-white" id="email_help">Note: Don't input emails with unknown domains</div>
                                                         </div>
@@ -96,8 +101,9 @@
                                                                     </svg>
                                                                 </span>
                                                                 <select id="role" name="role" class="rounded-none rounded-r-lg bg-gray-600 text-white focus:ring-yellow-400 focus:border-yellow-400 flex-1 min-w-0 w-full text-md p-2.5" required>
-                                                                    <option value="admin">Admin</option>
-                                                                    <option value="super admin">Super Admin</option>
+                                                                    @foreach ($roles as $role)
+                                                                        <option value="{{ $role->id }}">{{ ucwords(strtolower($role->title)) }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>

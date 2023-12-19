@@ -24,9 +24,9 @@ class UserRequest extends FormRequest
     {
         return [
             "name" => ["required", "string", "max:255"],
-            "email" => ["required", "email", "email:rfc, dns"],
+            "username" => ["required", "string", "min:5", "max:50"],
+            "email" => ["required", "email", "email:rfc, dns", "unique:users,email"],
             "password" => ["required", "string", Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
-            "role" => ["required"]
         ];
     }
     

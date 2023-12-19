@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('user_id');
+            $table->foreignUuid("user_id")->references('id')->on('users')->cascadeOnDelete();
             $table->text('title');
             $table->text('description');
             $table->text('meta_title');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->enum('status', ['not verified', 'verified']);
             $table->index(['title']);
             $table->timestamps();
+
         });
     }
 

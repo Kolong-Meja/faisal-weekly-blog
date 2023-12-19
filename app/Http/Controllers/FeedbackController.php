@@ -35,13 +35,6 @@ class FeedbackController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {   
-        $authUserRole = optional(Auth::user())->role;
-
-        if ($authUserRole !== "super admin") {
-            session()->flash("error", "You don't have permission to remove feedback data.");
-            return redirect()->route("feedback.index");
-        }
-
         $feedback = Feedback::findOrFail($id);
         
         $feedback->delete();

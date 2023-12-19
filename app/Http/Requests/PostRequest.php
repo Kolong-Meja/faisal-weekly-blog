@@ -38,14 +38,9 @@ class PostRequest extends FormRequest
     */
     protected function prepareForValidation(): void
     {
-        $merge = [];
-
-        // jika data slug tidak null, maka akan diubah menjadi slug yang sesungguhnya.
-        if ($this->has('slug')) {
-            $merge['slug'] = Str::slug($this->get('slug')); 
-        }
-
-        $this->merge($merge);
+        $this->merge([
+            'slug' => Str::slug($this->slug),
+        ]);
     }
 
     /**

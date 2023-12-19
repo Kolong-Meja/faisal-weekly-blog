@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Utils\CheckRole;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -17,6 +18,7 @@ use Carbon\Carbon;
 
 class PostController extends Controller
 {
+    private const REQUIRED_ROLE = "super admin";
     public function index(): View
     {
         $posts = DB::table('posts')
@@ -156,6 +158,11 @@ class PostController extends Controller
      */
     public function edit($slug): View
     {
+        if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
+            session()->flash("error", "You don't have permission to create new admin account.");
+            return redirect()->route("admin.users");
+        }
+
         $author = Auth::user()->id;
         
         $post = Post::where('slug', $slug)
@@ -257,11 +264,9 @@ class PostController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {
-        $authUserRole = optional(Auth::user())->role;
-
-        if ($authUserRole !== "super admin") {
-            session()->flash("error", "You don't have permission to remove post data.");
-            return redirect()->route("post.index");
+        if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
+            session()->flash("error", "You don't have permission to create new admin account.");
+            return redirect()->route("admin.users");
         }
 
         $post = Post::findOrFail($id);

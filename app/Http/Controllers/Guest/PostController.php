@@ -17,6 +17,7 @@ class PostController extends Controller
 {
      /**
      * Display a listing of the resource.
+     * @return \Illuminate\View\View
      */
     public function index(): View
     {
@@ -69,7 +70,8 @@ class PostController extends Controller
     }
     /**
      * Display the specified resource.
-     * @property mixed $name
+     * @property string $slug This the post slug
+     * @return \Illuminate\View\View
      */
     public function show(string $slug): View
     {
@@ -104,6 +106,8 @@ class PostController extends Controller
     }
     /**
      * Display all posts by it's category
+     * @property string $slug This is the category slug
+     * @return \Illuminate\View\View
      */
     public function category(string $slug): View
     {
@@ -176,6 +180,8 @@ class PostController extends Controller
 
     /**
      * Display all posts by it's tag
+     * @property string $slug This is the tag slug
+     * @return \Illuminate\View\View
      */
     public function tag(string $slug): View
     {

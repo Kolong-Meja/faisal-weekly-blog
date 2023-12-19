@@ -42,18 +42,18 @@
                         <form method="POST" action="{{ route('login') }}" autocomplete="off">
                             @csrf
     
-                            <!-- Email Address -->
+                            <!-- Username -->
                             <div>
-                                <label for="email" class="block font-bold text-md text-gray-900">Email</label>
+                                <label for="username" class="block font-bold text-md text-gray-900">Username</label>
                                 <div class="flex">
                                     <span class="inline-flex items-center px-3 sm:px-4 text-sm text-yellow-400 bg-zinc-900 border-r border-gray-400 rounded-l-md">
                                         <span class="material-symbols-outlined">
                                             mail
                                         </span>
                                     </span>
-                                    <input type="email" id="email" name="email" class="rounded-none rounded-r-lg bg-zinc-900 border-none text-white focus:ring-0 focus:border-none block flex-1 min-w-0 w-full text-sm border-zinc-900 p-3 @error('email') is-invalid @enderror" placeholder="example@gmail.com" required autofocus autocomplete="email" />
+                                    <input type="text" id="username" name="username" class="rounded-none rounded-r-lg bg-zinc-900 border-none text-white focus:ring-0 focus:border-none block flex-1 min-w-0 w-full text-sm border-zinc-900 p-3 @error('username') is-invalid @enderror" placeholder="example" required autofocus />
                                 </div>
-                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                <x-input-error :messages="$errors->get('username')" class="mt-2" />
                             </div>
     
                             <!-- Password -->
