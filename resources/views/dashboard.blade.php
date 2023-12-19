@@ -13,6 +13,7 @@
         {{-- Navigation --}}
         @php
             $greetingWord = "";
+            $timeZone = date_default_timezone_set("Asia/Jakarta");
             $recentTime = date("G");
 
             if ($recentTime > 0 && $recentTime < 24) {
@@ -25,7 +26,7 @@
                 }
             } 
         @endphp
-        <x-admin-navigation :greetingMessage="$greetingWord"/>
+        <x-admin-navigation :greetingMessage="$greetingWord" />
         {{-- Page Heading --}}
         <header class="bg-zinc-900">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -73,10 +74,10 @@
                                 <div class="bg-yellow-400 overflow-hidden rounded-md shadow-lg">
                                     <div class="p-6 text-gray-900">
                                         <div class="text-center pb-4">
-                                            <h3 class="text-lg font-bold text-gray-900">Bar Chart</h3>
+                                            <h3 class="text-lg font-bold text-gray-900">Polar Chart</h3>
                                         </div>
                                         <div class="w-full px-4 py-4">
-                                            <canvas id="fourth-chart"></canvas>
+                                            <canvas id="polar__chart"></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +93,7 @@
                                                             <h3 class="text-lg font-bold text-gray-900">Line Chart</h3>
                                                         </div>
                                                         <div class="w-full">
-                                                            <canvas id="third-chart"></canvas>
+                                                            <canvas id="line__chart"></canvas>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -112,12 +113,12 @@
                                             <h3 class="text-lg font-bold text-gray-900">Circle Chart</h3>
                                         </div>
                                         <div class="w-full px-4 py-4">
-                                            <canvas id="second-chart"></canvas>
+                                            <canvas id="circleChart"></canvas>
                                         </div>
                                     </div>
                                 </div>
 
-                                {{-- Bar chart --}}
+                                {{-- Bar Chart --}}
                                 <div class="grid grid-rows-1 grid-flow-col mt-5">
                                     <div class="grid grid-cols-1">
                                         <div class="pt-6 drop-shadow-lg">
@@ -125,10 +126,10 @@
                                                 <div class="bg-yellow-400 overflow-hidden rounded-md shadow-lg">
                                                     <div class="p-6 text-gray-900">
                                                         <div class="text-center pb-4">
-                                                            <h3 class="text-lg font-bold text-gray-900">Polar Chart</h3>
+                                                            <h3 class="text-lg font-bold text-gray-900">Bar Chart</h3>
                                                         </div>
                                                         <div class="w-full">
-                                                            <canvas id="first-chart"></canvas>
+                                                            <canvas id="bar__chart"></canvas>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -145,9 +146,9 @@
     </div>
     <script>
         // Bar Chart
-        const bar = document.getElementById('first-chart');
+        const barChart = document.getElementById('bar__chart');
 
-        new Chart(bar, {
+        new Chart(barChart, {
             type: 'bar',
             data: {
                 labels: {!! json_encode($labels) !!},
@@ -217,9 +218,9 @@
         });
 
         // Circle Chart
-        const circle = document.getElementById('second-chart');
+        const circleChart = document.getElementById('circleChart');
 
-        new Chart(circle, {
+        new Chart(circleChart, {
             type: 'doughnut',
             data: {
                 labels: {!! json_encode($labels) !!},
@@ -268,9 +269,9 @@
         });
 
         // Line chart
-        const line = document.getElementById('third-chart');
+        const lineChart = document.getElementById('line__chart');
 
-        new Chart(line, {
+        new Chart(lineChart, {
             type: 'line',
             data: {
                 labels: {!! json_encode($labels) !!},
@@ -332,9 +333,9 @@
         });
 
         // Polar Chart
-        const polar = document.getElementById('fourth-chart');
+        const polarChart = document.getElementById('polar__chart');
 
-        new Chart(polar, {
+        new Chart(polarChart, {
             type: 'polarArea',
             data: {
                 labels: {!! json_encode($labels) !!},

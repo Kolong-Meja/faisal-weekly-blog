@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Utils\GreetingTime;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,13 @@ use App\Models\Feedback;
 
 class FeedbackController extends Controller
 {
+    private $greetingWord;
+
+    public function __construct()
+    {
+        $this->greetingWord = GreetingTime::greeting();
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -27,7 +35,9 @@ class FeedbackController extends Controller
         ->orderBy('id', 'ASC')
         ->paginate(10);
         
-        return view('admin.feedback', compact('feedbacks'));
+        $greetingMsg = $this->greetingWord;
+        
+        return view('admin.feedback', compact('feedbacks', 'greetingMsg'));
     }
 
     /**

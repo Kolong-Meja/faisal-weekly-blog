@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Utils\CheckRole;
+use App\Http\Controllers\Utils\GreetingTime;
 use App\Models\Role;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +16,13 @@ use App\Models\User;
 class AdminController extends Controller
 {
     private const REQUIRED_ROLE = "super admin";
+    private $greetingWord;
+
+    public function __construct()
+    {
+        $this->greetingWord = GreetingTime::greeting();
+    }
+
     // metode index() -> mengembalikan view dashboard
     public function index(): View
     {
@@ -30,7 +38,13 @@ class AdminController extends Controller
         
         $data = $posts->values();
         
-        return view('dashboard', compact('labels', 'data'));
+        $greetingMsg = $this->greetingWord;
+
+        return view('dashboard', compact(
+            'labels', 
+            'data',
+            'greetingMsg'
+        ));
     }
 
     /**
@@ -48,7 +62,9 @@ class AdminController extends Controller
         )->orderBy('users.id', 'ASC')
         ->paginate(10);
 
-        return view('admin.users', compact('users'));
+        $greetingMsg = $this->greetingWord;
+
+        return view('admin.users', compact('users', 'greetingMsg'));
     }
 
     /**
@@ -63,7 +79,9 @@ class AdminController extends Controller
 
         $roles = Role::select('id', 'title')->get();
 
-        return view('admin.create.users', compact('roles'));
+        $greetingMsg = $this->greetingWord;
+        
+        return view('admin.create.users', compact('roles', 'greetingMsg'));
     }
 
     public function store(UserRequest $request): RedirectResponse

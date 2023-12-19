@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Utils\CheckRole;
+use App\Http\Controllers\Utils\GreetingTime;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -19,6 +20,14 @@ use Carbon\Carbon;
 class PostController extends Controller
 {
     private const REQUIRED_ROLE = "super admin";
+    
+    private $greetingWord;
+
+    public function __construct()
+    {
+        $this->greetingWord = GreetingTime::greeting();
+    }
+
     public function index(): View
     {
         $posts = DB::table('posts')
@@ -37,7 +46,10 @@ class PostController extends Controller
             $post->short_title = Str::limit($post->title, 100);
             $post->short_description = Str::limit($post->description, 100);
         }
-        return view('admin.post', compact('posts'));
+
+        $greetingMsg = $this->greetingWord;
+
+        return view('admin.post', compact('posts', 'greetingMsg'));
     }
 
     public function detail(string $slug): View
@@ -65,12 +77,15 @@ class PostController extends Controller
         
         $reading_duration = ceil($word_count / 300);
 
+        $greetingMsg = $this->greetingWord;
+
         return view('admin.detail.post', compact(
             'post_image', 
             'post_user', 
             'post_tags', 
             'post_date', 
-            'reading_duration'
+            'reading_duration',
+            'greetingMsg',
         ));
     }
     
@@ -103,7 +118,14 @@ class PostController extends Controller
             ->select('id', 'title')
             ->get();
         
-        return view('admin.create.post', compact(['tags', 'categories', 'author_id']));
+        $greetingMsg = $this->greetingWord;
+            
+        return view('admin.create.post', compact(
+            'tags', 
+            'categories', 
+            'author_id',
+            'greetingMsg',
+        ));
     }
     /**
      * Store a newly created resource in storage.
@@ -185,12 +207,15 @@ class PostController extends Controller
             array_push($data, $owner, $url);
         }
         
+        $greetingMsg = $this->greetingWord;
+
         return view('admin.edit.post-edit', compact([
             'post', 
             'tags', 
             'categories', 
             'data', 
-            'author'
+            'author',
+            '$greetingMsg',
         ]));
     }
     /**

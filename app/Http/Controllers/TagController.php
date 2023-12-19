@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Utils\CheckRole;
+use App\Http\Controllers\Utils\GreetingTime;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,14 @@ use App\Models\Tag;
 class TagController extends Controller
 {
     private const REQUIRED_ROLE = "super admin";
+
+    private $greetingWord;
+
+    public function __construct()
+    {
+        $this->greetingWord = GreetingTime::greeting();
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -30,7 +39,9 @@ class TagController extends Controller
         ->orderBy('id', 'ASC')
         ->paginate(10);
         
-        return view('admin.tag', compact('tags'));
+        $greetingMsg = $this->greetingWord;
+
+        return view('admin.tag', compact('tags', 'greetingMsg'));
     }
 
     /**
@@ -41,7 +52,9 @@ class TagController extends Controller
         /**
          * mengembalikkan view create tag
          */
-        return view('admin.create.tag');
+        $greetingMsg = $this->greetingWord;
+
+        return view('admin.create.tag', compact('greetingMsg'));
     }
 
     /**
@@ -75,7 +88,9 @@ class TagController extends Controller
         ->where('slug', $slug)
         ->first();
         
-        return view('admin.edit.tag-edit', compact('tag'));
+        $greetingMsg = $this->greetingWord;
+
+        return view('admin.edit.tag-edit', compact('tag', 'greetingMsg'));
     }
 
     /**

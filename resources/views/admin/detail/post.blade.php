@@ -14,21 +14,7 @@
 </head>
 <body>
     {{-- Navigation --}}
-    @php
-        $greetingWord = "";
-        $recentTime = date("G");
-
-        if ($recentTime > 0 && $recentTime < 24) {
-            if ($recentTime >= 3 && $recentTime < 12) {
-                $greetingWord = "Good Morning";
-            } else if ($recentTime >= 12 && $recentTime < 17) {
-                $greetingWord = "Good Afternoon";
-            } else {
-                $greetingWord = "Good Evening";
-            }
-        }
-    @endphp
-    <x-admin-navigation :greetingMessage="$greetingWord"/>
+    <x-admin-navigation :greetingMessage="$greetingMsg" />
     <div class="min-h-screen bg-zinc-900">
         <div class="pb-0 md:py-16">
             <div class="container mx-auto">

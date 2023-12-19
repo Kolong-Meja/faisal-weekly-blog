@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Utils\CheckRole;
+use App\Http\Controllers\Utils\GreetingTime;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,14 @@ use App\Models\Category;
 class CategoryController extends Controller
 {
     private const REQUIRED_ROLE = "super admin";
+
+    private $greetingWord;
+
+    public function __construct()
+    {
+        $this->greetingWord = GreetingTime::greeting();
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -27,7 +36,9 @@ class CategoryController extends Controller
         ->orderBy('id', 'ASC')
         ->paginate(10);
         
-        return view('admin.category', compact('categories'));
+        $greetingMsg = $this->greetingWord;
+
+        return view('admin.category', compact('categories', 'greetingMsg'));
     }
 
     /**
@@ -35,7 +46,9 @@ class CategoryController extends Controller
      */
     public function create(): View
     {
-        return view('admin.create.category');
+        $greetingMsg = $this->greetingWord;
+
+        return view('admin.create.category', compact('greetingMsg'));
     }
 
     /**
@@ -69,7 +82,9 @@ class CategoryController extends Controller
             ->where('slug', $slug)
             ->first();
         
-        return view('admin.edit.category-edit', compact('category'));
+        $greetingMsg = $this->greetingWord;
+
+        return view('admin.edit.category-edit', compact('category', 'greetingMsg'));
     }
 
     /**
