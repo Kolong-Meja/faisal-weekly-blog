@@ -17,7 +17,7 @@
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <div name="header">
                     <h2 class="font-bold text-2xl text-center text-yellow-400 leading-tight">
-                        {{ __('Feedback Post') }}
+                        {{ __('Feedbacks Table') }}
                     </h2>
                 </div>
             </div>
@@ -30,16 +30,7 @@
                     <div class="pt-12 pb-8">
                         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
                             <div class="bg-yellow-400 rounded-md shadow-lg">
-                                <div class="p-6">
-                                    <div class="grid grid-rows-1">
-                                        <div class="w-full mb-2">
-                                            <div class="text-center">
-                                                <h2 class="text-lg font-bold text-gray-900">Feedback Data Table</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="overflow-x-auto max-w-full px-4 pb-4">
+                                <div class="overflow-x-auto max-w-full p-4">
                                     {{-- Table Content --}}
                                     <table class="w-full text-md text-white">
                                         <thead class="text-xs text-yellow-400 text-center uppercase bg-zinc-900 border-b border-yellow-400">

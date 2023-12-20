@@ -11,22 +11,7 @@
 <body>
     <div class="min-h-screen bg-zinc-900">
         {{-- Navigation --}}
-        @php
-            $greetingWord = "";
-            $timeZone = date_default_timezone_set("Asia/Jakarta");
-            $recentTime = date("G");
-
-            if ($recentTime > 0 && $recentTime < 24) {
-                if ($recentTime >= 3 && $recentTime < 12) {
-                    $greetingWord = "Good Morning";
-                } else if ($recentTime >= 12 && $recentTime < 17) {
-                    $greetingWord = "Good Afternoon";
-                } else {
-                    $greetingWord = "Good Evening";
-                }
-            } 
-        @endphp
-        <x-admin-navigation :greetingMessage="$greetingWord" />
+        <x-admin-navigation :greetingMessage="$greetingMsg" />
         {{-- Page Heading --}}
         <header class="bg-zinc-900">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">

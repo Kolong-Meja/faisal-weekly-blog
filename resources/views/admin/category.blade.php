@@ -17,7 +17,7 @@
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <div name="header">
                     <h2 class="font-bold text-2xl text-center text-yellow-400 leading-tight">
-                        {{ __('Category Post') }}
+                        {{ __('Categories Table') }}
                     </h2>
                 </div>
             </div>
@@ -30,16 +30,7 @@
                     <div class="pt-12 pb-8">
                         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
                             <div class="bg-yellow-400 overflow-hidden rounded-md shadow-lg">
-                                <div class="p-6">
-                                    <div class="grid grid-rows-1">
-                                        <div class="w-full mb-2">
-                                            <div class="text-center">
-                                                <h2 class="text-lg font-bold text-gray-900">Category Data Table</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="overflow-x-auto max-w-full px-4 pb-4">
+                                <div class="overflow-x-auto max-w-full p-4">
                                     {{-- Flash Notification --}}
                                     @if (session()->has('success'))
                                         <div class="flex items-center p-4 mb-4 text-base text-gray-50 border-none rounded-lg bg-green-600" role="alert">
@@ -102,13 +93,13 @@
                                                         <form onsubmit="return confirm('Are you sure to remove this category?');" action="{{ route('category.delete', $category->id) }}" method="POST">
                                                             <div class="inline-flex shadow-sm gap-2" role="group">
                                                                 <a href="{{ route('category.edit', $category->slug) }}">
-                                                                    <button type="button" class="px-4 py-2 text-sm font-medium rounded-md text-gray-900 bg-green-500 hover:bg-green-700 hover:text-white transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-white">
+                                                                    <button type="button" class="px-4 py-2 text-sm font-medium rounded-md text-gray-900 bg-green-500 hover:bg-green-600 hover:text-white transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-white">
                                                                         Edit
                                                                     </button>
                                                                 </a>
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-red-700 focus:text-white">
+                                                                <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-red-700 focus:text-white">
                                                                     Delete
                                                                 </button>
                                                             </div>

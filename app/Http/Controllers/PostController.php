@@ -177,8 +177,9 @@ class PostController extends Controller
     }
     /**
      * Show the form for editing the specified resource.
+     * @param string $slug Slug of the post
      */
-    public function edit($slug): View
+    public function edit(string $slug): View
     {
         if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
             session()->flash("error", "You don't have permission to create new admin account.");
@@ -199,12 +200,12 @@ class PostController extends Controller
             ->select('id', 'title')
             ->get();
         
-        $data = [];
-        
+        $postImageOwner = "";
+        $postImageUrl = "";
+
         foreach ($post->images as $image) {
-            $owner = $image->owner;
-            $url = $image->url;
-            array_push($data, $owner, $url);
+            $postImageOwner = $image->owner;
+            $postImageUrl = $image->url;
         }
         
         $greetingMsg = $this->greetingWord;
@@ -213,9 +214,10 @@ class PostController extends Controller
             'post', 
             'tags', 
             'categories', 
-            'data', 
             'author',
-            '$greetingMsg',
+            'postImageOwner',
+            'postImageUrl',
+            'greetingMsg',
         ]));
     }
     /**
@@ -223,7 +225,8 @@ class PostController extends Controller
      */
     public function update(
         PostRequest $req_post, 
-        ImageRequest $req_image, $slug
+        ImageRequest $req_image, 
+        string $slug
         ): RedirectResponse
     {
         /**

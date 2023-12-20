@@ -40,13 +40,6 @@
                         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
                             <div class="bg-yellow-400 overflow-hidden rounded-md shadow-lg">
                                 <div class="p-4">
-                                    <div class="grid grid-rows-1 mb-4">
-                                        <div class="w-full mb-2">
-                                            <div class="text-center py-2">
-                                                <h3 class="text-lg font-bold text-gray-900">Edit Post Form</h3>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="w-full p-4 bg-zinc-900 rounded-md">
                                         <div class="grid grid-cols-1">
                                             {{-- Form input for post data --}}
@@ -103,21 +96,23 @@
                                                         {{-- Onwer of Image --}}
                                                         <div>
                                                             <label for="owner" class="block mb-2 text-xl font-bold text-yellow-400">Image Owner</label>
-                                                            @if (empty($data))
-                                                                <textarea id="owner" rows="6" name="owner" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 @error('owner') is-invalid @enderror" placeholder="John Doe"></textarea>
-                                                            @else
-                                                                <textarea id="owner" rows="6" name="owner" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 @error('owner') is-invalid @enderror" placeholder="John Doe">{!! old('owner', $data[0]) !!}</textarea>
-                                                            @endif 
+                                                            <textarea 
+                                                                id="owner" 
+                                                                rows="6" 
+                                                                name="owner" 
+                                                                class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 @error('owner') is-invalid @enderror" 
+                                                                placeholder="John Doe">{!! old('owner', $postImageOwner) !!}</textarea>
                                                             <div class="mt-1 text-sm text-white" id="owner__help">Note: Input owner of the image</div>
                                                         </div>
                                                         {{-- URL of Image --}}
                                                         <div>
                                                             <label for="url" class="block mb-2 text-xl font-bold text-yellow-400">Image URL</label>
-                                                            @if (empty($data))
-                                                                <textarea id="url" rows="6" name="url" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 @error('url') is-invalid @enderror" placeholder="https://www.example.com/"></textarea>
-                                                            @else
-                                                                <textarea id="url" rows="6" name="url" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 @error('url') is-invalid @enderror" placeholder="https://www.example.com/">{!! old('url', $data[1]) !!}</textarea>
-                                                            @endif
+                                                            <textarea 
+                                                                id="url" 
+                                                                rows="6" 
+                                                                name="url" 
+                                                                class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 @error('url') is-invalid @enderror" 
+                                                                placeholder="https://www.example.com/">{!! old('url', $postImageUrl) !!}</textarea>
                                                             <div class="mt-1 text-sm text-white" id="url__help">Note: Input URL of the image</div>
                                                         </div>
                                                         {{-- Select Tag --}}
@@ -148,9 +143,9 @@
                                                     <textarea id="content" rows="12" name="content" class="block p-2.5 w-full text-sm text-black bg-white rounded-lg border-2 border-slate-500 focus:ring-blue-500 focus:border-blue-500 @error('content') is-invalid @enderror" placeholder="this is just an example of content...">{!! old('content', $post->content) !!}</textarea>
                                                 </div>
                                                 {{-- Button submit --}}
-                                                <button type="submit" class="mr-2 text-gray-900 bg-green-500 hover:bg-green-700 hover:text-white transition-colors duration-300 ease-in-out focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+                                                <button type="submit" class="mr-2 text-gray-900 bg-green-500 hover:bg-green-600 hover:text-white transition-colors duration-300 ease-in-out focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                                                 {{-- Button reset  --}}
-                                                <button type="reset" class="text-white bg-red-500 hover:bg-red-700 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Reset</button>
+                                                <button type="reset" class="text-white bg-red-500 hover:bg-red-600 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Reset</button>
                                             </form>
                                             {{-- End of form input --}}
                                         </div>

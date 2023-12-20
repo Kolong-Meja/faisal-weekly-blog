@@ -20,58 +20,21 @@
                                     </div>
                                 </div>
                             </div>
-                        {{-- @else
-                            <div class="flex justify-center md:justify-start">
-                                <div class="flex items-center p-4 mt-3 w- text-sm text-start text-gray-300 rounded-lg bg-gray-800 md:p-3 md:mt-5 md:text-md" role="alert">
-                                    <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                                    </svg>
-                                    <span class="sr-only">Info</span>
-                                    <div>
-                                        <span class="font-bold">Newest Post Coming Soon!</span> Stay patient, get yourself a coffee and read all current post that you've not read before.
-                                    </div>
-                                </div>
-                            </div> --}}
                         @endif
+                        {{-- Need to be fixed tomorrow! --}}
                         @foreach ($posts as $post)
-                            <div class="flex mt-8">
-                                <div class="w-40 relative md:w-60">
-                                    <img src="{{ asset('images/'. $post->image) }}" alt="{{ $post->title }} Image" title="Image by: {{ $post->owner }}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                                </div>
-                                <div class="flex-auto p-6">
-                                    <div class="flex flex-wrap">
-                                        <h1 class="flex-auto text-xl font-semibold text-gray-50">
-                                            {{ $post->title }}
-                                        </h1>
-                                        <div class="hidden w-full text-sm font-medium text-gray-300 mt-2 md:block">
-                                            {{ $post->description }}
-                                        </div>
-                                    </div>
-                                    <span class="flex items-baseline mb-6 pb-6 border-b border-gray-800"></span>
+                            <div class="relative flex w-full max-w-[48rem] mt-10 flex-row bg-transparent bg-clip-border">
+                                <img src="{{ asset('images/'.$post->image) }}" alt="Post Image" title="Image by: {{ $post->owner }}" class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"/>
+                                <div class="p-6">
+                                    <h4 class="mb-2 block text-2xl font-semibold leading-snug tracking-normal text-gray-50">{{ $post->title }}</h4>
+                                    <p class="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-200">{{ $post->description }}</p>
                                     <div class="flex justify-between items-center">
-                                        <p class="text-sm text-gray-50">{{ Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}</p>
-                                        <p class="text-sm text-gray-50">{{ $post->reading_duration }} Minute Read</p>
+                                        <p class="text-sm text-gray-200">{{ Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}</p>
+                                        <p class="text-sm text-gray-200">{{ $post->reading_duration }} Minute Read</p>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                        {{-- <ul>
-                            @foreach ($posts as $post)
-                                <li class="home__list__post">
-                                    <div class="home__post__card">
-                                        <img id="home__post__card__image" src="{{ asset('images/'.$post->image) }}" title="Image by: {{ $post->owner }}">
-                                        <a id="home__post__card__link" href="{{ route('posts.show', $post->slug) }}">
-                                            <p id="home__post__card__title">{{ $post->title }}</p>
-                                            <p id="home__post__card__subtitle">{{ $post->description }}</p>
-                                            <div class="home__post__card__footer">
-                                                <p id="home__post__card__footer__created__date">{{ Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}</p>
-                                                <p id="home__post__card__footer__read__duration">{{ $post->reading_duration }} Minute read</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>                                               --}}
                     </div>                    
                 </div>
             </div>

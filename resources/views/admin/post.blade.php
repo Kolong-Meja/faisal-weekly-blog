@@ -20,7 +20,7 @@
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <div name="header">
                     <p class="font-bold text-2xl text-center text-yellow-400 leading-tight">
-                        {{ __('Blog Post') }}
+                        {{ __('Posts Table') }}
                     </p>
                 </div>
             </div>
@@ -31,16 +31,7 @@
                     <div class="pt-12 pb-8">
                         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
                             <div class="bg-yellow-400 overflow-hidden rounded-md shadow-lg">
-                                <div class="p-6">
-                                    <div class="grid grid-rows-1">
-                                        <div class="w-full mb-2">
-                                            <div class="text-center">
-                                                <h2 class="text-lg font-bold text-gray-900">Post Data Table</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="overflow-x-auto max-w-full px-4 pb-4">
+                                <div class="overflow-x-auto max-w-full p-4">
                                     @if (session()->has("success"))
                                         <div class="flex items-center p-4 mb-4 text-sm text-gray-50 border border-none rounded-lg bg-green-600" role="alert">
                                             <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -113,18 +104,18 @@
                                                         <form onsubmit="return confirm('Are you sure to remove this post?');" action="{{ route('post.delete', $post->post_id) }}" method="POST">
                                                             <div class="inline-flex shadow-sm gap-2" role="group">
                                                                 <a href="{{ route('post.edit', $post->slug) }}">
-                                                                    <button type="button" class="px-4 py-2 text-sm font-medium rounded-md text-gray-900 bg-green-500 hover:bg-green-700 hover:text-white transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-white">
+                                                                    <button type="button" class="px-4 py-2 text-sm font-medium rounded-md text-gray-900 bg-green-500 hover:bg-green-600 hover:text-white transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-white">
                                                                         Edit
                                                                     </button>
                                                                 </a>
                                                                 <a href="{{ route('post.detail', $post->slug) }}">
-                                                                    <button type="button" class="px-4 py-2 text-sm font-medium rounded-md text-gray-900 bg-blue-500 hover:bg-blue-700 hover:text-white transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-white">
+                                                                    <button type="button" class="px-4 py-2 text-sm font-medium rounded-md text-gray-900 bg-blue-500 hover:bg-blue-600 hover:text-white transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-white">
                                                                         View
                                                                     </button>
                                                                 </a>
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-red-700 focus:text-white">
+                                                                <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-red-700 focus:text-white">
                                                                     Delete
                                                                 </button>
                                                             </div>

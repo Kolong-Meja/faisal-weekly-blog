@@ -12,16 +12,17 @@ class GreetingTime extends Controller
         
         $greetingWord = "";
         $recentTime = date("G");
-    
+
         if ($recentTime > 0 && $recentTime < 24) {
             if ($recentTime >= 3 && $recentTime < 12) {
-                $greetingWord = "Good Morning";
+                $greetingWord = "Look alive! 😲";
             } else if ($recentTime >= 12 && $recentTime < 17) {
-                $greetingWord = "Good Afternoon";
+                $greetingWord = "G’day mate! 🤓";
             } else if ($recentTime >= 17 && $recentTime < 19) {
-                $greetingWord = "Good Evening";
+                $greetingWord = "How’s it hanging?";
             } else {
-                $greetingWord = "Good Night";
+                shuffle($nightGreets);
+                $greetingWord = "See ya’ in the mornin’!";
             }
         }
 

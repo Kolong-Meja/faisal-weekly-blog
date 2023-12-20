@@ -28,13 +28,6 @@
                         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
                             <div class="bg-yellow-400 overflow-hidden rounded-md shadow-lg">
                                 <div class="p-4">
-                                    <div class="grid grid-rows-1 mb-4">
-                                        <div class="w-full mb-2">
-                                            <div class="text-center py-2">
-                                                <h3 class="text-lg font-bold text-gray-900">Create Tag Form</h3>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="w-full p-4 bg-zinc-900 rounded-md">
                                         <div class="grid grid-cols-1">
                                             <form action="{{ route('tag.store') }}" method="POST" class="w-full p-4 bg-zinc-900 rounded-md" enctype="multipart/form-data" autocomplete="on">

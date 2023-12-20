@@ -30,13 +30,6 @@
                         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
                             <div class="bg-yellow-400 overflow-hidden rounded-md shadow-lg">
                                 <div class="p-4">
-                                    <div class="grid grid-rows-1 mb-4">
-                                        <div class="w-full mb-2">
-                                            <div class="text-center py-2">
-                                                <h3 class="text-lg font-bold text-gray-900">Edit Tag Form</h3>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="w-full p-4 bg-zinc-900 rounded-md">
                                         <div class="grid grid-cols-1">
                                             {{-- Form input for post data --}}
@@ -74,9 +67,9 @@
                                                     </div>
                                                 </div>
                                                 {{-- Button submit --}}
-                                                <button type="submit" class="mr-2 text-gray-900 bg-green-500 hover:bg-green-700 hover:text-white transition-colors duration-300 ease-in-out focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+                                                <button type="submit" class="mr-2 text-gray-900 bg-green-500 hover:bg-green-600 hover:text-white transition-colors duration-300 ease-in-out focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                                                 {{-- Button reset  --}}
-                                                <button type="reset" class="text-white bg-red-500 hover:bg-red-700 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Reset</button>
+                                                <button type="reset" class="text-white bg-red-500 hover:bg-red-600 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Reset</button>
                                             </form>
                                             {{-- End of form input --}}
                                         </div>

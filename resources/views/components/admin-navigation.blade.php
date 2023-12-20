@@ -62,7 +62,7 @@
             <div class="flex items-center">
                 <div class="grid place-items-center md:w-full">
                     <button id="admin__dropdown" data-dropdown-toggle="admin__dropdown__divider" tabindex="0" type="button" class="inline-flex items-center px-5 border-none text-sm leading-6 font-medium rounded-md text-white bg-transparent hover:text-gray-300 focus:outline-none transition ease-in-out duration-300">
-                        <span class="font-bold text-white">{{ $greetingMessage }} 🙋‍♂️, <span class="font-normal">{{ Auth::user()->name }}</span></span>
+                        <span class="font-bold text-white">{{ $greetingMessage }} <span class="font-normal">{{ Auth::user()->name }}</span></span>
                         <svg class="fill-current h-4 w-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
