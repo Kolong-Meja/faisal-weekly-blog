@@ -52,6 +52,7 @@
                                             {{-- Form input for post data --}}
                                             <form action="{{ route('post.store') }}" method="POST" class="w-full p-4 bg-zinc-900 rounded-md" enctype="multipart/form-data" autocomplete="on">
                                                 @csrf
+                                                @method('POST')
                                                 <input type="hidden" id="user_id" name="user_id" value="{{ $author_id }}">
                                                 <div class="grid grid-cols-2 gap-4">
                                                     <div class="grid grid-rows-5 grid-flow-col gap-y-4">
@@ -65,7 +66,7 @@
 
                                                         {{-- Form input for sub title with validation --}}
                                                         <div>
-                                                            <label for="description" class="block mb-2 text-xl font-bold text-yellow-400">Sub Title</label>
+                                                            <label for="description" class="block mb-2 text-xl font-bold text-yellow-400">Description</label>
                                                             <textarea id="description" rows="6" name="description" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 @error('description') is-invalid @enderror" placeholder="This is my personal story about yesterday..." required></textarea>
                                                             <div class="mt-1 text-sm text-white" id="description__help">Note: Maybe some post need a sub title for clarify the contents of the post itself</div>
                                                         </div>
@@ -96,7 +97,7 @@
                                                         {{-- Upload Image --}}
                                                         <div>
                                                             <label class="text-xl font-bold text-yellow-400 block mb-2" for="image">Upload Image</label>
-                                                            <input name="image" class="block w-full cursor-pointer bg-gray-600 border-2 border-yellow-400 text-white focus:outline-none rounded-lg focus:border-slate-500 text-sm @error('image') is-invalid @enderror" aria-describedby="image_help" id="image" type="file" required autocomplete="photo">
+                                                            <input id="image" name="image" class="block w-full cursor-pointer bg-gray-600 border-2 border-yellow-400 text-white focus:outline-none rounded-lg focus:border-slate-500 text-sm @error('image') is-invalid @enderror" aria-describedby="image_help" id="image" type="file" required autocomplete="photo">
                                                             <div class="mt-1 text-sm text-white" id="image__help">Note: Upload image to your post is important!</div>
                                                         </div>
                                                         
@@ -117,7 +118,7 @@
                                                         {{-- Select Tag --}}
                                                         <div>
                                                             <label for="tags" class="block mb-2 text-xl font-bold text-yellow-400">Select Tags</label>
-                                                            <select multiple id="tags" name="tag[]" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full @error('tag') is-invalid @enderror" required>
+                                                            <select multiple id="tags" name="tags[]" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full @error('tags') is-invalid @enderror" required>
                                                                 @foreach ($tags as $tag)
                                                                     <option value="{{ $tag->id }}">{{ $tag->title }}</option>
                                                                 @endforeach
@@ -128,7 +129,7 @@
                                                         {{-- Select Category --}}
                                                         <div>
                                                             <label for="categories" class="block mb-2 text-xl font-bold text-yellow-400">Select Categories</label>
-                                                            <select multiple id="categories" name="category[]" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full @error('category') is-invalid @enderror" required>
+                                                            <select multiple id="categories" name="categories[]" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full @error('categories') is-invalid @enderror" required>
                                                                 @foreach ($categories as $category)
                                                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                                 @endforeach

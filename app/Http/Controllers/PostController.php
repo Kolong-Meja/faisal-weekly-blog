@@ -140,7 +140,7 @@ class PostController extends Controller
         $post = Post::create([
             'user_id' => $req_post->input('user_id'),
             'title' => $req_post->title,
-            'description' => $req_post->sub_title,
+            'description' => $req_post->description,
             'meta_title' => $req_post->meta_title,
             'slug' => $req_post->slug,
             'content' => $req_post->content,
@@ -162,12 +162,12 @@ class PostController extends Controller
             'url' => $req_image->url,
         ]);
 
-        if (!empty($req_post->input('tag'))) {
-            $post->tags()->attach($req_post->input('tag'));
+        if (!empty($req_post->input('tags'))) {
+            $post->tags()->attach($req_post->input('tags'));
         }
 
         if (!empty($req_post->input('category'))) {
-            $post->categories()->attach($req_post->input('category'));
+            $post->categories()->attach($req_post->input('categories'));
         }
 
         $post->images()->attach($image->id);

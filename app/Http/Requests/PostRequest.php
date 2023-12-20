@@ -25,7 +25,7 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'sub_title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
             'meta_title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string'],
@@ -49,7 +49,7 @@ class PostRequest extends FormRequest
     public function messages(): array {
         return [
             'title.required' => 'Title is required, cannot be empty!',
-            'sub_title.required' => 'Sub title is required, cannot be empty!',
+            'description.required' => 'Description is required, cannot be empty!',
             'meta_title.required' => 'Meta title is required, cannot be empty!',
             'slug.required' => 'Slug is required, cannot be empty!',
             'content.required' => 'Content is required, cannot be empty!',
