@@ -96,7 +96,7 @@ class PostController extends Controller
         
         $reading_duration = ceil($word_count / 300);
         
-        return view('parts.home.post.detail', compact(
+        return view('guest.detail.post', compact(
             'post_image', 
             'post_user',
             'post_tags', 

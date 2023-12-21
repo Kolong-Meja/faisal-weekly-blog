@@ -12,6 +12,26 @@ use App\Http\Requests\Guest\FeedbackRequest;
 
 class HomeController extends Controller
 {
+    protected function postAuthorName(): string
+    {
+        $authorName = "";
+
+        $postsUser = DB::table('posts')
+        ->join('users', 'posts.user_id', "=", "users.id")
+        ->select(
+            'posts.*', 
+            'users.id AS author_id', 
+            'users.name AS author_name'
+        )
+        ->get();
+        
+        foreach($postsUser as $postUser) {
+            $authorName = $postUser->author_name;
+        } 
+
+        return $authorName;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -20,11 +40,16 @@ class HomeController extends Controller
         $posts = DB::table('post_images')
         ->join('posts', 'post_images.post_id', '=', 'posts.id')
         ->join('images', 'post_images.image_id', '=', 'images.id')
-        ->select('posts.*', 'images.image', 'images.owner', 'images.url')
+        ->select(
+            'posts.*', 
+            'images.image', 
+            'images.owner', 
+            'images.url'
+        )
         ->latest()
         ->limit(15)
         ->get();
-        
+
         $categories = DB::table('categories')
         ->select('id', 'title', 'slug', 'created_at')
         ->latest()
@@ -38,8 +63,10 @@ class HomeController extends Controller
             $reading_duration = ceil($word_count / 300);
             $post->reading_duration = $reading_duration;
         }
+
+        $authorName = $this->postAuthorName();
         
-        return view('guest.home', compact('posts', 'categories'));
+        return view('guest.home', compact('posts', 'categories', 'authorName'));
     }
 
     public function feedback(FeedbackRequest $request): JsonResponse

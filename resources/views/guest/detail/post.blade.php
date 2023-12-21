@@ -14,9 +14,18 @@
 </head>
 <body>
     {{-- Navigation --}}
-    <x-admin-navigation :greetingMessage="$greetingMsg" />
+    @include('layouts.guest-navigation')
+
+    {{-- Float Button --}}
+    @include('guest.parts.float-button')
+
+    {{-- Hidden Feedback Success Modal --}}
+    @include('guest.parts.feedback-success-modal')
+
+    {{-- Hidden Feedback Error Modal --}}
+    @include('guest.parts.feedback-error-modal')
     <div class="min-h-screen bg-zinc-900">
-        <div class="pb-0 md:py-16">
+        <div class="pt-16 md:pt-32 md:pb-16">
             <div class="container mx-auto">
                 <div class="w-full max-w-6xl mx-auto bg-white shadow-xl overflow-hidden">
                     <img src="{{ asset('images/'.$post_image->image) }}" alt="Post image" class="w-full object-cover">
@@ -68,5 +77,7 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/navbar-transition.js') }}"></script>
+    <script src="{{ asset('js/feedback-ajax.js') }}"></script>
 </body>
 </html>
