@@ -21,18 +21,13 @@
 
         {{-- Hidden Feedback Error Modal --}}
         @include('guest.parts.feedback-error-modal')
-        <div class="py-16 md:py-24">
+        <section class="py-16 md:py-24">
             <div class="container mx-auto">
-                <h1 class="text-center text-2xl font-bold mb-5 text-white md:text-4xl">All Tags</h1>
+                <h1 class="text-center text-2xl font-bold mb-5 text-white md:text-4xl">Tags</h1>
                 @if (!$tags->isEmpty())
                     <form autocomplete="on">
-                        <div class="relative mb-5 flex justify-center px-5 md:px-0">
-                            <span class="inline-flex items-center px-3 sm:px-4 text-sm text-gray-900 bg-zinc-900 border-2 border-r-0 border-gray-200 rounded-l-md">
-                                <span class="material-symbols-outlined text-white">
-                                    search
-                                </span>
-                            </span>
-                            <input type="search" name="search" id="default-search" class="block w-full p-4 pl-5 text-sm bg-zinc-900 rounded-none rounded-r-lg shadow-lg border-2 border-l-0 border-gray-200 focus:border-gray-100 focus:ring-0 md:w-2/4" placeholder="Search tag..." value="{{ request('search') }}">
+                        <div class="relative max-w-md mx-auto mb-5">
+                            <input class="w-full p-3 border border-gray-600 bg-zinc-900 text-gray-50 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-50 focus:border-gray-50" type="search" name="search" placeholder="Search any tag..." value="{{ request('search') }}">
                         </div>
                     </form>
                     <p class="text-center text-sm mb-10 px-5 text-gray-400 md:text-lg md:px-0">Note: You can search posts by it's tag, all tags have posts related to them.</p>
@@ -61,7 +56,10 @@
                     @endforeach
                 </div>
             </div>   
-        </div>  
+        </section>
+        <footer class="py-8">
+            <p class="text-center font-medium text-base mt-8 text-gray-300">© 2023 All rights reserved. Faisal Daily Blog.</p>
+        </footer>  
     </div>
     <script src="{{ asset('js/navbar.js') }}"></script>
     <script src="{{ asset('js/feedback-ajax.js') }}"></script>

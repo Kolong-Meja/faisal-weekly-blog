@@ -21,7 +21,7 @@
     }
 </style>
 
-<nav id="guest__navigation" class="bg-zinc-900 fixed w-full z-20 top-0 start-0 mx-auto max-w-full shadow-lg px-2 sm:px-6 lg:px-8">
+<nav id="guest__navigation" class="bg-zinc-900 fixed w-full z-20 top-0 start-0 mx-auto max-w-full px-2 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
             <a href="{{ route('home.index') }}" class="btn btn-ghost">

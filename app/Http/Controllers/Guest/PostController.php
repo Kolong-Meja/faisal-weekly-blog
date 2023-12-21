@@ -172,7 +172,7 @@ class PostController extends Controller
             $post_category->reading_duration = $reading_duration;
         }
         
-        return view('parts.home.category.post.index', compact(
+        return view('guest.detail.post-category.post', compact(
             'post_categories', 
             'category_title'
         ));
@@ -245,7 +245,7 @@ class PostController extends Controller
             $post_tag->reading_duration = $reading_duration;
         }
         
-        return view('parts.home.tag.post.index', compact(
+        return view('guest.detail.post-tag.post', compact(
             'post_tags',
             'tag_title'
         ));
