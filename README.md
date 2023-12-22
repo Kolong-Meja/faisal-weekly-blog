@@ -1,6 +1,6 @@
 # Faisal Daily Blog new Version!
 
-![faisal_daily_blog_transparent_crop](https://github.com/Kolong-Meja/faisal-daily-blog/assets/90602095/edb48251-e71a-42ce-93c5-6bdc9fb092e4)
+![faisal_daily_blog_logo_transparent_dark](https://github.com/Kolong-Meja/faisal-daily-blog/assets/90602095/533c8312-c589-44e3-9616-db95f1706e26)
 
 ## Description
 
