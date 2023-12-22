@@ -166,7 +166,7 @@ class PostController extends Controller
             $post->tags()->attach($req_post->input('tags'));
         }
 
-        if (!empty($req_post->input('category'))) {
+        if (!empty($req_post->input('categories'))) {
             $post->categories()->attach($req_post->input('categories'));
         }
 
@@ -266,15 +266,15 @@ class PostController extends Controller
         }
         
         if (!is_null($post->tags)) {
-            $post->tags()->syncWithoutDetaching($req_post->input('tag'));
+            $post->tags()->syncWithoutDetaching($req_post->input('tags'));
         } else {
-            $post->tags()->attach($req_post->input('tag'));
+            $post->tags()->attach($req_post->input('tags'));
         }
 
         if (!is_null($post->categories)) {
-            $post->categories()->syncWithoutDetaching($req_post->input('category'));
+            $post->categories()->syncWithoutDetaching($req_post->input('categories'));
         } else {
-            $post->categories()->attach($req_post->input('category'));
+            $post->categories()->attach($req_post->input('categories'));
         }
 
         if (!is_null($post->images)) {

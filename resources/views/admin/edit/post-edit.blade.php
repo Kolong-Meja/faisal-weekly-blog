@@ -118,7 +118,7 @@
                                                         {{-- Select Tag --}}
                                                         <div>
                                                             <label for="tags" class="block mb-2 text-xl font-bold text-yellow-400">Select Tags</label>
-                                                            <select multiple id="tags" name="tag[]" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full @error('tag') is-invalid @enderror" required>
+                                                            <select multiple id="tags" name="tags[]" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full @error('tags') is-invalid @enderror" required>
                                                                 @foreach ($tags as $tag)
                                                                     <option value="{{ $tag->id }}">{{ $tag->title }}</option>
                                                                 @endforeach
@@ -128,7 +128,7 @@
                                                         {{-- Select Category --}}
                                                         <div>
                                                             <label for="categories" class="block mb-2 text-xl font-bold text-yellow-400">Select Categories</label>
-                                                            <select multiple id="categories" name="category[]" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full @error('category') is-invalid @enderror" required>
+                                                            <select multiple id="categories" name="categories[]" class="bg-gray-600 border-2 border-yellow-400 text-white placeholder-gray-400 text-md rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full @error('categories') is-invalid @enderror" required>
                                                                 @foreach ($categories as $category)
                                                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                                 @endforeach

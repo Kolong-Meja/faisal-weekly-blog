@@ -37,7 +37,7 @@
                         <h3 class="text-neutral-500 text-lg mb-3 md:text-xl">{{ $post_user->description }}</h3>
                         <p class="mb-5 text-sm text-gray-900 md:text-[16px]">Written by <b>{{ $post_user->user->name }}</b></p>
                         <p class="mb-5 text-sm text-gray-900 md:text-[16px]">{{ $reading_duration }} minutes read | {{ $post_date }}</p>
-                        <p class="text-md leading-relaxedwhitespace-pre-wrap md:text-lg">{!! $post_user->content !!}</p>
+                        <p class="text-md leading-relaxed whitespace-pre-wrap md:text-lg">{!! $post_user->content !!}</p>
                     </div>
                     <div class="flex px-6">
                         @foreach ($post_tags->tags as $tag)

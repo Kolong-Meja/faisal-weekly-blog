@@ -47,7 +47,7 @@
                 @endif
                 <div class="grid grid-cols-1 gap-6 px-5 md:grid-cols-3 md:gap-8 md:px-0">
                     @foreach ($post_images as $post_image)
-                        <div id="post__card" class="bg-transparent rounded-lg overflow-hidden md:max-w-md md:h-min">
+                        <div id="post__card" class="bg-transparent rounded-t-lg overflow-hidden md:max-w-md md:h-min">
                             <a href="{{ $post_image->url }}">
                                 <img src="{{ asset('images/'.$post_image->image) }}" class="w-full h-64 object-cover object-center" title="Image by: {{ $post_image->owner }}">
                             </a>
