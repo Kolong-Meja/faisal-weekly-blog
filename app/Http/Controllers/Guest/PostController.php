@@ -15,6 +15,26 @@ use Carbon\Carbon;
 
 class PostController extends Controller
 {
+    protected function postAuthorName(): string
+    {
+        $authorName = "";
+
+        $postsUser = DB::table('posts')
+        ->join('users', 'posts.user_id', "=", "users.id")
+        ->select(
+            'posts.*', 
+            'users.id AS author_id', 
+            'users.name AS author_name'
+        )
+        ->get();
+        
+        foreach($postsUser as $postUser) {
+            $authorName = $postUser->author_name;
+        } 
+
+        return $authorName;
+    }
+
      /**
      * Display a listing of the resource.
      * @return \Illuminate\View\View
@@ -40,23 +60,7 @@ class PostController extends Controller
             ->paginate(30);
         }
 
-        if (request("filter")) {
-            if (!request('filter') != 'newest') {
-                $post_images = Post::join('post_images', 'post_images.post_id', '=', 'posts.id')
-                ->join('images', 'post_images.image_id', '=', 'images.id')
-                ->select('posts.*', 'images.image', 'images.owner', 'images.url')
-                ->orderBy('posts.created_at', 'ASC')
-                ->paginate(30);
-            }
-            
-            if (request("filter") == "newest") {
-                $post_images = Post::join('post_images', 'post_images.post_id', '=', 'posts.id')
-                ->join('images', 'post_images.image_id', '=', 'images.id')
-                ->select('posts.*', 'images.image', 'images.owner', 'images.url')
-                ->orderBy('posts.created_at', 'DESC')
-                ->paginate(30);
-            }
-        }
+        $postAuthorName = $this->postAuthorName();
         
         foreach($post_images as $post_image) {
             $post_image->short_content = Str::limit($post_image->content, 300);
@@ -66,7 +70,7 @@ class PostController extends Controller
             $post_image->reading_duration = $reading_duration;
         }
         
-        return view('guest.post', compact('post_images'));
+        return view('guest.post', compact('post_images', 'postAuthorName'));
     }
     /**
      * Display the specified resource.
@@ -137,32 +141,7 @@ class PostController extends Controller
             ->first();
         } 
 
-        if (request('filter')) {
-            if (!request('filter') != 'newest') {
-                $post_categories = Post::with('images')
-                ->select('*')
-                ->whereHas('categories', function(Builder $query) use ($slug) {
-                    $query->where('slug', $slug);
-                })->oldest()->paginate(30);  
-
-                $category_title = Category::select('title', 'slug')
-                ->where('slug', $slug)
-                ->first();
-            }
-
-            if (request('filter') == 'newest') {
-                $post_categories = Post::with('images')
-                ->select('*')
-                ->whereHas('categories', function(Builder $query) use ($slug) {
-                    $query->where('slug', $slug);
-                })->latest()
-                ->paginate(30);
-
-                $category_title = Category::select('title', 'slug')
-                ->where('slug', $slug)
-                ->first();
-            }
-        }
+        $postAuthorName = $this->postAuthorName();
 
         foreach($post_categories as $post_category) {
             $post_category->short_content = Str::limit($post_category->content, 300);
@@ -174,7 +153,8 @@ class PostController extends Controller
         
         return view('guest.detail.post-category.post', compact(
             'post_categories', 
-            'category_title'
+            'category_title',
+            'postAuthorName',
         ));
     }
 
@@ -211,31 +191,7 @@ class PostController extends Controller
             ->first();
         }
 
-        if (request('filter')) {
-            if (!request('filter') != 'newest') {
-                $post_tags = Post::with('images')
-                ->select('*')
-                ->whereHas('tags', function(Builder $query) use ($slug) {
-                    $query->where('slug', $slug);
-                })->oldest()->paginate(30);
-
-                $tag_title = Tag::select('title', 'slug')
-                ->where('slug', $slug)
-                ->first();
-            }
-
-            if (request('filter') == 'newest') {
-                $post_tags = Post::with('images')
-                ->select('*')
-                ->whereHas('tags', function(Builder $query) use ($slug) {
-                    $query->where('slug', $slug);
-                })->latest()->paginate(30);
-
-                $tag_title = Tag::select('title', 'slug')
-                ->where('slug', $slug)
-                ->first();
-            }
-        }
+        $postAuthorName = $this->postAuthorName();
 
         foreach($post_tags as $post_tag) {
             $post_tag->short_content = Str::limit($post_tag->content, 300);
@@ -247,7 +203,8 @@ class PostController extends Controller
         
         return view('guest.detail.post-tag.post', compact(
             'post_tags',
-            'tag_title'
+            'tag_title',
+            'postAuthorName',
         ));
     }
 }

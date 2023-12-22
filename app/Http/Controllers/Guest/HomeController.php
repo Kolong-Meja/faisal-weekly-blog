@@ -32,6 +32,11 @@ class HomeController extends Controller
         return $authorName;
     }
 
+    protected function filteredContent(array $badWords, $validatedData): array | string
+    {
+        return str_ireplace($badWords, "[censored]", strtolower($validatedData)); 
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -73,21 +78,23 @@ class HomeController extends Controller
     {
         $data = $request->validated();
         
-        $bad_words = [
-            "asshole", "dick", "bitch", 
-            "son of a bitch", "doggy", "gay",
-            "lesbian", "motherfucker", "fuckin",
-            "fuck", "anj", "anjing", "ngentot",
-            "babi", "biadap", "bacot", "kontol",
-            "memek", "peju", "tai", "nigga", "nigger",
+        $badWords = [
+            "arse", "arsehead", "arsehole", "ass", "asshole", 
+            "bastard", "bitch", "bloody", "bollocks", "brotherfucker", 
+            "bugger", "bullshit", "child-fucker", "christ on a bike", "cock", 
+            "cocksucker", "crap", "cunt", "cyka blyat", "damn", "damn it", 
+            "dick", "dickhead", "dyke", "fatherfucker", "frigger", "fuck", 
+            "goddamn", "godsdamn", "hell", "holy shit", "horseshit", "in shit", 
+            "Jesus fuck", "Jesus wept", "kike", "mortherfucker", "nigga", "nigra", 
+            "pigfucker", "piss", "prick", "pussy", "shit", "shit ass", "shite", 
+            "sisterfucker", "slut", "son of a whore", "son of a bitch", "spastic", 
+            "sweet jesus", "turd", "twat", "wanker"
         ];
-        
-        $filtered_content = str_ireplace($bad_words, "[censored]", strtolower($data['content']));
         
         $feedback = Feedback::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'content' => $filtered_content,
+            'content' => $this->filteredContent($badWords, $data['content']),
         ]);
         
         return response()->json([
@@ -100,6 +107,6 @@ class HomeController extends Controller
 
     public function portfolio()
     {
-        return view('parts.portfolio');
+        return view('guest.portfolio');
     }
 }

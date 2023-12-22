@@ -28,8 +28,8 @@
                                 <a href="{{ route('posts.show', $post->slug) }}" class="block no-underline" title="{{ $post->title }}">
                                     <div class="p-4 space-y-4">
                                         <h4 class="text-2xl font-semibold leading-snug tracking-normal text-gray-50">{{ $post->title }}</h4>
-                                        <p class="font-sans text-base font-normal leading-relaxed text-gray-200">{{ $post->description }}</p>
-                                        <p class="font-sans text-base font-normal leading-relaxed text-gray-200"><span class="font-semibold">Written by:</span> {{ $authorName }}</p>
+                                        <p class="text-base font-normal leading-relaxed text-gray-200">{{ $post->description }}</p>
+                                        <p class="text-base font-normal leading-relaxed text-gray-200"><span class="font-semibold">Written by:</span> {{ $authorName }}</p>
                                         <div class="flex justify-between items-center">
                                             <p class="text-sm text-gray-200">{{ Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}</p>
                                             <p class="text-sm text-gray-200">{{ $post->reading_duration }} Minute Read</p>

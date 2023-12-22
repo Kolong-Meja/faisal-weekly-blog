@@ -46,7 +46,7 @@
                             <div>
                                 <label for="username" class="block font-bold text-md text-gray-900">Username</label>
                                 <div class="flex">
-                                    <span class="inline-flex items-center px-3 sm:px-4 text-sm text-yellow-400 bg-zinc-900 border-r border-gray-400 rounded-l-md">
+                                    <span class="inline-flex items-center px-3 sm:px-4 text-base text-yellow-400 bg-zinc-900 border-r border-gray-400 rounded-l-md">
                                         <span class="material-symbols-outlined">
                                             mail
                                         </span>
@@ -60,7 +60,7 @@
                             <div class="mt-4">
                                 <label for="password" class="block font-bold text-md text-gray-900">Password</label>
                                 <div class="flex">
-                                    <span class="inline-flex items-center px-3 sm:px-4 text-sm text-yellow-400 bg-zinc-900 border-r border-gray-400 rounded-l-md">
+                                    <span class="inline-flex items-center px-3 sm:px-4 text-base text-yellow-400 bg-zinc-900 border-r border-gray-400 rounded-l-md">
                                         <span class="material-symbols-outlined">
                                             lock
                                         </span>
