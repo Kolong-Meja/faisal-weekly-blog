@@ -8,7 +8,7 @@ class GreetingTime extends Controller
 {
     public static function greeting() : string
     {
-        date_default_timezone_set("Asia/Jakarta");
+        date_default_timezone_set("Asia//Jakarta");
         
         $greetingWord = "";
         $recentTime = date("G");
@@ -21,7 +21,6 @@ class GreetingTime extends Controller
             } else if ($recentTime >= 17 && $recentTime < 19) {
                 $greetingWord = "How’s it hanging?";
             } else {
-                shuffle($nightGreets);
                 $greetingWord = "See ya’ in the mornin’!";
             }
         }
