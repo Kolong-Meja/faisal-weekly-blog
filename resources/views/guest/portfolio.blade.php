@@ -6,23 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>My Portfolio</title>
-    {{-- Tailwind CSS CDN --}}
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    {{-- Vite --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
     {{-- Flowbite CDN --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    
     {{-- Google Icon --}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
     {{-- My Own Style CSS --}}
     <link rel="stylesheet" href="{{ asset('css/portfolio.css') }}">
 </head>
 <body class="font-mono antialiased">
+    
     <!--- NAVBAR --->
     <nav class="fixed w-full z-20 top-0 left-0">
         <div class="max-w-screen flex flex-wrap items-center justify-center p-8">
             <div class="items-center justify-between w-full md:flex md:w-auto md:order-1" id="default__navbar">
-                <ul class="flex items-center justify-center font-medium md:p-0 md:flex-row md:space-x-8 md:mt-0">
+                <ul class="flex items-center justify-center font-medium text-lg md:p-0 md:flex-row md:space-x-8 md:mt-0">
                     <li>
                         <a id="navbar__underline" class="mr-8" href="https://saweria.co/faisalramadhan08"><span></span>Donate</a>
                     </li>
@@ -37,6 +41,7 @@
         </div>
     </nav>
     <!--- END OF NAVBAR --->
+    
     <!--- MAIN PROPERTY LAYER --->
     <main class="flex relative w-full h-full max-w-[950px] max-h-[450px] overflow-hidden">
         <div class="button__group">
@@ -55,8 +60,7 @@
             <div class="personal__info">
                 <div class="carousel_item__container">
                     <h1 class="personal_title__information" title="About me in brief">
-                        <span id="personal_title_natural__span">Hello</span>
-                        <span id="personal_title_bg__span">There!</span>
+                        <span id="personal_title_natural__span">Hello There!</span>
                     </h1>
                     <p class="personal__description">My name is Faisal Ramadhan. I am a web developer from Indonesia. Currently I am still continuing my education at the Bachelor of Information Systems level at Bina Sarana Informatics University. I have been studying websites for more than 2+ years and have created several website projects. Such as, personal blog and portfolio website.</p>
                 </div>
@@ -66,8 +70,7 @@
             <div class="personal_blog__info">
                 <div class="carousel_item__container">
                     <h1 class="personal_blog_title__information" title="My Personal Blog Website">
-                        <span id="personal_blog_natural__span">Faisal Daily</span>
-                        <span id="personal_blog_bg__span">Blog</span>
+                        <span id="personal_blog_natural__span">Faisal Daily Blog</span>
                     </h1>
                     <p class="personal_blog__description">
                         Faisal Daily Blog has been published in October 2023. This is my side project that I created using the Laravel framework. All kinds of information about technology, self-improvement, life, social economy, entertainment, and others are on this website. You can visit this site on the 
@@ -80,9 +83,7 @@
             <div class="sefile_cli__info">
                 <div class="carousel_item__container">
                     <h1 class="sefile_cli_title__information" title="My CLI Tool">
-                        <span id="sefile_cli_natural__span">Sefile</span> 
-                        <span id="sefile_cli_bg__span">CLI</span>
-                        <span id="sefile_cli_natural__span">Tool</span>
+                        <span id="sefile_cli_natural__span">Sefile CLI</span> 
                     </h1>
                     <p class="sefile_cli__description">
                         Sefile CLI Tool began to be published together with the Faisal Daily Blog. This is a tool for managing and modifying all folders and files on your personal computer. I created this tool using native Python, and you can install it at 
@@ -131,42 +132,8 @@
             </div>
         </section>
     </main>
+
     <!--- END OF PROPERTY LAYER --->  
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let carouselItems = document.querySelectorAll('.carousel__item');
-            carouselItems[0].classList.add('active');
-            let total = carouselItems.length;
-            let current = 0;
-            let moveRightBtn = document.getElementById('right__navigation');
-            let moveLeftBtn = document.getElementById('left__navigation');
-            moveRightBtn.addEventListener('click', function () {
-                let next = current;
-                current += 1;
-                setSlide(next, current);
-            });
-            moveLeftBtn.addEventListener('click', function () {
-                let previous = current;
-                current -= 1;
-                setSlide(previous, current);
-            });
-            function setSlide(previous, next) {
-                let slide = current;
-                if (next > total - 1) {
-                    slide = 0;
-                    current = 0;
-                }
-                if (next < 0) {
-                    slide = total - 1;
-                    current = total - 1;
-                }
-                carouselItems[previous].classList.remove('active');
-                carouselItems[slide].classList.add('active');
-                setTimeout(() => {}, 800);
-                console.log('current ', + current);
-                console.log('previous ', + previous);
-            }
-        });
-    </script>
+    <script src="{{ asset("js/portfolio-navigation.js") }}"></script>
 </body>
 </html>

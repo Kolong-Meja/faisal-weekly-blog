@@ -1,13 +1,6 @@
 <footer class="bg-zinc-900">
     <div class="w-full mx-auto py-12 px-5">
         <div class="grid grid-cols-1">
-            {{-- <div class="home__footer__third__div">
-                <div class="home__footer__about__block">
-                    <h3 id="home__footer__about__title">About Me</h3>
-                    <p id="home__footer__about__content">Hi, my name is <a href="{{ route('home.portfolio') }}" class="underline underline-offset-4">Faisal Ramadhan</a>. I am a Web Developer and a student majoring in Information Systems. I started my career in the world of Web Development when I was in my third semester. At that time I created a website-based online shop, but I didn't publish the website because of a problem. Then as time went by, I started creating my own personal blog. Historically, the Faisal Daily Blog was formed 1 year ago (2022 to be precise). However, because the design and many features did not work well, I abandoned the first version of the Faisal Daily Blog. Then 1 year later (2023 to be exact), I started continuing the second version of the Faisal Daily Blog project (which I call "The Newest version of Faisal Daily Blog"). I started changing many of the features on this site, and started changing the initial website design to a new design. And finally I succeeded in rebuilding the Faisal Daily Blog. I managed to publish this site again in mid-2023, and it has been running for almost 3 months.</p>
-                    <p id="home__footer__about__content__alternative">Hi, my name is Faisal Ramadhan. I am a Web developer. Currently I am still continuing my education at the Bachelor of Information Systems level at Bina Sarana Informatics University. I have been studying websites for more than 2+ years and have created several website projects. Such as, personal blog and portfolio website.</p>
-                </div>
-            </div> --}}
             <h3 class="text-gray-50 text-2xl font-bold text-center">Follow Me</h3>
             <ul class="flex w-full justify-center items-center mt-6 space-x-4">
                 <li>
