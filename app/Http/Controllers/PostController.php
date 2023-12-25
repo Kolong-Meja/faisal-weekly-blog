@@ -182,7 +182,7 @@ class PostController extends Controller
     public function edit(string $slug): View
     {
         if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
-            session()->flash("error", "You don't have permission to create new admin account.");
+            session()->flash("error", "You don't have permission to edit recent post data.");
             return redirect()->route("admin.users");
         }
 
@@ -293,7 +293,7 @@ class PostController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
-            session()->flash("error", "You don't have permission to create new admin account.");
+            session()->flash("error", "You don't have permission to remove post.");
             return redirect()->route("admin.users");
         }
 

@@ -21,11 +21,12 @@ class PostFactory extends Factory
         return [
             'user_id' => User::factory(),
             'title' => Str::headline($this->faker->sentence(5)),
-            'sub_title' => fake()->sentence(10),
+            'description' => fake()->sentence(10),
             'meta_title' => Str::limit(Str::headline($this->faker->sentence(5)), 60),
             'slug' => Str::slug($this->faker->sentence(5), '-'),
             'content' => fake()->paragraph(50, true),
             'keywords' => fake()->words(5, true),
+            "status" => $this->faker->randomElement(["not verified", "verified"]),
         ];
     }
 }

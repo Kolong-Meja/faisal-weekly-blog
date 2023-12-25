@@ -77,10 +77,10 @@ class TagController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $slug): View
+    public function edit(string $slug): View | RedirectResponse
     {
         if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
-            session()->flash("error", "You don't have permission to create new admin account.");
+            session()->flash("error", "You don't have permission to edit recent tag data.");
             return redirect()->route("admin.users");
         }
 
@@ -117,7 +117,7 @@ class TagController extends Controller
     public function destroy(string $id): RedirectResponse
     { 
         if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
-            session()->flash("error", "You don't have permission to create new admin account.");
+            session()->flash("error", "You don't have permission to remove tag.");
             return redirect()->route("admin.users");
         }
 
