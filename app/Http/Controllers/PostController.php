@@ -150,11 +150,11 @@ class PostController extends Controller
         
         $req_image->validated();
         
-        $image = $req_image->file('image');
+        $uploaded_image = $req_image->file('image');
         
-        $get_image_original_name = $image->getClientOriginalName();
+        $get_image_original_name = $uploaded_image->getClientOriginalName();
         
-        $image->move(public_path('images/'), $get_image_original_name);
+        $uploaded_image->move(public_path('images/'), $get_image_original_name);
         
         $image = Image::create([
             'image' => $get_image_original_name,
@@ -179,14 +179,14 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      * @param string $slug Slug of the post
      */
-    public function edit(string $slug): View
+    public function edit(string $slug): View | RedirectResponse
     {
         if (CheckRole::userRole() !== self::REQUIRED_ROLE) {
             session()->flash("error", "You don't have permission to edit recent post data.");
             return redirect()->route("admin.users");
         }
 
-        $author = Auth::user()->id;
+        $author_id = Auth::user()->id;
         
         $post = Post::where('slug', $slug)
             ->with('images')
@@ -214,7 +214,7 @@ class PostController extends Controller
             'post', 
             'tags', 
             'categories', 
-            'author',
+            'author_id',
             'postImageOwner',
             'postImageUrl',
             'greetingMsg',
@@ -251,19 +251,17 @@ class PostController extends Controller
         $req_image->validated();
         
         // image is required!
-        $image = $req_image->file('image');
+        $uploaded_image = $req_image->file('image');
         
-        $get_image_original_name = $image->getClientOriginalName();
+        $get_image_original_name = $uploaded_image->getClientOriginalName();
         
-        $image->move(public_path('images/'), $get_image_original_name);
+        $uploaded_image->move(public_path('images/'), $get_image_original_name);
         
-        foreach ($post->images as $image) {
-            $image->update([
-                'image' => $get_image_original_name,
-                'owner' => $req_image->owner,
-                'url' => $req_image->url,
-            ]);
-        }
+        $post->images()->update([
+            'image' => $get_image_original_name,
+            'owner' => $req_image->owner,
+            'url' => $req_image->url,
+        ]);
         
         if (!is_null($post->tags)) {
             $post->tags()->syncWithoutDetaching($req_post->input('tags'));
@@ -278,9 +276,13 @@ class PostController extends Controller
         }
 
         if (!is_null($post->images)) {
-            $post->images()->syncWithoutDetaching($image->id);
+            foreach ($post->images as $post_image) {
+                $post->images()->syncWithoutDetaching($post_image->id);
+            }
         } else {
-            $post->images()->attach($image->id);
+            foreach ($post->images as $post_image) {
+                $post->images()->attach($post_image->id);
+            }
         }
 
         session()->flash('success', 'Post successfully updated');

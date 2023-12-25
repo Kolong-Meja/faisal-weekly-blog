@@ -3,7 +3,6 @@
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
-use App\Models\PostImage;
 use App\Models\Tag;
 use App\Models\User;
 
@@ -85,15 +84,21 @@ test("Try to create post data", function () {
     ->assertSessionHas("success", "Post successfully created");
 });
 
-// test("Try to access post detail page", function () {
-//     $authUser = User::factory()->create();
+test("Try to access post detail page", function () {
+    $authUser = User::factory()->create();
 
-//     $response = $this->actingAs($authUser)->get("/admin/post/{$savedPost->slug}");
+    $savedPost = Post::factory()->create();
 
-//     $response->assertStatus(200);
+    $savedImage = Image::factory()->create();
 
-//     $response->assertViewIs("admin.detail.post");
-// });
+    $savedPost->images()->attach($savedImage->id);
+
+    $response = $this->actingAs($authUser)->get("/admin/post/{$savedPost->slug}");
+
+    $response->assertStatus(200);
+
+    $response->assertViewIs("admin.detail.post");
+});
 
 test("Try to access post form edit page", function () {
     $authUser = User::factory()->create();
@@ -114,5 +119,60 @@ test("Try to access post form edit page", function () {
         $response->assertStatus(200);
 
         $response->assertViewIs("admin.edit.post-edit");
+    }
+});
+
+test("Try to update post data", function () {
+    $authUser = User::factory()->create();
+
+    $image = Image::factory()->create();
+
+    $category = Category::factory()->create();
+
+    $tag = Tag::factory()->create();
+
+    $savedPost = Post::factory()->create();
+
+    $response = $this->actingAs($authUser)
+    ->patch("/admin/post/{$savedPost->slug}", [
+        "user_id" => $authUser->id,
+        "title" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi suscipit leo id nisl fringilla tincidunt.",
+        "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi suscipit leo id nisl fringilla tincidunt.",
+        "meta_title" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi suscipit leo id nisl fringilla tincidunt.",
+        "slug" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi suscipit leo id nisl fringilla tincidunt.",
+        "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi suscipit leo id nisl fringilla tincidunt.",
+        "keywords" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi suscipit leo id nisl fringilla tincidunt.",
+        "image" => $image->image,
+        "owner" => $image->owner,
+        "url" => $image->url,
+        "tags" => $tag->id,
+        "categories" => $category->id,
+    ]);
+    
+    $response->assertStatus(302);
+
+    $response->assertRedirect(route("post.index"))
+    ->assertSessionHas("success", "Post successfully updated");
+});
+
+test("Try to remove post data", function () {
+    $authUser = User::factory()->create();
+
+    $authUserRole = $authUser->role->pluck("title")->first();
+
+    $savedPost = Post::factory()->create();
+
+    $response = $this->actingAs($authUser)->delete("/admin/post/{$savedPost->id}");
+
+    if ($authUserRole !== "super admin") {
+        $response->assertStatus(302);
+
+        $response->assertRedirect(route("admin.users"))
+        ->assertSessionHas("error", "You don't have permission to remove post.");
+    } else {
+        $response->assertStatus(302);
+        
+        $response->assertRedirect(route("post.index"))
+        ->assertSessionHas("success", "Post successfully removed");
     }
 });

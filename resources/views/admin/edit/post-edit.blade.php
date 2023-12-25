@@ -46,7 +46,7 @@
                                             <form action="{{ route('post.update', $post->slug) }}" method="POST" class="w-full p-4 bg-zinc-900 rounded-md" enctype="multipart/form-data" autocomplete="on">
                                                 @csrf
                                                 @method('PATCH')
-                                                <input type="hidden" id="user_id" name="user_id" value="{{ $author }}">
+                                                <input type="hidden" id="user_id" name="user_id" value="{{ $author_id }}">
                                                 <div class="grid grid-cols-2 gap-4">
                                                     <div class="grid grid-rows-5 grid-flow-col gap-y-4">
                                                         {{-- Form input for title with validation --}}
@@ -175,7 +175,6 @@
                 ["view", ["fullscreen", "codeview", "help"]]
             ],
         });
-
         const editorContainer = document.querySelector('.note-editor');
         editorContainer.style.backgroundColor = "rgb(243, 244, 246)"
     </script>
