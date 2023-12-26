@@ -99,7 +99,7 @@ class HomeController extends Controller
         
         return response()->json([
             'success' => true,
-            'status' => 200,
+            'status' => 201,
             'message' => 'Feedback successfully send!',
             'feedback' => $feedback,
         ]);

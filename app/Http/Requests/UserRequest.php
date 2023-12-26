@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -24,8 +26,8 @@ class UserRequest extends FormRequest
     {
         return [
             "name" => ["required", "string", "max:255"],
-            "username" => ["required", "string", "min:5", "max:50"],
-            "email" => ["required", "email", "email:rfc, dns", "unique:users,email"],
+            "username" => ["required", "string", "max:255"],
+            "email" => ['required', 'string', 'lowercase', 'email', 'email:rfc, dns', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             "password" => ["required", "string", Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
         ];
     }
