@@ -26,7 +26,6 @@ class Post extends Model
         'slug', 
         'content', 
         'keywords',
-        'status'
     ];
 
     protected $hidden = ['uuid'];

@@ -62,17 +62,14 @@
                                                 <th scope="col" class="p-4">Author</th>
                                                 <th scope="col" class="p-4">Title</th>
                                                 <th scope="col" class="p-4">Description</th>
-                                                <th scope="col" class="p-4">Meta Title</th>
                                                 <th scope="col" class="p-4">Slug</th>
-                                                <th scope="col" class="p-4">Keywords</th>
-                                                <th scope="col" class="p-4">Created At</th>
-                                                <th scope="col" class="p-4">Updated At</th>
+                                                <th scope="col" class="p-4">Modified At</th>
                                                 <th scope="col" class="p-4">Activity</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
                                             @forelse ($posts as $post)
-                                                <tr class="bg-zinc-900">
+                                                <tr class="bg-zinc-900 hover:bg-gray-800 transition-colors duration-300 ease-in-out">
                                                     <td class="px-6 py-3">
                                                         {{ $post->post_id }}
                                                     </td>
@@ -86,17 +83,8 @@
                                                         {{ $post->short_description }}
                                                     </td>
                                                     <td class="px-6 py-3">
-                                                        {{ $post->meta_title }}
-                                                    </td>
-                                                    <td class="px-6 py-3">
                                                         {{ $post->slug }}
-                                                    </td>
-                                                    <td class="px-6 py-3">
-                                                        {{ $post->keywords }}
-                                                    </td>
-                                                    <td class="px-6 py-3">
-                                                        {{ $post->created_at }}
-                                                    </td>
+                                                    </td>                                                   
                                                     <td class="px-6 py-3">
                                                         {{ $post->updated_at }}
                                                     </td>

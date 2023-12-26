@@ -33,17 +33,15 @@ class PostController extends Controller
         $posts = DB::table('posts')
         ->join('users', 'posts.user_id', '=', 'users.id')
         ->select('posts.id AS post_id', 
-            'posts.title', 'posts.meta_title', 
-            'posts.description', 'posts.keywords', 
-            'posts.slug', 'posts.created_at', 
-            'posts.updated_at', 'posts.status',
+            'posts.title', 'posts.description', 
+            'posts.slug', 'posts.updated_at',
             'users.id AS user_id', 'users.name AS user_name'
         )
         ->orderBy('post_id', 'ASC')
         ->paginate(10);
 
         foreach($posts as $post) {
-            $post->short_title = Str::limit($post->title, 100);
+            $post->short_title = Str::limit($post->title, 50);
             $post->short_description = Str::limit($post->description, 100);
         }
 

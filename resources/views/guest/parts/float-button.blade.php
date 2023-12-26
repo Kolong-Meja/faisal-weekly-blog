@@ -58,58 +58,60 @@
 </div>
 
 {{-- Info Modal --}}
-<div id="info__modal" 
-    tabindex="-1" 
-    aria-hidden="true" 
-    class="hidden fixed top-0 left-0 right-0 z-50 p-4 w-full max-h-full h-[calc(100%-1rem)] overflow-x-hidden overflow-y-auto"
-    aria-labelledby="info__modal">
-    <div class="info__modal__size">
+<div id="info-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-2xl max-h-full">
         <!-- Modal content -->
-        <div class="info__modal__content">
-            <button id="info__modal__close__button" type="button" data-modal-hide="info__modal">
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                </svg>
-                <span id="info__modal__close__button__logic">Close modal</span>
-            </button>
-            <div id="info__modal__first__content">
-                <h3 id="info__modal__first__content__title">Terms & Policies</h3>
-                <p id="info__modal__first__content__text">Note: This information is intended as a confirming argument, nothing more and nothing less.</p>
+        <div class="relative bg-yellow-400 rounded-lg shadow-md">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 rounded-t">
+                <div class="flex">
+                    <h3 class="text-2xl font-semibold text-gray-900">
+                        Terms and Policies
+                    </h3>
+                </div>
+                <button type="button" class="text-gray-900 bg-transparent hover:bg-gray-900 hover:text-yellow-400 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center transition-colors duration-300 ease-in-out" data-modal-hide="info-modal">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
             </div>
-            <div id="info__modal__main__content">
-                <div class="info__modal__main__content__block">
-                    <h4 class="info__modal__main__content__block__title">Free Resource</h4>
-                    <p class="info__modal__main__content__block__text">
+            <p class="px-4 md:px-5 font-medium text-gray-900 text-base">Note: This is a rule and statement from me to users who visit this site, please comply with these rules, thank you.</p>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 space-y-4">
+                <div>
+                    <h4 class="text-gray-900 font-semibold">Free Content</h4>
+                    <p class="text-base leading-relaxed text-gray-900">
                         This site does not charge you any fees. You can use all the resources you find here for your needs. I do not want this site for commercial or monetization purposes. So feel free to explore my personal site.
                     </p>
                 </div>
-                <div class="info__modal__main__content__block">
-                    <h4 class="info__modal__main__content__block__title">Terms of use</h4>
-                    <p class="info__modal__main__content__block__text">
+                <div>
+                    <h4 class="text-gray-900 font-semibold">Terms of Use</h4>
+                    <p class="text-base leading-relaxed text-gray-900">
                         Please use the feedback form properly, and make sure you send positive feedback. Because every positive feedback you give is my motivation to continue developing this site.
                     </p>
                 </div>
-                <div class="info__modal__main__content__block">
-                    <h4 class="info__modal__main__content__block__title">Privacy policy</h4>
-                    <p class="info__modal__main__content__block__text">
+                <div>
+                    <h4 class="text-gray-900 font-semibold">Privacy Policy</h4>
+                    <p class="text-base leading-relaxed text-gray-900">
                         The form of data that I request from you is only email, and that is in the feedback form. I use your email data to send an email back thanking you to those of you who have provided feedback on this site. I do not use your email for other purposes, and ensure that your email is safe under the protection of this site.
                     </p>
                 </div>
-                <div class="info__modal__main__content__block">
-                    <h4 class="info__modal__main__content__block__title">Contact me</h4>
-                    <p class="info__modal__main__content__block__text">
+                <div>
+                    <h4 class="text-gray-900 font-semibold">Contact Me</h4>
+                    <p class="text-base leading-relaxed text-gray-900">
                         If you have other important questions related to the terms of policy, please contact my email at <a href="mailto:faisalramadahn1299@gmail.com" class="underline underline-offset-4">faisalramadhan1299@gmail.com</a>.
                     </p>
                 </div>
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 {{-- Button --}}
 <div class="menu__button__container">
     {{-- Info Button --}}
-    <button id="main__info__button" title="Terms & Policies" data-model-target="info__modal" data-modal-toggle="info__modal">
+    <button id="main__info__button" title="Terms & Policies" data-model-target="info-modal" data-modal-toggle="info-modal">
         <span id="main__info__icon" class="material-symbols-outlined">info</span>
     </button>
 

@@ -55,9 +55,8 @@ class AdminController extends Controller
         $users = DB::table('users')
         ->join('roles', 'users.role_id', '=', 'roles.id')
         ->select('users.id', 'users.username', 
-                'users.email', 'users.email_verified_at', 
-                'users.last_login_at', 'users.status', 
-                'users.created_at', 'users.updated_at',
+                'users.email',  'users.last_login_at', 
+                'users.status', 'users.updated_at',
                 'roles.id AS role_id', 'roles.title AS role_title'
         )->orderBy('users.id', 'ASC')
         ->paginate(10);

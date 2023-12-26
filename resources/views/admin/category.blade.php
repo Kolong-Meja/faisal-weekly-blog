@@ -63,14 +63,13 @@
                                                 <th scope="col" class="p-4">Title</th>
                                                 <th scope="col" class="p-4">Meta Title</th>
                                                 <th scope="col" class="p-4">Slug</th>
-                                                <th scope="col" class="p-4">Created At</th>
-                                                <th scope="col" class="p-4">Updated At</th>
+                                                <th scope="col" class="p-4">Modified At</th>
                                                 <th scope="col" class="p-4">Activity</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
                                             @forelse ($categories as $category)
-                                                <tr class="bg-zinc-900">
+                                                <tr class="bg-zinc-900 hover:bg-gray-800 transition-colors duration-300 ease-in-out">
                                                     <td class="px-6 py-3">
                                                         {{ $category->id }}
                                                     </td>
@@ -82,9 +81,6 @@
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         {{ $category->slug }}
-                                                    </td>
-                                                    <td class="px-6 py-3">
-                                                        {{ $category->created_at }}
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         {{ $category->updated_at }}

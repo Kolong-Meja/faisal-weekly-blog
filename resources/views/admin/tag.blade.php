@@ -63,14 +63,13 @@
                                                 <th scope="col" class="p-4">Title</th>
                                                 <th scope="col" class="p-4">Meta Title</th>
                                                 <th scope="col" class="p-4">Slug</th>
-                                                <th scope="col" class="p-4">Created At</th>
-                                                <th scope="col" class="p-4">Updated At</th>
+                                                <th scope="col" class="p-4">Modified At</th>
                                                 <th scope="col" class="p-4">Activity</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
                                             @forelse ($tags as $tag)
-                                                <tr class="bg-zinc-900">
+                                                <tr class="bg-zinc-900 hover:bg-gray-800 transition-colors duration-300 ease-in-out">
                                                     <td class="px-6 py-3">
                                                         {{ $tag->id }}
                                                     </td>
@@ -82,9 +81,6 @@
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         {{ $tag->slug }}
-                                                    </td>
-                                                    <td class="px-6 py-3">
-                                                        {{ $tag->created_at }}
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         {{ $tag->updated_at }}

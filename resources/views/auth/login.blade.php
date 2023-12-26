@@ -8,7 +8,7 @@
         }
         #gradient-bg {
             background-image:
-                linear-gradient(to bottom, rgba(26, 127, 167, 0.25), rgba(7, 19, 53, 0.5), rgba(0, 0, 0, 1)), 
+                linear-gradient(to bottom, rgba(26, 127, 167, 0.25), rgba(2, 10, 31, 0.5), rgba(0, 0, 0, 1)), 
                 url(images/maxence-pira-SaNDu7hIWr4-unsplash.jpg); 
             background-size: auto 100%; 
             background-repeat: no-repeat;
@@ -28,15 +28,10 @@
                 </div>
     
                 <!-- Right Side (Login Form) -->
-                <div class="min-h-screen border-l border-gray-600 w-full sm:mx-auto px-4 sm:px-8 py-4 overflow-hidden bg-zinc-900">
+                <div class="min-h-screen flex items-center justify-center border-l border-gray-600 w-full sm:mx-auto px-4 sm:px-8 py-4 overflow-hidden bg-zinc-900">
     
                     <!-- Session Status -->
                     <x-auth-session-status class="mb-4" :status="session('status')" />
-    
-                    {{-- Logo --}}
-                    <div class="max-w-full grid justify-items-center mb-4 sm:mb-10">
-                        <img src="{{ asset('images/faisal_daily_blog.png') }}" alt="logo" class="max-w-full rounded-full w-28 h-28 sm:w-36 sm:h-36 shadow-md">
-                    </div>
     
                     <div class="w-full grid mt-4 sm:mt-12  bg-yellow-400 p-4 sm:p-5 rounded-lg">
                         <form method="POST" action="{{ route('login') }}" autocomplete="off">
@@ -98,8 +93,8 @@
     <script>
         new TypeIt("#welcome-msg", {
                 waitUntilVisible: true,
-                speed: 100,
-                startDelay: 1000,
+                speed: 50,
+                startDelay: 900,
             })
             .type('Wlcome to', {
                 delay: 200
@@ -114,7 +109,23 @@
                 to: "END",
                 delay: 200
             })
-            .type(' Faisal Daily Blog!', {
+            .type(' Faisal Dily Blg!', {
+                delay: 200
+            })
+            .move(-8, {
+                delay: 200
+            })
+            .type('a', {
+                delay: 200
+            })
+            .move(6, {
+                delay: 200
+            })
+            .type('o', {
+                delay: 200
+            })
+            .move(null, {
+                to: "END",
                 delay: 200
             })
             .go();

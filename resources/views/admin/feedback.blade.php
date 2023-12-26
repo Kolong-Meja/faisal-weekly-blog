@@ -39,14 +39,13 @@
                                                 <th scope="col" class="p-4">Name</th>
                                                 <th scope="col" class="p-4">Email</th>
                                                 <th scope="col" class="p-4">Content</th>
-                                                <th scope="col" class="p-4">Created At</th>
-                                                <th scope="col" class="p-4">Updated At</th>
+                                                <th scope="col" class="p-4">Modified At</th>
                                                 <th scope="col" class="p-4">Activity</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
                                             @forelse ($feedbacks as $feedback)
-                                                <tr class="bg-zinc-900">
+                                                <tr class="bg-zinc-900 hover:bg-gray-800 transition-colors duration-300 ease-in-out">
                                                     <td class="px-6 py-3">
                                                         {{ $feedback->id }}
                                                     </td>
@@ -58,9 +57,6 @@
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         {{ $feedback->content }}
-                                                    </td>
-                                                    <td class="px-6 py-3">
-                                                        {{ $feedback->created_at }}
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         {{ $feedback->updated_at }}

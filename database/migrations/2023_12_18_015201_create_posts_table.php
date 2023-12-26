@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text('slug');
             $table->longText('content');
             $table->tinyText('keywords');
-            $table->enum('status', ['not verified', 'verified']);
             $table->index(['title']);
             $table->timestamps();
 

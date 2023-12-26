@@ -28,10 +28,9 @@ class FeedbackController extends Controller
          */
         $feedbacks = DB::table('feedback')
         ->select(
-            'id', 'name', 
-            'email', 'content', 
-            'created_at', 'updated_at'
-            )
+            'id', 'name', 'email', 
+            'content', 'updated_at'
+        )
         ->orderBy('id', 'ASC')
         ->paginate(10);
         

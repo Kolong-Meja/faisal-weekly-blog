@@ -24,19 +24,19 @@
 <nav id="guest__navigation" class="bg-zinc-900 fixed w-full z-20 top-0 start-0 mx-auto max-w-full px-2 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
-            <a href="{{ route('home.index') }}" class="btn btn-ghost">
+            <a href="{{ route('home.index') }}" title="Faisal Daily Blog" class="btn btn-ghost">
                 <img class="h-12 w-auto rounded-full" src="{{ asset('images/faisal_daily_blog.png') }}" alt="Faisal Daily Blog Logo"/>
             </a>
         </div>
         <div class="flex flex-1 items-center justify-center">
             <div class="flex space-x-4 items-center md:space-x-6">
-                <a id="guest__navigation__link" type="button" class="text-gray-50 hover:bg-yellow-400 hover:text-gray-900 rounded-md px-3 py-2 text-base font-medium transition-colors duration-300 ease-in-out" data-model-target="small-modal" data-modal-toggle="small-modal">
+                <a id="guest__navigation__link" type="button" title="Main Menu" class="text-gray-50 hover:bg-yellow-400 hover:text-gray-900 rounded-md px-3 py-2 text-base font-medium transition-colors duration-300 ease-in-out" data-model-target="small-modal" data-modal-toggle="small-modal">
                     <span class="material-symbols-outlined flex items-center">
                         menu
                     </span>
                 </a>
-                <a id="guest__navigation__link" href="https://saweria.co/faisalramadhan08" class="text-gray-50 hover:bg-yellow-400 hover:text-gray-900 rounded-md px-3 py-2 text-base font-medium transition-colors duration-300 ease-in-out">Donate</a>
-                <a id="guest__navigation__link" href="{{ route('home.portfolio') }}" class="text-gray-50 hover:bg-yellow-400 hover:text-gray-900 rounded-md px-3 py-2 text-base font-medium transition-colors duration-300 ease-in-out">Portfolio</a>
+                <a id="guest__navigation__link" href="https://saweria.co/faisalramadhan08" title="Donate Me" class="text-gray-50 hover:bg-yellow-400 hover:text-gray-900 rounded-md px-3 py-2 text-base font-medium transition-colors duration-300 ease-in-out">Donate</a>
+                <a id="guest__navigation__link" href="{{ route('home.portfolio') }}" title="My Portfolio" class="text-gray-50 hover:bg-yellow-400 hover:text-gray-900 rounded-md px-3 py-2 text-base font-medium transition-colors duration-300 ease-in-out">Portfolio</a>
             </div>
         </div>
     </div>

@@ -63,17 +63,15 @@
                                                 <th scope="col" class="p-4">Role</th>
                                                 <th scope="col" class="p-4">Username</th>
                                                 <th scope="col" class="p-4">Email</th>
-                                                <th scope="col" class="p-4">Email Verified At</th>
                                                 <th scope="col" class="p-4">Last Login At</th>
-                                                <th scope="col" class="p-4">Created At</th>
-                                                <th scope="col" class="p-4">Updated At</th>
                                                 <th scope="col" class="p-4">Status</th>
+                                                <th scope="col" class="p-4">Modified At</th>
                                                 <th scope="col" class="p-4">Activity</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
                                             @forelse ($users as $user)
-                                                <tr class="bg-zinc-900">
+                                                <tr class="bg-zinc-900 hover:bg-gray-800 transition-colors duration-300 ease-in-out">
                                                     <td class="px-6 py-3">
                                                         {{ $user->id }}
                                                     </td>
@@ -87,16 +85,7 @@
                                                         {{ $user->email }}
                                                     </td>
                                                     <td class="px-6 py-3">
-                                                        {{ $user->email_verified_at }}
-                                                    </td>
-                                                    <td class="px-6 py-3">
                                                         {{ $user->last_login_at }}
-                                                    </td>
-                                                    <td class="px-6 py-3">
-                                                        {{ $user->created_at }}
-                                                    </td>
-                                                    <td class="px-6 py-3">
-                                                        {{ $user->updated_at }}
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         @if ($user->status != 'online')
@@ -112,6 +101,9 @@
                                                                 <span class="ml-1">{{ $user->status }}</span>
                                                             </span>
                                                         @endif
+                                                    </td>
+                                                    <td class="px-6 py-3">
+                                                        {{ $user->updated_at }}
                                                     </td>
                                                     <td class="px-6 py-3">
                                                         <form onsubmit="return confirm('Are you sure to remove this user?');" action="{{ route('admin.delete', $user->id) }}" method="POST">

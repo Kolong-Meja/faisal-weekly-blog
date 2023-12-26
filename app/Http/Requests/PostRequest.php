@@ -24,10 +24,10 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
-            'meta_title' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string', 'max:200'],
+            'meta_title' => ['required', 'string', 'max:50'],
+            'slug' => ['required', 'string', 'max:50'],
             'content' => ['required', 'string'],
             'keywords' => ['required', 'string']
         ];

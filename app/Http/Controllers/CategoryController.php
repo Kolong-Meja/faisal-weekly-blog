@@ -29,10 +29,9 @@ class CategoryController extends Controller
     {
         $categories = DB::table('categories')
         ->select(
-            'id', 'title', 
-            'meta_title', 'slug', 
-            'created_at', 'updated_at'
-            )
+            'id', 'title', 'meta_title', 
+            'slug', 'updated_at'
+        )
         ->orderBy('id', 'ASC')
         ->paginate(10);
         
