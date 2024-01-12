@@ -77,6 +77,12 @@
                         autocomplete="username"
                         placeholder="Username" 
                         required />
+
+                        @error('username')
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     {{-- Fullname --}}
@@ -103,6 +109,12 @@
                         autocomplete="name"
                         placeholder="Fullname" 
                         required />
+
+                        @error('name')
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     {{-- Email --}}
@@ -129,6 +141,12 @@
                         autocomplete="email"
                         placeholder="Email" 
                         required />
+
+                        @error('email')
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     
                     {{-- Password --}}
@@ -156,6 +174,12 @@
                         required
                         autocomplete="new-password" 
                         />
+
+                        @error('password')
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     {{-- Confirmation Password --}}

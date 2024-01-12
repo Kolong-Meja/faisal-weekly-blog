@@ -41,15 +41,12 @@
                         block 
                         p-2.5  
                         w-full 
-                        @error('title')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Title" 
                         required />
 
                         @error('title')
-                            <div class="text-sm text-red-600 space-y-1">
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -74,15 +71,12 @@
                         block 
                         p-2.5  
                         w-full 
-                        @error('description')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Description" 
                         required></textarea>
                         
                         @error('description')
-                            <div class="text-sm text-red-600 space-y-1">
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror

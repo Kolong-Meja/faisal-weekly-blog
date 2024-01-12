@@ -11,7 +11,7 @@
     <div class="p-6 text-gray-100">
         
         {{-- Actions --}}
-        <div class="flex flex-row items-center space-x-4 mb-4">
+        <div class="flex flex-row items-center space-x-4 mb-2">
 
             {{-- Search Bar --}}
             <form autocomplete="on" action="{{ route('feedback.index') }}" method="GET" id="feedbackSearchForm">
@@ -74,7 +74,7 @@
                 <thead class="text-sm text-gray-900 uppercase bg-gray-300">
                     @if ($feedbacks->isEmpty())
                         <div class="flex items-center justify-center py-4">
-                            <p class="font-serif text-lg text-gray-500">No article's found.</p>
+                            <p class="font-serif text-lg text-gray-500">No feedback's found.</p>
                         </div>
                     @else
                         <tr>

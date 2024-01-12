@@ -161,7 +161,7 @@
                 <thead class="text-sm text-gray-900 uppercase bg-gray-300">
                     @if ($roles->isEmpty())
                         <div class="flex items-center justify-center py-4">
-                            <p class="font-serif text-lg text-gray-500">No article's found.</p>
+                            <p class="font-serif text-lg text-gray-500">No role's found.</p>
                         </div>
                     @else
                         <tr>

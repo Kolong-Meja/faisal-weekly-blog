@@ -41,9 +41,6 @@
                         block 
                         p-2.5  
                         w-full 
-                        @error('name')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Name" 
                         required
@@ -51,7 +48,7 @@
                         />
 
                         @error('name')
-                            <div class="text-sm text-red-600 space-y-1">
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -76,15 +73,12 @@
                         block 
                         p-2.5  
                         w-full 
-                        @error('meta_title')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Meta Title" 
                         required />
                         
                         @error('meta_title')
-                            <div class="text-sm text-red-600 space-y-1">
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -108,15 +102,12 @@
                         block 
                         p-2.5  
                         w-full 
-                        @error('description')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Description" 
                         required></textarea>
                         
                         @error('description')
-                            <div class="text-sm text-red-600 space-y-1">
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -140,15 +131,12 @@
                         block 
                         p-2.5  
                         w-full 
-                        @error('meta_description')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Meta Description" 
                         required></textarea>
                         
                         @error('meta_description')
-                            <div class="text-sm text-red-600 space-y-1">
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror

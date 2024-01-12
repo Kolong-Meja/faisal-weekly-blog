@@ -102,15 +102,12 @@
                         block 
                         p-2.5  
                         w-full 
-                        @error('title')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Title" 
                         required />
 
                         @error('title')
-                            <div class="text-sm text-red-600 space-y-1">
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -136,15 +133,12 @@
                         block 
                         p-2.5  
                         w-full 
-                        @error('meta_title')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Meta Title" 
                         required />
 
                         @error('meta_title')
-                            <div class="text-sm text-red-600 space-y-1">
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -170,15 +164,12 @@
                         block 
                         p-2.5  
                         w-full 
-                        @error('slug')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Meta Title" 
                         required />
 
-                        @error('meta_title')
-                            <div class="text-sm text-red-600 space-y-1">
+                        @error('slug')
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -205,15 +196,12 @@
                         h-32 
                         p-2.5  
                         w-full 
-                        @error('description')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Description" 
                         required></textarea>
                         
                         @error('description')
-                            <div class="text-sm text-red-600 space-y-1">
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -240,15 +228,12 @@
                         h-32
                         p-2.5  
                         w-full 
-                        @error('meta_description')
-                        is-invalid
-                        @enderror
                         "
                         placeholder="Meta Description" 
                         required></textarea>
                         
                         @error('meta_description')
-                            <div class="text-sm text-red-600 space-y-1">
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -261,6 +246,12 @@
                         <div class="overflow-y-auto rounded-md">
                             <trix-editor input="x" class="text-gray-900 h-full"></trix-editor>
                         </div>
+
+                        @error('content')
+                            <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                 </div>
