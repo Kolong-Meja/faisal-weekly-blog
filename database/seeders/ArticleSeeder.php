@@ -1,0 +1,50 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Enums\ArticleStatus;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
+
+class ArticleSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table('articles')->insert(
+            [
+                [
+                    'id' => Str::uuid()->toString(),
+                    'user_id' => DB::table('users')->pluck('id')[0],
+                    'title' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, atque!",
+                    'meta_title' =>  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, atque!",
+                    'slug' => Str::slug("Lorem, ipsum dolor sit amet."),
+                    'description' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. In placeat tenetur nihil, minus ipsum qui?",
+                    'meta_description' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. In placeat tenetur nihil, minus ipsum qui?",
+                    'content' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quae libero tenetur neque nisi dolorum saepe suscipit eos similique temporibus ex asperiores soluta, delectus pariatur omnis, quam nihil officiis! Animi perferendis laborum temporibus laboriosam, inventore assumenda deleniti, aliquid quas velit cupiditate vero facere autem ex. Temporibus nobis dolorum dolorem repudiandae ipsam ab distinctio. Inventore fuga assumenda voluptate quisquam, earum sed error! Dolore, fuga repellendus ut architecto tenetur accusamus adipisci modi sit, maiores iure eveniet temporibus vel quas quaerat ullam. Consequuntur, cupiditate aliquam rerum nesciunt quisquam commodi optio illum inventore architecto alias quidem vel cum natus excepturi suscipit fugit temporibus, a quod repellendus blanditiis veniam placeat nihil eos laudantium? Voluptate officiis quo suscipit, asperiores doloribus praesentium odio voluptates dicta aspernatur ullam odit qui nisi, provident similique quaerat velit dolor, minus dignissimos. Rerum, consequatur dignissimos. Enim ut aliquid architecto dicta nam fugit soluta, sapiente voluptates, unde odio, vero quibusdam temporibus quod animi quia eligendi praesentium. Rem doloremque veritatis repellat? Impedit inventore minus doloribus non enim at veniam modi ducimus? Sapiente recusandae alias illo, iure unde ducimus repudiandae adipisci suscipit, nemo reiciendis minima natus sed deserunt excepturi est similique, dolorem atque odio hic. Sapiente, modi libero illum dolor provident distinctio excepturi minus quaerat animi eum ipsum obcaecati enim nostrum debitis velit quae inventore reprehenderit necessitatibus magni pariatur delectus possimus odit voluptatem! Cupiditate corporis officiis ea id molestiae commodi nulla distinctio alias culpa voluptatem quos fugit dolores quibusdam ipsam nostrum facere recusandae sapiente, praesentium omnis! Iste fugiat non architecto necessitatibus optio veritatis voluptates deleniti maxime placeat fugit doloremque laudantium, animi beatae debitis minima? Natus incidunt est maxime, asperiores earum distinctio ut assumenda impedit ipsum, obcaecati nam, aspernatur voluptatibus molestias rem nobis qui? Sit ut tempora reprehenderit delectus eos harum esse, at vero? Itaque, consectetur dolorum optio suscipit ut deleniti veritatis quia voluptatem fugiat harum sequi quas commodi ipsa enim ex adipisci sapiente facere eum officiis quam aliquid animi iusto illo. Sed, vitae consequatur saepe praesentium dicta molestiae, quod, iste expedita labore est in. Dolore delectus blanditiis doloremque iure laborum libero repudiandae tempore, voluptatem quibusdam officiis? Asperiores, dicta tempore explicabo provident modi, rerum officiis natus necessitatibus inventore illo quaerat illum. Aliquam tempore sed labore rerum voluptatum ad aut vero nostrum, quas cumque quibusdam minus, error deleniti quae ipsam maxime voluptatem ea similique sunt, temporibus quo praesentium ratione. Architecto, nemo! Fugit impedit deserunt expedita rem facilis ratione harum asperiores, quia iure vel fugiat suscipit! Fugit quidem quis quam nam harum, dolor, magni omnis iusto, impedit illo recusandae ea facere? Dolor tempore obcaecati cumque delectus laboriosam ab sequi esse maxime? Illum aliquid nostrum officiis atque optio, molestiae unde dolor doloribus quam vel aspernatur adipisci amet nesciunt eius accusantium vero beatae harum obcaecati architecto ipsam. Vero accusantium velit natus numquam voluptatum fuga quasi esse vel cumque culpa vitae voluptatem iste modi illo mollitia incidunt ducimus minima ipsum omnis blanditiis voluptates, quas eum eligendi maxime? Dolorem repellat ut impedit dolor alias, doloremque voluptates animi, unde dolore, aperiam corporis assumenda! Ipsa aspernatur quaerat voluptate enim aliquid tempora odit asperiores rem.",
+                    'status' => ArticleStatus::PUBLISHED,
+                    'created_at' => Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s')
+                ],
+                [
+                    'id' => Str::uuid()->toString(),
+                    'user_id' => DB::table('users')->pluck('id')[1],
+                    'title' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, atque!",
+                    'meta_title' =>  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, atque!",
+                    'slug' => Str::slug("Lorem ipsum dolor sit amet"),
+                    'description' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. In placeat tenetur nihil, minus ipsum qui?",
+                    'meta_description' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. In placeat tenetur nihil, minus ipsum qui?",
+                    'content' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quae libero tenetur neque nisi dolorum saepe suscipit eos similique temporibus ex asperiores soluta, delectus pariatur omnis, quam nihil officiis! Animi perferendis laborum temporibus laboriosam, inventore assumenda deleniti, aliquid quas velit cupiditate vero facere autem ex. Temporibus nobis dolorum dolorem repudiandae ipsam ab distinctio. Inventore fuga assumenda voluptate quisquam, earum sed error! Dolore, fuga repellendus ut architecto tenetur accusamus adipisci modi sit, maiores iure eveniet temporibus vel quas quaerat ullam. Consequuntur, cupiditate aliquam rerum nesciunt quisquam commodi optio illum inventore architecto alias quidem vel cum natus excepturi suscipit fugit temporibus, a quod repellendus blanditiis veniam placeat nihil eos laudantium? Voluptate officiis quo suscipit, asperiores doloribus praesentium odio voluptates dicta aspernatur ullam odit qui nisi, provident similique quaerat velit dolor, minus dignissimos. Rerum, consequatur dignissimos. Enim ut aliquid architecto dicta nam fugit soluta, sapiente voluptates, unde odio, vero quibusdam temporibus quod animi quia eligendi praesentium. Rem doloremque veritatis repellat? Impedit inventore minus doloribus non enim at veniam modi ducimus? Sapiente recusandae alias illo, iure unde ducimus repudiandae adipisci suscipit, nemo reiciendis minima natus sed deserunt excepturi est similique, dolorem atque odio hic. Sapiente, modi libero illum dolor provident distinctio excepturi minus quaerat animi eum ipsum obcaecati enim nostrum debitis velit quae inventore reprehenderit necessitatibus magni pariatur delectus possimus odit voluptatem! Cupiditate corporis officiis ea id molestiae commodi nulla distinctio alias culpa voluptatem quos fugit dolores quibusdam ipsam nostrum facere recusandae sapiente, praesentium omnis! Iste fugiat non architecto necessitatibus optio veritatis voluptates deleniti maxime placeat fugit doloremque laudantium, animi beatae debitis minima? Natus incidunt est maxime, asperiores earum distinctio ut assumenda impedit ipsum, obcaecati nam, aspernatur voluptatibus molestias rem nobis qui? Sit ut tempora reprehenderit delectus eos harum esse, at vero? Itaque, consectetur dolorum optio suscipit ut deleniti veritatis quia voluptatem fugiat harum sequi quas commodi ipsa enim ex adipisci sapiente facere eum officiis quam aliquid animi iusto illo. Sed, vitae consequatur saepe praesentium dicta molestiae, quod, iste expedita labore est in. Dolore delectus blanditiis doloremque iure laborum libero repudiandae tempore, voluptatem quibusdam officiis? Asperiores, dicta tempore explicabo provident modi, rerum officiis natus necessitatibus inventore illo quaerat illum. Aliquam tempore sed labore rerum voluptatum ad aut vero nostrum, quas cumque quibusdam minus, error deleniti quae ipsam maxime voluptatem ea similique sunt, temporibus quo praesentium ratione. Architecto, nemo! Fugit impedit deserunt expedita rem facilis ratione harum asperiores, quia iure vel fugiat suscipit! Fugit quidem quis quam nam harum, dolor, magni omnis iusto, impedit illo recusandae ea facere? Dolor tempore obcaecati cumque delectus laboriosam ab sequi esse maxime? Illum aliquid nostrum officiis atque optio, molestiae unde dolor doloribus quam vel aspernatur adipisci amet nesciunt eius accusantium vero beatae harum obcaecati architecto ipsam. Vero accusantium velit natus numquam voluptatum fuga quasi esse vel cumque culpa vitae voluptatem iste modi illo mollitia incidunt ducimus minima ipsum omnis blanditiis voluptates, quas eum eligendi maxime? Dolorem repellat ut impedit dolor alias, doloremque voluptates animi, unde dolore, aperiam corporis assumenda! Ipsa aspernatur quaerat voluptate enim aliquid tempora odit asperiores rem.",
+                    'status' => ArticleStatus::PUBLISHED,
+                    'created_at' => Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s')
+                ]
+            ]
+        );
+    }
+}
