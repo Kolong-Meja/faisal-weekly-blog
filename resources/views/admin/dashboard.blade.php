@@ -19,8 +19,18 @@
     {{-- Chart JS --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if (env('APP_ENV') !== 'development')
+        <!-- Scripts -->
+        <link rel="stylesheet" href="{{ asset('build/assets/app-dCbWKUg1.css') }}">
+        <script src="{{ asset('build/assets/app-tg-piSOZ.js') }}"></script>
+    @else
+        {{-- Taiwind CSS CDN --}}
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        {{-- Flowbite CSS CDN --}}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    @endif
 </head>
 <body>
     <div class="min-h-screen bg-gray-100">

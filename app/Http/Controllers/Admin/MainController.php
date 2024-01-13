@@ -52,13 +52,13 @@ class MainController extends Controller
             $feedbackTotalPercentage = ($feedbackStats->last_data != 0) ? ($feedbackStats?->new_data - $feedbackStats?->last_data) / $feedbackStats?->last_data * 100 : 0;
         }
 
-        $articles = DB::table('articles')
-            ->select(DB::raw("COUNT(*) as count"), 
-                DB::raw("to_char(created_at, 'Month') as month_name"))
-            ->whereYear('created_at', date('Y'))
-            ->groupBy(DB::raw("month_name"))
-            ->orderBy(DB::raw("MIN(created_at)"), 'ASC')
-            ->pluck('count', 'month_name');
+        $articles =  DB::table('articles')
+        ->select(DB::raw("COUNT(*) as count"), 
+            DB::raw("DATE_FORMAT(created_at, 'Month') as month_name"))
+        ->whereYear('created_at', date('Y'))
+        ->groupBy(DB::raw("month_name"))
+        ->orderBy(DB::raw("MIN(created_at)"), 'ASC')
+        ->pluck('count', 'month_name');
         
         $labels = $articles->keys();
         

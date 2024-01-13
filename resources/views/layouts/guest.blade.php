@@ -18,7 +18,8 @@
 
         @if (env('APP_ENV') !== 'development')
             <!-- Scripts -->
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
+            <link rel="stylesheet" href="{{ asset('build/assets/app-dCbWKUg1.css') }}">
+            <script src="{{ asset('build/assets/app-tg-piSOZ.js') }}"></script>
         @else
             {{-- Taiwind CSS CDN --}}
             <script src="https://cdn.tailwindcss.com"></script>
