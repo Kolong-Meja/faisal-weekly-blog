@@ -16,37 +16,32 @@
         {{-- Jquery CDN --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        @if (env('APP_ENV') !== 'development')
+        @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
             <!-- Scripts -->
             <link rel="stylesheet" href="{{ asset('build/assets/app-dCbWKUg1.css') }}">
             <script src="{{ asset('build/assets/app-tg-piSOZ.js') }}"></script>
         @else
-            {{-- Taiwind CSS CDN --}}
-            <script src="https://cdn.tailwindcss.com"></script>
-
-            {{-- Flowbite CSS CDN --}}
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
         @endif
     </head>
     <body class="guest__layout">
         {{-- Navigation --}}
-        <nav class="bg-white">
+        <nav class="guest-nav">
             @include('layouts.guest-navigation')
         </nav>
 
         {{-- Header --}}
-        <header class="bg-white">
+        <header class="guest-header">
             @yield('header')
         </header>
 
         {{-- Main Content --}}
-        <main class="bg-white font-medium text-gray-900">
+        <main class="guest-main">
             @yield('content')
         </main>
 
         {{-- Footer --}}
-        <footer class="bg-white font-medium text-gray-900 border-t border-gray-100">
+        <footer class="guest-footer">
             <x-guest-footer />
         </footer>
         

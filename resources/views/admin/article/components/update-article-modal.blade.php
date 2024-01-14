@@ -229,7 +229,6 @@
                         focus:ring-green-400
                         focus:border-green-400 
                         block 
-                        h-32
                         p-2.5  
                         w-full 
                         "
@@ -261,7 +260,6 @@
                         focus:ring-green-400
                         focus:border-green-400 
                         block 
-                        h-32
                         p-2.5  
                         w-full 
                         "
@@ -275,12 +273,11 @@
                         @enderror
                     </div>
 
-                    {{-- Content --}}
                     <div class="col-span-2">
                         <label for="content" class="block mb-2 text-sm font-medium text-gray-900">Content <span class="text-xs text-gray-700">(required)</span></label>
-                        <input id="content" type="hidden" name="content" @error('content') is-invalid @enderror>
-                        <div class="h-80 overflow-y-auto rounded-md">
-                            <trix-editor input="content" class="text-gray-900 h-full"></trix-editor>
+                        <input id="x" type="hidden" name="content">
+                        <div class="overflow-y-auto rounded-md">
+                            <trix-editor input="x" class="text-gray-900 h-full"></trix-editor>
                         </div>
 
                         @error('content')

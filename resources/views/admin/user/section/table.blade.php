@@ -161,15 +161,15 @@
                         </div>
                     @else
                         <tr>
-                            <th scope="col" class="px-6 py-3">ID</th>
-                            <th scope="col" class="px-6 py-3">Role</th>
-                            <th scope="col" class="px-6 py-3">Username</th>
-                            <th scope="col" class="px-6 py-3">Name</th>
-                            <th scope="col" class="px-6 py-3">Email</th>
-                            <th scope="col" class="px-6 py-3">Last Login</th>
-                            <th scope="col" class="px-6 py-3">Status</th>
-                            <th scope="col" class="px-6 py-3">Modified Date</th>
-                            <th scope="col" class="px-6 py-3">Actions</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">ID</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Role</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Username</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Name</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Email</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Last Login</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Status</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Modified Date</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Actions</th>
                         </tr>
                     @endif
                 </thead>

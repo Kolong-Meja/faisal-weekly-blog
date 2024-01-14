@@ -51,12 +51,13 @@
         <div class="container mx-auto mt-8">
             <div class="grid grid-cols-1 gap-4 pb-8">
                 @foreach ($articles as $article)
+                    @if ($article->status->value !== "pending")
                     <div class="max-w-lg md:max-w-3xl mx-auto px-5 md:px-0 bg-white rounded-xl overflow-hidden">
                         <div class="flex flex-col p-4">
                             <a href="{{ route('guestArticle.show', $article->slug) }}">
                                 <div class="flex flex-col space-y-4 pb-4">
                                     <h1 class="font-bold text-gray-900 text-xl md:text-2xl">{{ $article->title }}</h1>
-                                    <p class="text-gray-600 text-base md:text-lg font-serif leading-relaxed">{{ $article->description }}</p>
+                                    <p class="desc-text text-gray-600">{{ $article->description }}</p>
                                 </div>
                                 <p class="text-sm pt-4 border-t border-gray-100"><span class="italic text-gray-600">Written by </span>{{ $article->user->name }} | {{ $article->created_at->format('M j, Y') }} —
                                     @foreach ($article->categories as $category)
@@ -68,11 +69,12 @@
                             </a>    
                         </div>
                     </div>
+                    @endif
                 @endforeach
             </div>
             @if ($articles->isEmpty())
                 <div class="flex items-center justify-center py-4">
-                    <p class="font-serif text-lg text-gray-500">No article's found.</p>
+                    <p class="desc-text text-gray-500">No article's found.</p>
                 </div>
             @endif
         </div>    

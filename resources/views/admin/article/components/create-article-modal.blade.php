@@ -193,7 +193,6 @@
                         focus:ring-green-400
                         focus:border-green-400 
                         block
-                        h-32 
                         p-2.5  
                         w-full 
                         "
@@ -225,7 +224,6 @@
                         focus:ring-green-400
                         focus:border-green-400 
                         block 
-                        h-32
                         p-2.5  
                         w-full 
                         "

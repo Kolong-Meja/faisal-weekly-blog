@@ -2,8 +2,7 @@
 
 <label {{ $attributes->merge([
     'class' => '
-    block 
-    font-medium 
+    block  
     text-sm 
     text-gray-900'
     ]) }}

@@ -127,14 +127,14 @@
                                 {{ $feedback->updated_at }}
                             </td>
                             <td class="px-6 py-4">
-                                <form onsubmit="return confirm('Are you sure to remove this role?');" action="{{ route('feedback.delete', $feedback->id) }}" method="POST">
-                                    <div class="inline-flex shadow-sm gap-2" role="group">
-                                        <a href="mailto:{{ $feedback->email }}">
-                                            <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 hover:text-gray-100 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-green-600 focus:text-white">
-                                                Reply
-                                            </button>
-                                        </a> 
-                                        
+                                <div class="inline-flex shadow-sm gap-2" role="group">
+                                    <a href="mailto:{{ $feedback->email }}">
+                                        <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 hover:text-gray-100 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-green-600 focus:text-white">
+                                            Reply
+                                        </button>
+                                    </a> 
+
+                                    <form onsubmit="return confirm('Are you sure to remove this role?');" action="{{ route('feedback.delete', $feedback->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')                                      
 
@@ -147,8 +147,8 @@
                                                 Delete
                                             </button>
                                         @endif
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

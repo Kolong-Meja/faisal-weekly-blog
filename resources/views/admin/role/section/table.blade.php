@@ -165,13 +165,13 @@
                         </div>
                     @else
                         <tr>
-                            <th scope="col" class="px-6 py-3">ID</th>
-                            <th scope="col" class="px-6 py-3">Title</th>
-                            <th scope="col" class="px-6 py-3">Description</th>
-                            <th scope="col" class="px-6 py-3">Abilities</th>
-                            <th scope="col" class="px-6 py-3">Status</th>
-                            <th scope="col" class="px-6 py-3">Modified At</th>
-                            <th scope="col" class="px-6 py-3">Actions</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">ID</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Title</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Description</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Abilities</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Status</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Modified At</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Actions</th>
                         </tr>
                     @endif
                 </thead>

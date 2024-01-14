@@ -13,23 +13,23 @@
         <ul class="font-medium flex flex-col space-y-4 items-center border-t border-gray-100 justify-center md:items-start md:justify-normal p-6 md:p-0 mt-4 rounded-lg bg-transparent md:flex-row md:space-x-8 md:space-y-0 rtl:space-x-reverse md:mt-0 md:border-none">
             {{-- Define all guest route here! --}}
             <li>
-                <a href="{{ route('home') }}" id="navigation__link__underline" class="block px-0 text-gray-900 rounded md:hover:bg-transparent md:border-0 md:p-0 md:py-2"><span></span>Home</a>
+                <a href="{{ route('home') }}" id="navigation__link__underline" class="guest-nav-link-block"><span></span>Home</a>
             </li>
             <li>
-                <a href="{{ route('guestArticle.index') }}" id="navigation__link__underline" class="block px-0 text-gray-900 rounded md:hover:bg-transparent md:border-0 md:p-0 md:py-2"><span></span>Articles</a>
+                <a href="{{ route('guestArticle.index') }}" id="navigation__link__underline" class="guest-nav-link-block"><span></span>Articles</a>
             </li>
             <li>
-                <a href="https://saweria.co/faisalramadhan08" id="navigation__link__underline" class="block px-0 text-gray-900 rounded md:hover:bg-transparent md:border-0 md:p-0 md:py-2"><span></span>Donation</a>
+                <a href="https://saweria.co/faisalramadhan08" id="navigation__link__underline" class="guest-nav-link-block"><span></span>Donation</a>
             </li>
             <li>
-                <a href="{{ route('guestAbout.index') }}" id="navigation__link__underline" class="block px-0 text-gray-900 rounded md:hover:bg-transparent md:border-0 md:p-0 md:hidden md:py-2"><span></span>About</a>
+                <a href="{{ route('guestAbout.index') }}" id="navigation__link__underline" class="guest-nav-link-block md:hidden"><span></span>About</a>
             </li>
         </ul>
     </div>
     <div class="hidden w-full md:block md:w-auto">
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
             <li>
-                <a href="{{ route('guestAbout.index') }}" id="navigation__link__underline" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0"><span></span>About</a>
+                <a href="{{ route('guestAbout.index') }}" id="navigation__link__underline" class="guest-nav-link-block"><span></span>About</a>
             </li>
         </ul>
     </div>

@@ -8,26 +8,10 @@
 
 <x-guest-layout>
     @section('header')
-        <div 
-            class="
-            min-h-screen 
-            flex 
-            flex-col 
-            sm:justify-center 
-            items-center 
-            py-16 
-            md:py-20 
-            pt-6 
-            sm:pt-0 
-            bg-no-repeat
-            bg-center
-            rounded-b-3xl
-            " 
-            style="background-image: url(images/faisal-weekly-bg.jpg)"
-            >
+        <div class="home-header-screen" style="background-image: url(images/faisal-weekly-bg.jpg)">
             <div>
                 <a title="Faisal Weekly Blog">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-100" />
+                    <x-application-logo />
                 </a>
             </div>  
         </div>
@@ -38,14 +22,14 @@
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
                 <div class="flex items-center justify-center md:border-r md:border-gray-100">
                     <div class="max-w-md px-4 space-y-8 py-8 md:max-w-xl md:py-16 md:px-0">
-                        <h1 class="text-2xl md:text-3xl font-medium">
-                            Latest Articles
-                        </h1>
+                        <h1 class="head-title">Latest Articles</h1>
                         @forelse ($articles as $article)
-                            <a href="{{ route('guestArticle.show', $article->slug) }}" class="block pr-8">
-                                <h1 class="text-lg md:text-xl font-semibold leading-relaxed">{{ $article->title }}</h1>
-                                <p class="text-base md:text-lg leading-relaxed font-serif text-gray-600">{{ $article->description }}</p>
-                            </a>
+                            @if ($article->status->value !== "pending")
+                                <a href="{{ route('guestArticle.show', $article->slug) }}" class="block pr-8">
+                                    <h1 class="text-lg md:text-xl font-semibold leading-relaxed">{{ $article->title }}</h1>
+                                    <p class="desc-text text-gray-600">{{ $article->description }}</p>
+                                </a>
+                            @endif
                         @empty
                             <div class="flex items-center justify-center py-4">
                                 <p class="font-serif text-lg text-gray-500">No article's found.</p>
@@ -55,13 +39,11 @@
                 </div>
                 <div class="flex items-center justify-center md:pl-8">
                     <div class="max-w-md px-4 space-y-8 py-8 md:max-w-xl md:py-16 md:px-0">
-                        <h1 class="text-2xl md:text-3xl font-medium">
-                            Who am I?
-                        </h1>
-                        <p class="font-serif text-base md:text-lg">
+                        <h1 class="head-title">Who am I?</h1>
+                        <p class="desc-text">
                             Hello my dear friends, my name is Faisal Ramadhan, you can call me as Mr. Faisal. I am a web developer that recently create this personal blog website called "Faisal Weekly Blog". I created this personal blog with great patience and dedication to be able to provide useful articles for all of you.
                         </p>
-                        <p class="font-serif text-base md:text-lg">
+                        <p class="desc-text">
                             Besides being a web developer, I am also a student majoring in Information Systems. I learned many things in the world of technology, especially in web development. I spent almost 2 years learning what a website is, how to make one, even to the realm of creating APIs. This is also the main reason why I created the Faisal Weekly Blog, because it just proves that I can create my own personal blog website.
                         </p>
                         <div>

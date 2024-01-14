@@ -2,6 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Home page */
+@layer components {
+    .home-header-screen {
+        @apply  
+        min-h-screen 
+        flex 
+        flex-col 
+        justify-center 
+        items-center 
+        py-16 
+        md:py-20 
+        pt-6 
+        sm:pt-0 
+        bg-no-repeat
+        bg-center
+        rounded-b-3xl;
+    }
+
+    .head-title {
+        @apply 
+        text-2xl 
+        md:text-3xl 
+        font-semibold;
+    }
+
+    .desc-text {
+        @apply 
+        text-base 
+        md:text-lg 
+        leading-relaxed 
+        font-serif;
+    }
+
+    .guest-nav-link-block {
+        @apply 
+        block 
+        px-0 
+        text-gray-900 
+        rounded 
+        md:hover:bg-transparent 
+        md:border-0 
+        md:p-0 
+        md:py-2
+    }
+
+    .guest-nav {
+        @apply bg-white;
+    }
+
+    .guest-header {
+        @apply bg-white;
+    }
+
+    .guest-main {
+        @apply 
+        bg-white 
+        font-medium 
+        text-gray-900;
+    }
+
+    .guest-footer {
+        @apply 
+        bg-white 
+        font-medium 
+        text-gray-900 
+        border-t 
+        border-gray-100;
+    }
+}
+
 :root {
     --main-font-family: 'Roboto', sans-serif;
     --secondary-font-family: 'Inter', sans-serif;  

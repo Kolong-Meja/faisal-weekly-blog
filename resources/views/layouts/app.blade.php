@@ -19,16 +19,12 @@
         {{-- Chart JS --}}
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        @if (env('APP_ENV') !== 'development')
+        @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
             <!-- Scripts -->
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
+            <link rel="stylesheet" href="{{ asset('build/assets/app-dCbWKUg1.css') }}">
+            <script src="{{ asset('build/assets/app-tg-piSOZ.js') }}"></script>
         @else
-            {{-- Taiwind CSS CDN --}}
-            <script src="https://cdn.tailwindcss.com"></script>
-
-            {{-- Flowbite CSS CDN --}}
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
         @endif
     </head>
     <body class="admin__layout">
