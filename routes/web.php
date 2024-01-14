@@ -42,6 +42,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group(functio
         Route::get('/roles', [RoleController::class, 'index'])->name('role.index');
         Route::post('/roles', [RoleController::class, 'store'])->name('role.store');
         Route::put('/roles', [RoleController::class, 'update'])->name('role.update');
+        Route::patch('/roles/{id}', [RoleController::class, 'patch'])->name('role.patch');
         Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('role.delete');
     
         Route::get('/users', [UserController::class, 'index'])->name('user.index');

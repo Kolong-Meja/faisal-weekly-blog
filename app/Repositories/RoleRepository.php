@@ -100,6 +100,32 @@ class RoleRepository implements RoleInterface {
         return redirect()->route('role.index');
     }
 
+    public function patchRecentRole(Request $request, string $id): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            'title' => ['required', 'string', 'max:50'],
+            'description' => ['required', 'string', 'max:255'],
+            'status' => ['required', 'string'],
+        ]);
+
+        $roleData = Role::findOrFail($id);
+
+        $abilitiesData = $request->has('abilities') ? $request->input('abilities') : [];
+    
+        $abilities = implode(", ", $abilitiesData);
+
+        $roleData->update([
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
+            'abilities' => $abilities,
+            'status' => $validatedData['status'],
+        ]);
+        
+        session()->flash('success', 'Role has been successfully updated!');
+
+        return redirect()->route('role.index');
+    }
+
     public function removeOneRoleById(string $id): RedirectResponse
     {
         $roleData = Role::findOrFail($id);

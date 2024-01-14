@@ -42,6 +42,11 @@ class RoleController extends Controller
         return $this->roleInterface->updateRecentRole($request);
     }
 
+    public function patch(Request $request, string $id): RedirectResponse
+    {
+        return $this->roleInterface->patchRecentRole($request, $id);
+    }
+
     /**
      * Remove the specified resource from storage.
      */
