@@ -161,14 +161,14 @@
                         </div>
                     @else
                         <tr>
-                            <th scope="col" class="px-6 py-3">ID</th>
-                            <th scope="col" class="px-6 py-3">Name</th>
-                            <th scope="col" class="px-6 py-3">Meta Title</th>
-                            <th scope="col" class="px-6 py-3">Description</th>
-                            <th scope="col" class="px-6 py-3">Meta Description</th>
-                            <th scope="col" class="px-6 py-3">Status</th>
-                            <th scope="col" class="px-6 py-3">Modified At</th>
-                            <th scope="col" class="px-6 py-3">Actions</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">ID</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Name</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Meta Title</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Description</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Meta Description</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Status</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Modified At</th>
+                            <th scope="col" class="whitespace-nowrap px-6 py-3">Actions</th>
                         </tr>
                     @endif
                 </thead>
@@ -196,7 +196,7 @@
                         ease-in-out
                         "
                         >
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 <span class="font-semibold">{{ $category->id }}</span>
                             </td>
                             <td class="px-6 py-4">

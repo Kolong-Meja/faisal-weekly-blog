@@ -197,7 +197,7 @@
                         ease-in-out
                         "
                         >
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 <span class="font-semibold">{{ $user->id }}</span>
                             </td>
                             <td class="px-6 py-4">

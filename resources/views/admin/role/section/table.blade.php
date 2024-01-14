@@ -199,7 +199,7 @@
                         ease-in-out
                         "
                         >
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 <span class="font-semibold">{{ $role->id }}</span>
                             </td>
                             <td class="px-6 py-4">
@@ -228,7 +228,7 @@
                                         @method('PATCH')
 
                                         @if (Auth::check() && str_contains(Auth::user()->role->abilities, 'edit'))
-                                            <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-red-700 focus:text-white">
+                                            <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:text-gray-200 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-white">
                                                 Patch
                                             </button>
                                         @else
