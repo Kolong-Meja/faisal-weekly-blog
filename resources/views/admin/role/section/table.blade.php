@@ -7,7 +7,7 @@
     @endif
 </div>
 
-<div class="bg-white overflow-hidden sm:rounded-lg shadow-md border">                           
+<div class="bg-white overflow-hidden sm:rounded-lg shadow-md">                           
     <div class="p-6 text-gray-100">
         
         {{-- Actions --}}

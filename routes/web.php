@@ -49,6 +49,8 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group(functio
         Route::get('/users', [UserController::class, 'index'])->name('user.index');
         Route::post('/users', [UserController::class, 'store'])->name('user.store');
         Route::put('/users', [UserController::class, 'update'])->name('user.update');
+        Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+        Route::patch('/users/{id}', [UserController::class, 'patch'])->name('user.patch');
         Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('user.delete');
     });
 

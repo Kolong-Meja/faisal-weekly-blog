@@ -7,7 +7,7 @@
     @endif
 </div>
 
-<div class="bg-gray-100 overflow-hidden sm:rounded-lg">                           
+<div class="bg-white overflow-hidden sm:rounded-lg shadow-md">                           
     <div class="p-6 text-gray-100">
         
         {{-- Actions --}}
@@ -199,10 +199,10 @@
                             <td class="whitespace-nowrap px-6 py-4">
                                 <span class="font-semibold">{{ $category->id }}</span>
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $category->name }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $category->meta_title }}
                             </td>
                             <td class="px-6 py-4">
@@ -211,14 +211,14 @@
                             <td class="px-6 py-4">
                                 {{ $category->meta_description }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 @if ($category->status !== 'active')
                                     <x-object-status bg-color="bg-red-500" ping-color="bg-red-300" dot-color="bg-red-300" :status="$category->status" />
                                 @else
                                     <x-object-status bg-color="bg-green-500" ping-color="bg-green-300" dot-color="bg-green-300" :status="$category->status" />
                                 @endif
                             </td>                                                  
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $category->updated_at }}
                             </td>
                             <td class="px-6 py-4">

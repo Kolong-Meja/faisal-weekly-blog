@@ -1,20 +1,11 @@
-{{-- Session Message --}}
-<div x-data="{ showMessage:true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
-    @if (session()->has("success"))
-        <x-success-session />
-    @elseif (session()->has("error"))
-        <x-error-session />
-    @endif
-</div>
-
 <div class="py-6">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+    <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
             <div class="max-w-xl">
                 <section>
                     <header>
                         <h2 class="text-lg font-bold text-gray-900">
-                            Edit Role Data
+                            Patch Role Data
                         </h2>
                     </header>
 
@@ -26,7 +17,7 @@
                         @csrf
                         @method('PATCH')
 
-                        <div class="grid gap-5 mb-4 grid-cols-2 mt-4">
+                        <div class="grid grid-cols-2 gap-5 my-4">
 
                             {{-- Role ID --}}
                             <div class="col-span-2">
@@ -50,16 +41,8 @@
                                 p-2.5  
                                 w-full 
                                 "
-                                value="{{ old('id', $role->id) }}"
-                                x-init="$el.closest('form').scrollIntoView()"
-                                placeholder="Role ID should be exist" 
+                                value="{{ old('id', $role->id) }}" 
                                 disabled />
-                                
-                                @error('id')
-                                    <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
                             </div>
         
                             {{-- Status --}}

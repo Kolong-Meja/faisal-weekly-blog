@@ -99,6 +99,39 @@ class UserRepository implements UserInterface {
         return redirect()->route('user.index');
     }
 
+    public function editView(string $id): View|RedirectResponse
+    {
+        $user = User::findOrFail($id);
+
+        return view('admin.user.edit', compact('user'));
+    }
+
+    public function patchRecentUser(Request $request, string $id): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            'username' => ['required', 'string', 'max:50', 'unique:users,username'],
+            'name' => ['required', 'string', 'max:100'],
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'lowercase', 'email:rfc,dns', 'max:100', 'unique:users,email'],
+            'password' => ['required', 'string', Rules\Password::defaults()],
+        ]);
+
+        $userData = User::findOrFail($id);
+        
+        $userData->update([
+            'role_id' => $request->input('role'),
+            'username' => $validatedData['username'],
+            'name' => $validatedData['name'],
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+        ]);
+
+        session()->flash('success', 'User has been successfully updated!');
+        
+        return redirect()->route('user.index');
+    }
+
     public function removeOneUserById(string $id): RedirectResponse
     {
         $userData = User::findOrFail($id);
