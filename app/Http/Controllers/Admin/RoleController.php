@@ -42,6 +42,11 @@ class RoleController extends Controller
         return $this->roleInterface->updateRecentRole($request);
     }
 
+    public function edit(string $id): View
+    {
+        return $this->roleInterface->editView($id);    
+    }
+
     public function patch(Request $request, string $id): RedirectResponse
     {
         return $this->roleInterface->patchRecentRole($request, $id);

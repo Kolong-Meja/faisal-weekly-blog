@@ -42,6 +42,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group(functio
         Route::get('/roles', [RoleController::class, 'index'])->name('role.index');
         Route::post('/roles', [RoleController::class, 'store'])->name('role.store');
         Route::put('/roles', [RoleController::class, 'update'])->name('role.update');
+        Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
         Route::patch('/roles/{id}', [RoleController::class, 'patch'])->name('role.patch');
         Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('role.delete');
     
@@ -67,8 +68,6 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group(functio
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('/settings', [MainController::class, 'setting'])->name('setting');
 });
 
 require __DIR__.'/auth.php';

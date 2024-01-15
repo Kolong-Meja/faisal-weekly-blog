@@ -14,6 +14,8 @@ interface RoleInterface {
 
     public function updateRecentRole(Request $request): RedirectResponse;
 
+    public function editView(string $id): View | RedirectResponse;
+
     public function patchRecentRole(Request $request, string $id): RedirectResponse;
 
     public function removeOneRoleById(string $id): RedirectResponse;

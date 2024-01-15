@@ -7,7 +7,7 @@
     @endif
 </div>
 
-<div class="bg-gray-100 overflow-hidden sm:rounded-lg">                           
+<div class="bg-white overflow-hidden sm:rounded-lg shadow-md border">                           
     <div class="p-6 text-gray-100">
         
         {{-- Actions --}}
@@ -200,29 +200,29 @@
                             <td class="whitespace-nowrap px-6 py-4">
                                 <span class="font-semibold">{{ $user->id }}</span>
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $user->role->title }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $user->username }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $user->name }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $user->email }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $user->last_login_at }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 @if ($user->status->value !== 'online')
                                     <x-object-status bg-color="bg-red-500" ping-color="bg-red-300" dot-color="bg-red-300" :status="$user->status->value" />
                                 @else
                                     <x-object-status bg-color="bg-green-500" ping-color="bg-green-300" dot-color="bg-green-300" :status="$user->status->value" />
                                 @endif
                             </td>                                                  
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $user->updated_at }}
                             </td>
                             <td class="px-6 py-4">

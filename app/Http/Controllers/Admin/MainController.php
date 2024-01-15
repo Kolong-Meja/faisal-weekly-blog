@@ -77,9 +77,4 @@ class MainController extends Controller
             'data',
         ));
     }
-
-    public function setting(): View
-    {
-        return view('admin.setting');
-    }
 }

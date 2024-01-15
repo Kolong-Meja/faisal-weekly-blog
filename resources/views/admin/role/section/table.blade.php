@@ -7,7 +7,7 @@
     @endif
 </div>
 
-<div class="bg-gray-100 overflow-hidden sm:rounded-lg">                           
+<div class="bg-white overflow-hidden sm:rounded-lg shadow-md border">                           
     <div class="p-6 text-gray-100">
         
         {{-- Actions --}}
@@ -155,6 +155,9 @@
         {{-- Update Modal --}}
         @include('admin.role.components.update-role-modal')
 
+        {{-- Patch Modal --}}
+        @include('admin.role.components.patch-role-modal')
+
         {{-- Table --}}
         <div class="overflow-x-auto w-max-full">
             <table class="w-full text-sm text-left rtl:text-right">
@@ -202,42 +205,73 @@
                             <td class="whitespace-nowrap px-6 py-4">
                                 <span class="font-semibold">{{ $role->id }}</span>
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $role->title }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $role->description }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $role->abilities }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 @if ($role->status !== 'active')
                                    <x-object-status bg-color="bg-red-500" ping-color="bg-red-300" dot-color="bg-red-300" :status="$role->status" />
                                 @else
                                    <x-object-status bg-color="bg-green-500" ping-color="bg-green-300" dot-color="bg-green-300" :status="$role->status" />
                                 @endif
                             </td>                                                  
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $role->updated_at }}
                             </td>
                             <td class="px-6 py-4">
-                                <div class="inline-flex shadow-sm gap-2" role="group">
-                                    <form action="{{ route('role.patch', $role->id) }}" method="POST">
-                                        @csrf
-                                        @method('PATCH')
-
+                                <form onsubmit="return confirm('Are you sure to remove this role?');" action="{{ route('role.delete', $role->id) }}" method="POST">
+                                    <div class="inline-flex gap-2" role="group">
                                         @if (Auth::check() && str_contains(Auth::user()->role->abilities, 'edit'))
-                                            <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:text-gray-200 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-white">
+                                            <a href="{{ route('role.edit', $role->id) }}">
+                                                <button 
+                                                type="button" 
+                                                class="
+                                                px-4 
+                                                py-2 
+                                                text-sm 
+                                                font-medium 
+                                                rounded-md 
+                                                text-white 
+                                                bg-blue-500 
+                                                hover:bg-blue-600 
+                                                hover:text-gray-200 
+                                                transition-colors 
+                                                duration-300 
+                                                ease-in-out 
+                                                focus:z-10 
+                                                focus:ring-2 
+                                                focus:ring-blue-700 
+                                                focus:text-white">
                                                 Patch
-                                            </button>
+                                                </button>
+                                            </a>
                                         @else
-                                            <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-blue-500  pointer-events-none opacity-50 cursor-not-allowed" disabled>
+                                            <button 
+                                            type="button"
+                                            class="
+                                            px-4 
+                                            py-2 
+                                            text-sm 
+                                            font-medium 
+                                            rounded-md 
+                                            text-white 
+                                            bg-blue-500 
+                                            pointer-events-none 
+                                            opacity-50 
+                                            cursor-not-allowed
+                                            " 
+                                            disabled
+                                            >
                                                 Patch
                                             </button>
                                         @endif
-                                    </form>
-                                    <form onsubmit="return confirm('Are you sure to remove this role?');" action="{{ route('role.delete', $role->id) }}" method="POST">
+
                                         @csrf
                                         @method('DELETE')
                                         
@@ -250,8 +284,8 @@
                                                 Delete
                                             </button>
                                         @endif
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

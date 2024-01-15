@@ -9,15 +9,17 @@ use App\Models\Role;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-
-use function PHPUnit\Framework\isEmpty;
 
 class RoleRepository implements RoleInterface {
     protected const MAX_PAGINATE = 10;
 
+    /**
+     * Display role table.
+     * 
+     * @return Illuminate\Http\RedirectResponse
+     */
     public function indexView(): View | RedirectResponse
     {
         $searchRequest = request('search');
@@ -53,6 +55,13 @@ class RoleRepository implements RoleInterface {
         return view('admin.role.index', compact('roles'));
     }
 
+    /**
+     * Store new role model data.
+     * 
+     * @param App\Http\Requests\Role\CreateRoleRequest $createRoleRequest Request role data.
+     * 
+     * @return Illuminate\Http\RedirectResponse
+     */
     public function storeNewRole(CreateRoleRequest $createRoleRequest): RedirectResponse
     {
         $validatedData = $createRoleRequest->validated();
@@ -73,6 +82,13 @@ class RoleRepository implements RoleInterface {
         return redirect()->route('role.index');
     }
 
+    /**
+     * Store new update of role model data.
+     * 
+     * @param Illuminate\Http\Request $request Request role model data.
+     * 
+     * @return Illuminate\Http\RedirectResponse
+     */
     public function updateRecentRole(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
@@ -100,6 +116,28 @@ class RoleRepository implements RoleInterface {
         return redirect()->route('role.index');
     }
 
+    /**
+     * Display edit role view.
+     * 
+     * @param string $id Role id.
+     * 
+     * @return Illuminate\View\View|Illuminate\Http\RedirectResponse
+     */
+    public function editView(string $id): View|RedirectResponse
+    {
+        $role = Role::findOrFail($id);
+
+        return view('admin.role.edit', compact('role'));
+    }
+
+    /**
+     * Store new patch update of role model data.
+     * 
+     * @param Illuminate\Http\Request $request Request role model data.
+     * @param string $id Role id.
+     * 
+     * @return Illuminate\Http\RedirectResponse
+     */
     public function patchRecentRole(Request $request, string $id): RedirectResponse
     {
         $validatedData = $request->validate([
@@ -126,6 +164,13 @@ class RoleRepository implements RoleInterface {
         return redirect()->route('role.index');
     }
 
+    /**
+     * Remove existing role model data.
+     * 
+     * @param string $id Role id.
+     * 
+     * @return Illuminate\Http\RedirectResponse
+     */
     public function removeOneRoleById(string $id): RedirectResponse
     {
         $roleData = Role::findOrFail($id);

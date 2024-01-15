@@ -28,22 +28,14 @@
                                 <p class="mt-1 text-sm text-gray-600">
                                     You can choose the background theme color that you like.
                                 </p>
-                                <div class="flex flex-row space-x-6 mt-6">
-                                    <div>
-                                        <input type="radio" name="color" id="dark" value="dark">
-                                        <label for="dark"><span class="dark"></span></label>
+                                <div class="flex flex-row space-x-6 mt-6" id="radio-color-picker">
+                                    <div class="flex items-center">
+                                        <input id="default" type="radio" value="default" name="color" class="w-4 h-4 text-blue-500 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                        <label for="default" class="ms-2 text-sm font-medium text-gray-900">Default</label>
                                     </div>
-                                    <div>
-                                        <input type="radio" name="color" id="light" value="light">
-                                        <label for="light"><span class="light"></span></label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" name="color" id="blue-dark" value="blue-dark">
-                                        <label for="blue-dark"><span class="blue-dark"></span></label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" name="color" id="purple-dark" value="purple-dark">
-                                        <label for="purple-dark"><span class="purple-dark"></span></label>
+                                    <div class="flex items-center">
+                                        <input id="dark" type="radio" value="dark" name="color" class="w-4 h-4 text-gray-950 bg-gray-100 border-gray-300 focus:ring-gray-950 focus:ring-2">
+                                        <label for="dark" class="ms-2 text-sm font-medium text-gray-900">Dark</label>
                                     </div>
                                 </div>
                             </header>
