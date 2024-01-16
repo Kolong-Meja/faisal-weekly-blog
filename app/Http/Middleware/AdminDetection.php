@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminDetection
 {
-    protected const REQUIRED_ROLES = ["admin", "super admin"];
+    protected const REQUIRED_ROLES = ["Data Entry Operator", "Super Administrator"];
     
     /**
      * Handle an incoming request.
@@ -19,7 +19,8 @@ class AdminDetection
      */
     public function handle(Request $request, Closure $next): Response | RedirectResponse
     {
-        if (Auth::check() && in_array(Auth::user()->role->title, $this::REQUIRED_ROLES, TRUE)) {
+        if (Auth::check() && in_array(Auth::user()->role->title, 
+            $this::REQUIRED_ROLES, TRUE)) {
             return $next($request);
         }
 

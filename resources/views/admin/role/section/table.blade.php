@@ -4,6 +4,8 @@
         <x-success-session />
     @elseif (session()->has("error"))
         <x-error-session />
+    @elseif (session()->has('not found'))
+        <x-not-found-session /> 
     @endif
 </div>
 
@@ -66,7 +68,7 @@
             </button>
                 
             <!-- Dropdown menu -->
-            <div id="dropdown" class="z-10 hidden bg-gray-100 divide-y divide-gray-100 rounded-lg border border-gray-200 shadow-xl w-64">
+            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg border border-gray-200 shadow-xl w-64">
                 <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
                     <li>
                         @if (Auth::check() && str_contains(Auth::user()->role->abilities, 'create'))
@@ -155,9 +157,6 @@
         {{-- Update Modal --}}
         @include('admin.role.components.update-role-modal')
 
-        {{-- Patch Modal --}}
-        @include('admin.role.components.patch-role-modal')
-
         {{-- Table --}}
         <div class="overflow-x-auto w-max-full">
             <table class="w-full text-sm text-left rtl:text-right">
@@ -179,14 +178,6 @@
                     @endif
                 </thead>
                 <tbody>
-                    
-                    {{-- Not Found Session Message --}}
-                    @if (session()->has('not found'))
-                        <div x-data="{ showMessage:true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
-                            <x-not-found-session /> 
-                        </div>
-                    @endif
-
                     @foreach ($roles as $role)
                         <tr 
                         class="

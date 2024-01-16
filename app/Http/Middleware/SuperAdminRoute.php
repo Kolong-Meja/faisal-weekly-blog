@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SuperAdminRoute
 {
-    protected const REQUIRED_ROLE = "super admin";
+    protected const REQUIRED_ROLE = "Super Administrator";
 
     /**
      * Handle an incoming request.

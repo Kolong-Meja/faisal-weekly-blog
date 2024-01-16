@@ -4,6 +4,8 @@
         <x-success-session />
     @elseif (session()->has("error"))
         <x-error-session />
+    @elseif (session()->has('not found'))
+        <x-not-found-session /> 
     @endif
 </div>
 
@@ -66,7 +68,7 @@
             </button>
                 
             <!-- Dropdown menu -->
-            <div id="dropdown" class="z-10 hidden bg-gray-100 divide-y divide-gray-100 rounded-lg border border-gray-200 shadow-xl w-64">
+            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg border border-gray-200 shadow-xl w-64">
                 <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
                     <li>
                         @if (Auth::check() && str_contains(Auth::user()->role->abilities, 'create'))
@@ -174,14 +176,6 @@
                     @endif
                 </thead>
                 <tbody>
-                    
-                    {{-- Not Found Session Message --}}
-                    @if (session()->has('not found'))
-                        <div x-data="{ showMessage:true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
-                            <x-not-found-session /> 
-                        </div>
-                    @endif
-
                     @foreach ($users as $user)
                         <tr 
                         class="
@@ -229,29 +223,31 @@
                                 <form onsubmit="return confirm('Are you sure to remove this role?');" action="{{ route('user.delete', $user->id) }}" method="POST">
                                     <div class="inline-flex shadow-sm gap-2" role="group">
                                         @if (Auth::check() && str_contains(Auth::user()->role->abilities, 'edit'))
-                                            <a href="{{ route('user.edit', $user->id) }}">
-                                                <button 
-                                                type="button" 
-                                                class="
-                                                px-4 
-                                                py-2 
-                                                text-sm 
-                                                font-medium 
-                                                rounded-md 
-                                                text-white 
-                                                bg-blue-500 
-                                                hover:bg-blue-600 
-                                                hover:text-gray-200 
-                                                transition-colors 
-                                                duration-300 
-                                                ease-in-out 
-                                                focus:z-10 
-                                                focus:ring-2 
-                                                focus:ring-blue-700 
-                                                focus:text-white">
-                                                Patch
-                                                </button>
-                                            </a>
+                                            @if (Auth::user()->id !== $user->id)
+                                                <a href="{{ route('user.edit', $user->id) }}">
+                                                    <button 
+                                                    type="button" 
+                                                    class="
+                                                    px-4 
+                                                    py-2 
+                                                    text-sm 
+                                                    font-medium 
+                                                    rounded-md 
+                                                    text-white 
+                                                    bg-blue-500 
+                                                    hover:bg-blue-600 
+                                                    hover:text-gray-200 
+                                                    transition-colors 
+                                                    duration-300 
+                                                    ease-in-out 
+                                                    focus:z-10 
+                                                    focus:ring-2 
+                                                    focus:ring-blue-700 
+                                                    focus:text-white">
+                                                    Patch
+                                                    </button>
+                                                </a>
+                                            @endif
                                         @else
                                             <button 
                                             type="button"
@@ -277,9 +273,11 @@
                                         @method('DELETE')
                                         
                                         @if (Auth::check() && str_contains(Auth::user()->role->abilities, 'delete'))
-                                            <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-red-700 focus:text-white">
-                                                Delete
-                                            </button>
+                                            @if (Auth::user()->id !== $user->id)
+                                                <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 hover:text-gray-900 transition-colors duration-300 ease-in-out focus:z-10 focus:ring-2 focus:ring-red-700 focus:text-white">
+                                                    Delete
+                                                </button>
+                                            @endif
                                         @else
                                             <button type="submit" class="px-4 py-2 text-sm font-medium rounded-md text-white bg-red-500  pointer-events-none opacity-50 cursor-not-allowed" disabled>
                                                 Delete

@@ -25,14 +25,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Universal Routes
-Route::get('/', [GuestController::class, 'index'])->name('home');
-Route::get('/about', [GuestController::class, 'about'])->name('guestAbout.index');
-Route::post('/feedback', [GuestController::class, 'feedback'])->name('feedback.store');
+Route::middleware('guest')->group(function () {
+    Route::get('/', [GuestController::class, 'index'])->name('home');
+    Route::get('/about', [GuestController::class, 'about'])->name('guestAbout.index');
+    Route::post('/feedback', [GuestController::class, 'feedback'])->name('feedback.store');
 
-// Article routes
-Route::get('/articles', [GuestArticleController::class, 'index'])->name('guestArticle.index');
-Route::get('/articles/{slug}', [GuestArticleController::class, 'show'])->name('guestArticle.show');
-Route::get('/articles/category/{name}', [GuestArticleController::class, 'category'])->name('guestArticle.category');
+    // Article routes
+    Route::get('/articles', [GuestArticleController::class, 'index'])->name('guestArticle.index');
+    Route::get('/articles/{slug}', [GuestArticleController::class, 'show'])->name('guestArticle.show');
+    Route::get('/articles/category/{name}', [GuestArticleController::class, 'category'])->name('guestArticle.category');
+});
 
 // Restricted Routes
 Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group(function () {
@@ -42,14 +44,14 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group(functio
         Route::get('/roles', [RoleController::class, 'index'])->name('role.index');
         Route::post('/roles', [RoleController::class, 'store'])->name('role.store');
         Route::put('/roles', [RoleController::class, 'update'])->name('role.update');
-        Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
+        Route::get('/roles/{id}/edit', [RoleController::class, 'edit'])->name('role.edit');
         Route::patch('/roles/{id}', [RoleController::class, 'patch'])->name('role.patch');
         Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('role.delete');
     
         Route::get('/users', [UserController::class, 'index'])->name('user.index');
         Route::post('/users', [UserController::class, 'store'])->name('user.store');
         Route::put('/users', [UserController::class, 'update'])->name('user.update');
-        Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+        Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
         Route::patch('/users/{id}', [UserController::class, 'patch'])->name('user.patch');
         Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('user.delete');
     });
@@ -57,6 +59,8 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group(functio
     Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
     Route::post('/categories', [CategoryController::class, 'store'])->name('category.store');
     Route::put('/categories', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::patch('/categories/{id}', [CategoryController::class, 'patch'])->name('category.patch');
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
 
     Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');

@@ -24,26 +24,29 @@ class UserRepository implements UserInterface {
         $searchRequest = request('search');
 
         if (!$searchRequest) {
-            $users = User::with('role')->select('*')->paginate($this::MAX_PAGINATE);
+            $users = User::with('role')
+            ->select('*')
+            ->paginate($this::MAX_PAGINATE);
         }
 
         if ($searchRequest) {
             $users = User::with('role')
             ->when($searchRequest, function (Builder $query) use ($searchRequest) {
-                $query->where('id', 'ILIKE', '%' . $searchRequest . '%')
-                ->orWhere('username', 'ILIKE', '%' . $searchRequest . '%')
-                ->orWhere('name', 'ILIKE', '%' . $searchRequest . '%')
-                ->orWhere('email', 'ILIKE', '%' . $searchRequest . '%')
-                ->orWhere('status', 'ILIKE', '%' . $searchRequest . '%')
+                $query->where('id', 'LIKE', '%' . $searchRequest . '%')
+                ->orWhere('username', 'LIKE', '%' . $searchRequest . '%')
+                ->orWhere('name', 'LIKE', '%' . $searchRequest . '%')
+                ->orWhere('email', 'LIKE', '%' . $searchRequest . '%')
+                ->orWhere('status', 'LIKE', '%' . $searchRequest . '%')
                 ->orWhereHas('role', function (Builder $query) use ($searchRequest) {
-                    $query->where('title', 'ILIKE', '%' . $searchRequest . '%');
+                    $query->where('title', 'LIKE', '%' . $searchRequest . '%');
                 });
             })->paginate($this::MAX_PAGINATE);
 
             if ($users->isEmpty()) {
-                return redirect()
-                ->back()
-                ->with('not found', "User with ID, username, name, email or status like {$searchRequest} was not found.");
+                session()->flash(
+                    'not found',
+                    "User with ID, username, name, email or status like {$searchRequest} was not found."
+                );
             }
         }
 

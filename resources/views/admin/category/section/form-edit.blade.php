@@ -5,22 +5,23 @@
                 <section>
                     <header>
                         <h2 class="text-lg font-bold text-gray-900">
-                            Patch User Data
+                            Patch Category Data
                         </h2>
                     </header>
 
                     <p class="mt-1 text-sm text-gray-500">
-                        Update user data according to the ID that was previously passed.
+                        Update category data according to the ID that was previously passed.
                     </p>
 
-                    <form action="{{ route('user.patch', $user->id) }}" method="post">
+                    <form action="{{ route('category.patch', $category->id) }}" method="post">
                         @csrf
                         @method('PATCH')
 
                         <div class="grid grid-cols-2 gap-5 my-4">
-                            {{-- User ID --}}
+
+                            {{-- Category ID --}}
                             <div class="col-span-2">
-                                <label for="id" class="block mb-2 text-sm font-medium text-gray-900">User ID <span class="text-xs text-gray-700">(cannot be change)</span></label>
+                                <label for="id" class="block mb-2 text-sm font-medium text-gray-900">Category ID <span class="text-xs text-gray-600">(cannot be change)</label>
                                 <input 
                                 type="text" 
                                 name="id" 
@@ -40,94 +41,63 @@
                                 p-2.5  
                                 w-full 
                                 "
-                                value="{{ old('id', $user->id) }}" 
+                                value="{{ old('id', $category->id) }}" 
                                 disabled />
                             </div>
-
-                            {{-- Select Role --}}
+        
+                            {{-- Status --}}
                             <div class="col-span-2">
-                                <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Select user role <span class="text-xs text-gray-700">(optional)</span></label>
+                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Select category status <span class="text-xs text-gray-700">(required)</span></label>
                                 <select 
-                                id="role" 
-                                name="role" 
+                                id="status" 
+                                name="status" 
                                 class="
                                 bg-gray-100
-                                border-none
-                                text-gray-900 
-                                placeholder-gray-400
+                                border 
+                                border-none 
+                                text-gray-900
                                 text-sm 
                                 rounded-lg 
-                                focus:ring-green-400
-                                focus:border-green-400 
+                                focus:ring-2
+                                focus:ring-green-500 
+                                focus:border-green-500 
                                 block 
                                 w-full 
-                                p-2.5  
+                                p-2.5 
                                 "
                                 >
-                                    <option selected disabled>Select role</option>
-                                    @foreach ($roles as $role)
-                                        <option value="{{ $role->id }}" @if($user->role->id === $role->id) selected @endif>{{ $role->title }}</option>
-                                    @endforeach
+                                    <option selected disabled>Select status</option>
+                                    <option value="inactive" @if($category->status->value === 'inactive' ) selected @endif>Inactive</option>
+                                    <option value="active" @if($category->status->value === "active") selected @endif>Active</option>
                                 </select>
                             </div>
-
-                            {{-- Username --}}
+        
+                            {{-- Name --}}
                             <div class="col-span-2">
-                                <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username <span class="text-xs text-gray-700">(optional)</span></label>
-                                <input 
-                                type="text" 
-                                name="username" 
-                                id="username"
-                                class="
-                                bg-gray-100
-                                border-none
-                                text-gray-900 
-                                placeholder-gray-400
-                                text-sm 
-                                rounded-lg 
-                                focus:ring-green-400
-                                focus:border-green-400 
-                                block 
-                                w-full 
-                                p-2.5    
-                                "
-                                value="{{ old('username', $user->username) }}"
-                                autocomplete="username"
-                                placeholder="Username" 
-                                required />
-
-                                @error('username')
-                                    <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            {{-- Fullname --}}
-                            <div class="col-span-2">
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Fullname <span class="text-xs text-gray-700">(optional)</span></label>
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name <span class="text-xs text-gray-600">(optional)</span></label>
                                 <input 
                                 type="text" 
                                 name="name" 
                                 id="name" 
                                 class="
                                 bg-gray-100
-                                border-none
+                                border 
+                                border-none 
                                 text-gray-900 
                                 placeholder-gray-400
                                 text-sm 
-                                rounded-lg 
+                                rounded-lg
+                                focus:ring-2
                                 focus:ring-green-400
-                                focus:border-green-400 
+                                focus:border-green-500 
                                 block 
-                                w-full 
                                 p-2.5  
+                                w-full 
                                 "
-                                value="{{ old('name', $user->name) }}"
-                                autocomplete="name"
-                                placeholder="Fullname" 
+                                value="{{ old('name', $category->name) }}"
+                                placeholder="Name" 
                                 required />
-
+                                
                                 @error('name')
                                     <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                         {{ $message }}
@@ -135,47 +105,49 @@
                                 @enderror
                             </div>
 
-                            {{-- Email --}}
+                            {{-- Meta Title --}}
                             <div class="col-span-2">
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email <span class="text-xs text-gray-700">(optional)</span></label>
+                                <label for="meta_title" class="block mb-2 text-sm font-medium text-gray-900">Meta Title <span class="text-xs text-gray-600">(optional)</span></label>
                                 <input 
-                                type="email" 
-                                name="email" 
-                                id="email" 
+                                type="text" 
+                                name="meta_title" 
+                                id="meta_title" 
                                 class="
                                 bg-gray-100
-                                border-none
+                                border 
+                                border-none 
                                 text-gray-900 
                                 placeholder-gray-400
                                 text-sm 
-                                rounded-lg 
+                                rounded-lg
+                                focus:ring-2
                                 focus:ring-green-400
-                                focus:border-green-400 
+                                focus:border-green-500 
                                 block 
+                                p-2.5  
                                 w-full 
-                                p-2.5   
                                 "
-                                value="{{ old('email', $user->email) }}"
-                                autocomplete="email"
-                                placeholder="Email" 
+                                value="{{ old('meta_title', $category->meta_title) }}"
+                                placeholder="Meta Title" 
                                 required />
-
-                                @error('email')
+                                
+                                @error('meta_title')
                                     <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            
-                            {{-- Password --}}
+        
+                            {{-- Description --}}
                             <div class="col-span-2">
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password <span class="text-xs text-gray-700">(optional)</span></label>
-                                <input 
-                                type="password" 
-                                name="password" 
-                                id="password" 
+                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Description <span class="text-xs text-gray-600">(optional)</span></label>
+                                <textarea 
+                                type="text" 
+                                name="description" 
+                                id="description" 
                                 class="
                                 bg-gray-100
+                                border 
                                 border-none
                                 text-gray-900 
                                 placeholder-gray-400
@@ -184,15 +156,44 @@
                                 focus:ring-green-400
                                 focus:border-green-400 
                                 block 
+                                p-2.5  
                                 w-full 
-                                p-2.5   
                                 "
-                                placeholder="******" 
-                                required
-                                autocomplete="new-password" 
-                                />
+                                placeholder="Description" 
+                                required>{{ old('description', $category->description) }}</textarea>
+                                
+                                @error('description')
+                                    <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
-                                @error('password')
+                            {{-- Meta Description --}}
+                            <div class="col-span-2">
+                                <label for="meta_description" class="block mb-2 text-sm font-medium text-gray-900">Meta Description <span class="text-xs text-gray-600">(optional)</span></label>
+                                <textarea 
+                                type="text" 
+                                name="meta_description" 
+                                id="meta_description" 
+                                class="
+                                bg-gray-100
+                                border 
+                                border-none
+                                text-gray-900 
+                                placeholder-gray-400
+                                text-sm 
+                                rounded-lg 
+                                focus:ring-green-400
+                                focus:border-green-400 
+                                block 
+                                p-2.5  
+                                w-full 
+                                "
+                                placeholder="Description" 
+                                required>{{ old('meta_description', $category->meta_description) }}</textarea>
+                                
+                                @error('meta_description')
                                     <div class="text-sm text-red-600 space-y-1" x-init="$el.closest('form').scrollIntoView()">
                                         {{ $message }}
                                     </div>
@@ -225,7 +226,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-cloud-arrow-up-fill me-1 -ms-1 w-5 h-5" viewBox="0 0 16 16">
                                 <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0z"/>
                             </svg>
-                            Patch user data
+                            Patch category data
                         </button>
                     </form>
                 </section>

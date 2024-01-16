@@ -40,15 +40,16 @@ class RoleRepository implements RoleInterface {
             $roles = DB::table('roles')
             ->select('*')
             ->when($searchRequest, function (QueryBuilder $query) use ($searchRequest) {
-                $query->where('id', 'ILIKE', '%' . $searchRequest . '%')
-                ->orWhere('title', 'ILIKE', '%' . $searchRequest . '%')
-                ->orWhere('status', 'ILIKE', '%' . $searchRequest . '%');
+                $query->where('id', 'LIKE', '%' . $searchRequest . '%')
+                ->orWhere('title', 'LIKE', '%' . $searchRequest . '%')
+                ->orWhere('status', 'LIKE', '%' . $searchRequest . '%');
             })->paginate($this::MAX_PAGINATE);
 
             if ($roles->isEmpty()) {
-                return redirect()
-                ->back()
-                ->with('not found', "Role with ID, title or status like {$searchRequest} was not found.");
+                session()->flash( 
+                    'not found', 
+                    "Role with ID, title or status like {$searchRequest} was not found."
+                );
             }
         }
 
@@ -93,7 +94,7 @@ class RoleRepository implements RoleInterface {
     {
         $validatedData = $request->validate([
             'id' => ['required', 'exists:roles,id'],
-            'title' => ['required', 'string', 'max:50'],
+            'title' => ['required', 'string', 'max:50', 'unique'],
             'description' => ['required', 'string', 'max:255'],
             'status' => ['required', 'string'],
         ]);
@@ -141,7 +142,7 @@ class RoleRepository implements RoleInterface {
     public function patchRecentRole(Request $request, string $id): RedirectResponse
     {
         $validatedData = $request->validate([
-            'title' => ['required', 'string', 'max:50'],
+            'title' => ['required', 'string', 'max:50', 'unique'],
             'description' => ['required', 'string', 'max:255'],
             'status' => ['required', 'string'],
         ]);

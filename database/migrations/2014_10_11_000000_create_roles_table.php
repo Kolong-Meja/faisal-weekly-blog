@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('title', 50)->nullable(false);
+            $table->string('title', 50)
+            ->unique(true)
+            ->nullable(false);
             $table->string('description', 255)->nullable(false);
             $table->text('abilities')->nullable(true);
             $table->enum('status', ['inactive', 'active'])->default('inactive')->nullable(false);

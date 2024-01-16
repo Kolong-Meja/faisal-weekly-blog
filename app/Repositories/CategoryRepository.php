@@ -30,13 +30,16 @@ class CategoryRepository implements CategoryInterface {
             $categories = DB::table('categories')
             ->select('*')
             ->when($searchRequest, function (Builder $query) use ($searchRequest) {
-                $query->where('id', 'ILIKE', '%' . $searchRequest . '%')
-                ->orWhere('name', 'ILIKE', '%' . $searchRequest . '%')
-                ->orWhere('status', 'ILIKE', '%' . $searchRequest . '%');
+                $query->where('id', 'LIKE', '%' . $searchRequest . '%')
+                ->orWhere('name', 'LIKE', '%' . $searchRequest . '%')
+                ->orWhere('status', 'LIKE', '%' . $searchRequest . '%');
             })->paginate($this::MAX_PAGINATE);
             
             if ($categories->isEmpty()) {
-                session()->flash('not found', "Category with ID, name or status like {$searchRequest} was not found.");
+                session()->flash(
+                    'not found', 
+                    "Category with ID, name or status like {$searchRequest} was not found."
+                );
             }
         }
         
@@ -72,6 +75,38 @@ class CategoryRepository implements CategoryInterface {
         ]);
 
         $categoryData = Category::findOrFail($validatedData['id']);
+
+        $categoryData->update([
+            'name' => $validatedData['name'],
+            'meta_title' => $validatedData['meta_title'],
+            'description' => $validatedData['description'],
+            'meta_description' => $validatedData['meta_description'],
+            'status' => $validatedData['status'],
+        ]);
+
+        session()->flash('success', 'Category has been successfully update!');
+
+        return redirect()->route('category.index');
+    }
+
+    public function editView(string $id): View
+    {
+        $category = Category::findOrFail($id);
+
+        return view('admin.category.edit', compact('category'));
+    }
+
+    public function patchRecentCategory(Request $request, string $id): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'meta_title' => ['required', 'string', 'max:50'],
+            'description' => ['required', 'string'],
+            'meta_description' => ['required', 'string'],
+            'status' => ['required', 'string'],
+        ]);
+
+        $categoryData = Category::findOrFail($id);
 
         $categoryData->update([
             'name' => $validatedData['name'],

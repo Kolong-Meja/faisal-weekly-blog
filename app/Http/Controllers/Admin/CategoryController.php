@@ -42,6 +42,16 @@ class CategoryController extends Controller
         return $this->categoryInterface->updateRecentCategory($request);
     }
 
+    public function edit(string $id): View
+    {
+        return $this->categoryInterface->editView($id);
+    }
+
+    public function patch(Request $request, string $id): RedirectResponse
+    {
+        return $this->categoryInterface->patchRecentCategory($request, $id);
+    }
+
     /**
      * Remove the specified resource from storage.
      */

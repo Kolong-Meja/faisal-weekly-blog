@@ -14,5 +14,9 @@ interface CategoryInterface {
 
     public function updateRecentCategory(Request $request): RedirectResponse;
 
+    public function editView(string $id): View;
+
+    public function patchRecentCategory(Request $request, string $id): RedirectResponse;
+
     public function removeOneCategoryById(string $id): RedirectResponse;
 }

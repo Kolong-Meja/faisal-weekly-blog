@@ -36,6 +36,13 @@ class ArticleRepository implements ArticleInterface {
                     $query->where('name', 'ILIKE', '%' . $searchRequest . '%');
                 });
             })->paginate($this::MAX_PAGINATE);
+
+            if ($articles->isEmpty()) {
+                session()->flash( 
+                    'not found', 
+                    "Article with ID, title or status like {$searchRequest} was not found."
+                );
+            }
         }
 
         $categories = Category::where('status', 'active')->get();
