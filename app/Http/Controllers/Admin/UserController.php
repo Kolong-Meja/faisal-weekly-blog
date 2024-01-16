@@ -21,7 +21,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(): View | RedirectResponse
     {
         return $this->userInterface->indexView();
     }
@@ -40,6 +40,16 @@ class UserController extends Controller
     public function update(Request $request): RedirectResponse
     {
         return $this->userInterface->updateRecentUser($request);
+    }
+
+    public function edit(string $id): View | RedirectResponse
+    {
+        return $this->userInterface->editView($id);
+    }
+
+    public function patch(Request $request, string $id): RedirectResponse
+    {
+        return $this->userInterface->patchRecentUser($request, $id);
     }
 
     /**

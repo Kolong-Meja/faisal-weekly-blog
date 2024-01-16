@@ -64,22 +64,20 @@
                                 p-2.5  
                                 "
                                 >
-                                    <option selected>Select role</option>
+                                    <option selected disabled>Select role</option>
                                     @foreach ($roles as $role)
-                                        @if ($role->status === "active")
-                                            <option value="{{ $role->id }}" @if($user->role->id === $role->id) selected @endif>{{ $role->title }}</option>
-                                        @endif
+                                        <option value="{{ $role->id }}" @if($user->role->id === $role->id) selected @endif>{{ $role->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             {{-- Username --}}
                             <div class="col-span-2">
-                                <label for="username-update" class="block mb-2 text-sm font-medium text-gray-900">Username <span class="text-xs text-gray-700">(optional)</span></label>
+                                <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username <span class="text-xs text-gray-700">(optional)</span></label>
                                 <input 
                                 type="text" 
                                 name="username" 
-                                id="username-update" 
+                                id="username"
                                 class="
                                 bg-gray-200
                                 border-none
@@ -93,6 +91,7 @@
                                 w-full 
                                 p-2.5    
                                 "
+                                value="{{ old('username', $user->username) }}"
                                 autocomplete="username"
                                 placeholder="Username" 
                                 required />
@@ -124,6 +123,7 @@
                                 w-full 
                                 p-2.5  
                                 "
+                                value="{{ old('name', $user->name) }}"
                                 autocomplete="name"
                                 placeholder="Fullname" 
                                 required />
@@ -155,6 +155,7 @@
                                 w-full 
                                 p-2.5   
                                 "
+                                value="{{ old('email', $user->email) }}"
                                 autocomplete="email"
                                 placeholder="Email" 
                                 required />

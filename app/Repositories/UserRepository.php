@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Enums\UserStatus;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Interfaces\UserInterface;
+use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -103,7 +104,9 @@ class UserRepository implements UserInterface {
     {
         $user = User::findOrFail($id);
 
-        return view('admin.user.edit', compact('user'));
+        $roles = Role::select('id', 'title', 'status')->get();
+
+        return view('admin.user.edit', compact('user', 'roles'));
     }
 
     public function patchRecentUser(Request $request, string $id): RedirectResponse
