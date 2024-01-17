@@ -31,7 +31,7 @@
                     {{-- Header --}}
                     <header class="bg-white border-b border-gray-100">
                         <div class="flex flex-col space-y-4 pt-10 pb-4 md:pt-20 md:pb-12">
-                            <p class="text-gray-900 font-bold text-3xl md:text-4xl">{{ $article->title }}</p>
+                            <p class="text-gray-900 font-bold font-serif text-3xl md:text-4xl">{{ $article->title }}</p>
                             <p class="text-gray-500 font-serif text-base md:text-lg italic">{{ $article->description }}</p>
                             <p class="text-gray-900 font-serif"><span class="text-gray-500 italic">Written by</span> {{ $article->user->name }} | {{ $article->created_at->format('M j, Y') }} — 
                                 @foreach ($article->categories as $category)

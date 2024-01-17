@@ -44,7 +44,7 @@
                         p-2.5 
                         "
                         >
-                            <option selected>Select status</option>
+			                <option selected disabled>Select status</option>
                             <option value="pending">Pending</option>
                             <option value="published">Published</option>
                         </select>
@@ -240,9 +240,8 @@
                     {{-- Content --}}
                     <div class="col-span-2">
                         <label for="content" class="block mb-2 text-sm font-medium text-gray-900">Content <span class="text-xs text-gray-700">(required)</span></label>
-                        <input id="x" type="hidden" name="content">
                         <div class="overflow-y-auto rounded-md">
-                            <trix-editor input="x" class="text-gray-900 h-full"></trix-editor>
+                            <textarea id="content" name="content" class="text-gray-900 h-full"></textarea>
                         </div>
 
                         @error('content')

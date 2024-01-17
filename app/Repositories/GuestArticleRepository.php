@@ -32,12 +32,12 @@ class GuestArticleRepository implements GuestArticleInterface {
         if ($searchRequest !== '') {
             $articles = Article::with('user', 'categories')
             ->when($searchRequest, function (Builder $query) use ($searchRequest) {
-                $query->where('title', 'ILIKE', '%' . $searchRequest . '%')
+                $query->where('title', 'LIKE', '%' . $searchRequest . '%')
                 ->orWhereHas('user', function (Builder $query) use ($searchRequest) {
-                    $query->where('name', 'ILIKE', '%' . $searchRequest . '%');
+                    $query->where('name', 'LIKE', '%' . $searchRequest . '%');
                 })
                 ->orWhereHas('categories', function (Builder $query) use ($searchRequest) {
-                    $query->where('name', 'ILIKE', '%' . $searchRequest . '%');
+                    $query->where('name', 'LIKE', '%' . $searchRequest . '%');
                 });
             })->orderBy('created_at', 'ASC')
             ->limit($this::MAX_LIMIT)
@@ -110,11 +110,11 @@ class GuestArticleRepository implements GuestArticleInterface {
         if ($searchRequest) {
             $articles = Article::with('user', 'categories')
             ->when($searchRequest, function (Builder $query) use ($searchRequest) {
-                $query->where('title', 'ILIKE', '%' . $searchRequest . '%')
+                $query->where('title', 'LIKE', '%' . $searchRequest . '%')
                 ->orWhereHas('user', function (Builder $query) use ($searchRequest) {
-                    $query->where('name', 'ILIKE', '%' . $searchRequest . '%');
+                    $query->where('name', 'LIKE', '%' . $searchRequest . '%');
                 })->orWhereHas('categories', function (Builder $query) use ($searchRequest) {
-                    $query->where('name', 'ILIKE', '%' . $searchRequest . '%');
+                    $query->where('name', 'LIKE', '%' . $searchRequest . '%');
                 });
             })->whereHas('categories', function (Builder $query) use ($name) {
                 $query->where('name', $name);

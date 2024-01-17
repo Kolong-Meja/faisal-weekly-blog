@@ -202,12 +202,12 @@
                             <td class="whitespace-nowrap px-6 py-4">
                                 <span class="font-semibold">{{ $article->id }}</span>
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $article->user->name }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 @foreach ($article->categories as $category)
-                                    {{ $category->name }},
+                                    <span class="bg-blue-300 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">{{ $category->name }}</span>    
                                 @endforeach
                             </td>
                             <td class="px-6 py-4">
@@ -232,6 +232,51 @@
                             <td class="px-6 py-4">
                                 <form onsubmit="return confirm('Are you sure to remove this role?');" action="{{ route('article.delete', $article->id) }}" method="POST">
                                     <div class="inline-flex shadow-sm gap-2" role="group">
+                                        @if (Auth::check() && str_contains(Auth::user()->role->abilities, 'edit'))
+                                            <a href="{{ route('article.edit', $article->id) }}">
+                                                <button 
+                                                type="button" 
+                                                class="
+                                                px-4 
+                                                py-2 
+                                                text-sm 
+                                                font-medium 
+                                                rounded-md 
+                                                text-white 
+                                                bg-blue-500 
+                                                hover:bg-blue-600 
+                                                hover:text-gray-200 
+                                                transition-colors 
+                                                duration-300 
+                                                ease-in-out 
+                                                focus:z-10 
+                                                focus:ring-2 
+                                                focus:ring-blue-700 
+                                                focus:text-white">
+                                                Patch
+                                                </button>
+                                            </a>
+                                        @else
+                                            <button 
+                                            type="button"
+                                            class="
+                                            px-4 
+                                            py-2 
+                                            text-sm 
+                                            font-medium 
+                                            rounded-md 
+                                            text-white 
+                                            bg-blue-500 
+                                            pointer-events-none 
+                                            opacity-50 
+                                            cursor-not-allowed
+                                            " 
+                                            disabled
+                                            >
+                                                Patch
+                                            </button>
+                                        @endif    
+
                                         @csrf
                                         @method('DELETE')
                                         

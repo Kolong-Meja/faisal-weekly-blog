@@ -8,19 +8,20 @@
 
         <title>Faisal Weekly Blog | @yield('title')</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        {{-- Trix Editor --}}
-        <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
-        <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+        <!-- Jquery CDN -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-        {{-- Chart JS --}}
+        <!-- Summernote JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+        <!-- Chart JS -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        {{-- Scripts --}}
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
         {{-- @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
             <!-- Scripts -->
             <link rel="stylesheet" href="{{ asset('build/assets/app-dCbWKUg1.css') }}">
@@ -46,6 +47,26 @@
             </main>
         </div>
         <script src="{{ asset('js/refresh-button.js') }}"></script>
-        <script src="{{ asset('js/change-theme.js') }}"></script>
+        <script>
+            $(document).ready(function () {
+                $('#content').summernote({
+                    lang: 'en-US',
+                    height: 500,
+                    minHeight: null,
+                    maxHeight: null,
+                    focus: true,
+                    toolbar: [
+                        ["style", ["style"]],
+                        ["font", ["bold", "underline", "clear"]],
+                        ["fontsize", ["fontsize"]],
+                        ["color", ["color"]],
+                        ["para", ["ul", "ol", "paragraph"]],
+                        ["table", ["table"]],
+                        ["insert", ["link", "picture", "video"]],
+                        ["view", ["fullscreen", "codeview", "help"]]
+                    ],
+                });
+            });
+        </script>
     </body>
 </html>

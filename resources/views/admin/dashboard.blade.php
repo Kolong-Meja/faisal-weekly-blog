@@ -12,15 +12,15 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    {{-- Trix Editor --}}
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
-    <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
-
-    {{-- Chart JS --}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    {{-- Scripts --}}
+    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     {{-- @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
         <!-- Scripts -->
         <link rel="stylesheet" href="{{ asset('build/assets/app-dCbWKUg1.css') }}">

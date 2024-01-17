@@ -24,7 +24,7 @@
                     <div class="max-w-md px-4 space-y-8 py-8 md:max-w-xl md:py-16 md:px-0">
                         <h1 class="head-title">Latest Articles</h1>
                         @forelse ($articles as $article)
-                            @if ($article->status->value !== "pending")
+                            @if ($article->status !== "pending")
                                 <a href="{{ route('guestArticle.show', $article->slug) }}" class="block pr-8">
                                     <h1 class="text-lg md:text-xl font-semibold leading-relaxed">{{ $article->title }}</h1>
                                     <p class="desc-text text-gray-600">{{ $article->description }}</p>

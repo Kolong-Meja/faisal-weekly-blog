@@ -25,7 +25,7 @@ class GuestController extends Controller
         foreach($articles as $article) {
             $article->content = Str::limit($article->content, 200);
         }
-
+        
         return view('home', compact('articles'));
     }
 

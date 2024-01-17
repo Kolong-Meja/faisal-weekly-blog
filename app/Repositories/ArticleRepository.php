@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Http\Requests\Article\CreateArticleRequest;
 use App\Interfaces\ArticleInterface;
 use App\Models\Article;
+use App\Models\ArticleCategory;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
@@ -95,6 +96,53 @@ class ArticleRepository implements ArticleInterface {
         ]);
 
         $articleData = Article::findOrFail($validatedData['id']);
+
+        $articleData->update([
+            'user_id' => $authUserId,
+            'title' => $validatedData['title'],
+            'meta_title' => $validatedData['meta_title'],
+            'slug' => Str::slug($validatedData['slug']),
+            'description' => $validatedData['description'],
+            'meta_description' => $validatedData['meta_description'],
+            'content' => $validatedData['content'],
+            'status' => $validatedData['status'],
+        ]);
+
+        if (!is_null($articleData->categories())) {
+            $articleData->categories()->syncWithoutDetaching($request->input('categories'));
+        } else {
+            $articleData->categories()->attach($request->input('categories'));
+        }
+
+        session()->flash('success', 'Article has been successfully updated!');
+
+        return redirect()->route('article.index');
+    }
+
+    public function editView(string $id): View
+    {
+        $articleCategoryPivot = ArticleCategory::where('article_id', $id)->firstOrFail();
+
+        $article = Article::with('categories')->findOrFail($id);
+
+        return view('admin.article.edit', compact('article', 'articleCategoryPivot'));
+    }
+
+    public function patchRecentArticle(Request $request, string $id): RedirectResponse
+    {
+        $authUserId = Auth::check() ? Auth::user()->id : '';
+
+        $validatedData = $request->validate([
+            'title' => ['required', 'string', 'max:150'],
+            'meta_title' => ['required', 'string', 'max:150'],
+            'slug' => ['required', 'string', 'max:150'],
+            'description' => ['required', 'string'],
+            'meta_description' => ['required', 'string'],
+            'content' => ['required', 'string'],
+            'status' => ['required', 'string'],
+        ]);
+
+        $articleData = Article::findOrFail($id);
 
         $articleData->update([
             'user_id' => $authUserId,

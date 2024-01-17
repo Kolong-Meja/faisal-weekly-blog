@@ -42,6 +42,16 @@ class ArticleController extends Controller
         return $this->articleInterface->updateRecentArticle($request);
     }
 
+    public function edit(string $id): View
+    {
+        return $this->articleInterface->editView($id);
+    }
+
+    public function patch(Request $request, string $id): RedirectResponse
+    {
+        return $this->articleInterface->patchRecentArticle($request, $id);
+    }
+
     /**
      * Remove the specified resource from storage.
      */

@@ -77,7 +77,7 @@
                         p-2.5 
                         "
                         >
-                            <option selected>Select status</option>
+                            <option selected disabled>Select status</option>
                             <option value="pending">Pending</option>
                             <option value="published">Published</option>
                         </select>

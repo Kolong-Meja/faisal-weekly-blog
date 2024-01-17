@@ -66,6 +66,8 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->group(functio
     Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
     Route::post('/articles', [ArticleController::class, 'store'])->name('article.store');
     Route::put('/articles', [ArticleController::class, 'update'])->name('article.update');
+    Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');
+    Route::patch('/articles/{id}', [ArticleController::class, 'patch'])->name('article.patch');
     Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('article.delete');
 
     Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('feedback.index');
