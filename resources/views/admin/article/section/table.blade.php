@@ -7,7 +7,7 @@
     @endif
 </div>
 
-<div class="bg-white overflow-hidden sm:rounded-lg">                           
+<div class="bg-white overflow-hidden sm:rounded-lg shadow-md">                           
     <div class="p-6 text-gray-100">
         
         {{-- Actions --}}
@@ -219,14 +219,14 @@
                             <td class="px-6 py-4">
                                 {{ $article->description }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 @if ($article->status->value !== 'published')
                                     <x-object-status bg-color="bg-yellow-500" ping-color="bg-yellow-300" dot-color="bg-yellow-300" :status="$article->status->value" />
                                 @else
                                 <x-object-status bg-color="bg-green-500" ping-color="bg-green-300" dot-color="bg-green-300" :status="$article->status->value" />
                                 @endif
                             </td>                                                  
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $article->updated_at }}
                             </td>
                             <td class="px-6 py-4">

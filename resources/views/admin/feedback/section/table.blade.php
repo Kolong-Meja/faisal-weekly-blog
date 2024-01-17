@@ -7,7 +7,7 @@
     @endif
 </div>
 
-<div class="bg-gray-100 overflow-hidden sm:rounded-lg">                           
+<div class="bg-white overflow-hidden sm:rounded-lg shadow-md">                           
     <div class="p-6 text-gray-100">
         
         {{-- Actions --}}
@@ -114,16 +114,16 @@
                             <td class="whitespace-nowrap px-6 py-4">
                                 <span class="font-semibold">{{ $feedback->id }}</span>
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $feedback->name }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $feedback->email }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $feedback->content }}
                             </td>                                              
-                            <td class="px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4">
                                 {{ $feedback->updated_at }}
                             </td>
                             <td class="px-6 py-4">
