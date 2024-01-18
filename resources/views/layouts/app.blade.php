@@ -22,13 +22,10 @@
         <!-- Chart JS -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        {{-- @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
-            <!-- Scripts -->
+        <!-- @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
             <link rel="stylesheet" href="{{ asset('build/assets/app-dCbWKUg1.css') }}">
             <script src="{{ asset('build/assets/app-tg-piSOZ.js') }}"></script>
-        @else
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @endif --}}
+        @endif -->
     </head>
     <body>
         <div class="min-h-screen bg-gray-100">

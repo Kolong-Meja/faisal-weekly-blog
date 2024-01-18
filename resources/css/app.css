@@ -179,7 +179,7 @@
     .home-main-about-section-style {
         @apply
         flex 
-        items-center 
+        items-start 
         justify-center
         sm:px-2
         md:px-4;
@@ -199,7 +199,7 @@
     .home-main-article-section-style {
         @apply
         flex 
-        items-center 
+        items-start
         justify-center
         sm:px-2
         md:px-4;
@@ -226,14 +226,6 @@
         md:border-0 
         md:p-0 
         md:py-2
-    }
-
-    .guest-nav {
-        @apply bg-white;
-    }
-
-    .guest-header {
-        @apply bg-white;
     }
 
     .guest-main {

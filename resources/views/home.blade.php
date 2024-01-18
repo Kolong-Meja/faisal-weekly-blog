@@ -20,6 +20,7 @@
     @section('content')
         <section class="container-style">
             <div class="home-main-grid-style">
+                <!-- About me -->
                 <div class="home-main-about-section-style">
                     <div class="home-main-about-section-inner-style">
                         <h1 class="head-title-style">Who am I?</h1>
@@ -63,6 +64,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Articles -->
                 <div class="home-main-article-section-style">
                     <div class="home-main-article-inner-section-style">
                         <h1 class="head-title-style">Latest Articles</h1>

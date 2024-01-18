@@ -13,36 +13,35 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-        {{-- Jquery CDN --}}
+        <!-- Jquery CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        {{-- Scripts --}}
+        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        {{-- @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
-            <!-- Scripts -->
+        
+        <!-- @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
             <link rel="stylesheet" href="{{ asset('build/assets/app-d5Dapr-r.css') }}">
             <script src="{{ asset('build/assets/app-tg-piSOZ.js') }}"></script>
-        @else
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @endif --}}
+        @endif -->
     </head>
     <body class="guest__layout">
-        {{-- Navigation --}}
-        <nav class="guest-nav">
+        
+        <!-- Navigation -->
+        <nav class="bg-white">
             @include('layouts.guest-navigation')
         </nav>
 
-        {{-- Header --}}
-        <header class="guest-header">
+        <!-- Header -->
+        <header class="bg-white">
             @yield('header')
         </header>
 
-        {{-- Main Content --}}
+        <!-- Main Content -->
         <main class="guest-main">
             @yield('content')
         </main>
 
-        {{-- Footer --}}
+        <!-- Footer -->
         <footer class="guest-footer">
             <x-guest-footer />
         </footer>

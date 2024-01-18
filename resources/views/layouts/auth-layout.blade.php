@@ -12,15 +12,13 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        {{-- Scripts --}}
+        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        {{-- @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
-            <!-- Scripts -->
+
+        <!-- @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
             <link rel="stylesheet" href="{{ asset('build/assets/app-dCbWKUg1.css') }}">
             <script src="{{ asset('build/assets/app-tg-piSOZ.js') }}"></script>
-        @else
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @endif --}}
+        @endif -->
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div 

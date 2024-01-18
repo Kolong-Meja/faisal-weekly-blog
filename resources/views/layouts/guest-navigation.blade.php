@@ -11,7 +11,7 @@
     </button>
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul class="font-medium flex flex-col space-y-4 items-center border-t border-gray-100 justify-center md:items-start md:justify-normal p-6 md:p-0 mt-4 rounded-lg bg-transparent md:flex-row md:space-x-8 md:space-y-0 rtl:space-x-reverse md:mt-0 md:border-none">
-            {{-- Define all guest route here! --}}
+            <!-- Guest routes -->
             <li>
                 <a href="{{ route('home') }}" id="navigation__link__underline" class="guest-nav-link-block"><span></span>Home</a>
             </li>

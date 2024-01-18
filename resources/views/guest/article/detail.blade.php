@@ -17,6 +17,11 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- @if (!in_array(env("APP_ENV"), ["local", "development", "staging"]))
+            <link rel="stylesheet" href="{{ asset('build/assets/app-d5Dapr-r.css') }}">
+            <script src="{{ asset('build/assets/app-tg-piSOZ.js') }}"></script>
+        @endif -->
     </head>
     <body>
         
@@ -28,7 +33,8 @@
         <div class="flex flex-row w-full">
             <div class="w-full md:w-3/4 border-r border-gray-100">
                 <div class="px-4 md:px-10">
-                    {{-- Header --}}
+                    
+                    <!-- Header -->
                     <header class="bg-white border-b border-gray-100">
                         <div class="flex flex-col space-y-4 pt-10 pb-4 md:pt-20 md:pb-12">
                             <p class="text-gray-900 font-bold font-serif text-3xl md:text-4xl">{{ $article->title }}</p>
@@ -43,7 +49,7 @@
                         </div>
                     </header>
         
-                    {{-- Main Content --}}
+                    <!-- Main Content -->
                     <main class="bg-white font-medium text-gray-900">
                         <div class="flex flex-col space-y-4 py-8">
                             <p class="text-gray-900 font-medium font-serif text-base md:text-lg">{!! $article->content !!}</p>
@@ -51,6 +57,8 @@
                     </main>
                 </div>
             </div>
+
+            <!-- Sidebar -->
             <div class="hidden md:block sticky top-2 md:w-1/4 md:h-[100px]">
                 <p class="font-semibold text-center text-gray-900 text-lg py-5">Next to read</p>
                 <div class="px-10">
@@ -65,6 +73,7 @@
             </div>
         </div>
 
+        <!-- Bottom articles -->
         <div class="flex flex-col space-y-6 w-full md:hidden">
             <div class="w-full border-t border-gray-100 px-4 py-16">
                 <p class="font-semibold text-gray-900 mb-4 text-lg">Next to read</p>
@@ -79,7 +88,7 @@
         </div>
         
 
-        {{-- Footer --}}
+        <!-- Footer -->
         <footer class="bg-white font-medium text-gray-900 border-t border-gray-100">
             <x-guest-footer />
         </footer>
