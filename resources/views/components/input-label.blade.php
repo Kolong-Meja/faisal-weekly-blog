@@ -1,12 +1,9 @@
 @props(['value'])
 
 <label {{ $attributes->merge([
-    'class' => '
-    block  
-    text-sm 
-    text-gray-900'
+    'class' => 'input-label-style'
     ]) }}
     >
     {{ $value ?? $slot }}
-    <span class="text-xs font-medium text-gray-600">(required)</span>
+    <span class="input-label-text-style">(required)</span>
 </label>

@@ -2,37 +2,218 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Home page */
+:root {
+    --main-font-family: 'Roboto', sans-serif;
+    --secondary-font-family: 'Inter', sans-serif;  
+}
+
+/* Universal style */
 @layer components {
-    .home-header-screen {
-        @apply  
-        min-h-screen 
-        flex 
-        flex-col 
-        justify-center 
-        items-center 
-        py-16 
-        md:py-20 
-        pt-6 
-        sm:pt-0 
-        bg-no-repeat
-        bg-center
-        rounded-b-3xl;
+    .container-style {
+        @apply
+        container
+        mx-auto;
     }
 
-    .head-title {
+    .head-title-style {
         @apply 
         text-2xl 
         md:text-3xl 
         font-semibold;
     }
 
-    .desc-text {
+    .sub-head-title-style {
+        @apply
+        text-lg 
+        font-semibold 
+        leading-relaxed
+        md:text-xl; 
+    }
+
+    .desc-text-style {
         @apply 
         text-base 
-        md:text-lg 
         leading-relaxed 
-        font-serif;
+        font-serif
+        md:text-lg; 
+    }
+
+    .input-label-style {
+        @apply
+        block  
+        text-sm 
+        text-gray-900;
+    }
+
+    .input-label-text-style {
+        @apply
+        text-xs 
+        font-medium 
+        text-gray-600;
+    }
+
+    .input-block-style {
+        @apply
+        text-gray-900
+        text-base
+        border-none
+        bg-gray-100
+        focus:outline-none
+        focus:ring-1
+        focus:ring-green-400 
+        rounded
+        shadow;
+    }
+
+    .primary-btn-style {
+        @apply
+        inline-flex 
+        items-center 
+        px-4 py-2 
+        bg-green-400
+        border 
+        border-transparent 
+        rounded-md 
+        font-semibold 
+        text-xs 
+        text-gray-100
+        uppercase 
+        tracking-widest 
+        hover:bg-green-500
+        hover:text-gray-200
+        focus:bg-green-400 
+        active:bg-green-400 
+        focus:outline-none 
+        focus:ring-2 
+        focus:ring-green-400 
+        focus:ring-offset-2 
+        transition-colors 
+        ease-in-out 
+        duration-200;
+    }
+}
+
+/* Login page style */
+@layer components {
+    .remember-btn-style {
+        @apply
+        rounded 
+        bg-gray-100
+        border-gray-200 
+        text-green-400
+        shadow-sm 
+        focus:ring-green-400;
+    }
+
+    .forgot-password-btn-style {
+        @apply
+        block
+        p-1.5
+        underline 
+        text-sm 
+        text-gray-900
+        hover:text-gray-700
+        rounded-md 
+        focus:outline-none 
+        focus:ring-2 
+        focus:ring-offset-2 
+        focus:ring-green-400;
+    }
+    .login-section-style {
+        @apply
+        w-full 
+        max-w-md 
+        mt-6 
+        px-6 
+        py-4 
+        bg-white
+        shadow-md 
+        rounded-lg
+        overflow-hidden 
+        drop-shadow-lg
+        md:max-w-lg;
+    }
+
+    .login-bg-screen-style {
+        @apply
+        min-h-screen 
+        flex 
+        flex-col 
+        items-center 
+        py-16 
+        pt-6 
+        bg-no-repeat
+        bg-center
+        sm:justify-center 
+        sm:pt-0 
+        md:py-20;
+    }
+}
+
+/* Home page style */
+@layer components {
+    .home-header-screen-style {
+        @apply  
+        min-h-screen 
+        flex 
+        flex-col 
+        justify-center 
+        items-center 
+        bg-no-repeat
+        bg-center
+        py-16 
+        pt-6 
+        md:pt-0 
+        md:py-20;
+    }
+
+    .home-main-grid-style {
+        @apply
+        grid 
+        grid-cols-1 
+        gap-4 
+        md:grid-cols-2 
+        md:gap-8;
+    }
+
+    .home-main-about-section-style {
+        @apply
+        flex 
+        items-center 
+        justify-center
+        sm:px-2
+        md:px-4;
+    }
+
+    .home-main-about-section-inner-style {
+        @apply
+        max-w-md 
+        px-4 
+        space-y-8 
+        py-8 
+        md:max-w-xl 
+        md:py-16 
+        md:px-0;
+    }
+
+    .home-main-article-section-style {
+        @apply
+        flex 
+        items-center 
+        justify-center
+        sm:px-2
+        md:px-4;
+    }
+
+    .home-main-article-inner-section-style {
+        @apply
+        max-w-md 
+        px-4 
+        space-y-8 
+        py-8 
+        md:max-w-xl 
+        md:py-16 
+        md:px-0;
     }
 
     .guest-nav-link-block {
@@ -72,16 +253,11 @@
     }
 }
 
-:root {
-    --main-font-family: 'Roboto', sans-serif;
-    --secondary-font-family: 'Inter', sans-serif;  
-}
-
 html {
     font-family: var(--main-font-family);
 }
 
-
+/* Underline animation for nav link */
 #navigation__link__underline {
     text-decoration: none;
     position: relative;

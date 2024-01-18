@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use DateTime;
 
 class GuestController extends Controller
 {
@@ -23,7 +24,13 @@ class GuestController extends Controller
         ->get();
 
         foreach($articles as $article) {
-            $article->content = Str::limit($article->content, 200);
+            // custom format created_at
+            $article->created_at = DateTime::createFromFormat('Y-m-d H:i:s', $article->created_at); 
+
+            // calculate time read of article
+            $readDuration = ceil(str_word_count(strip_tags($article->content)) / 300);
+            
+            $article->readDuration = $readDuration;
         }
         
         return view('home', compact('articles'));

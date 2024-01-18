@@ -12,6 +12,7 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        @method('POST')
 
         <!-- Email Address -->
         <div>
@@ -38,14 +39,7 @@
                 <input 
                 id="remember_me" 
                 type="checkbox" 
-                class="
-                rounded 
-                bg-gray-100
-                border-gray-300 
-                text-green-500 
-                shadow-sm 
-                focus:ring-green-500" 
-                " 
+                class="remember-btn-style" 
                 name="remember"
                 >
                 <span class="ms-2 text-sm text-gray-900">{{ __('Remember me') }}</span>
@@ -55,18 +49,7 @@
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
                 <a 
-                class="
-                block
-                p-1.5
-                underline 
-                text-sm 
-                text-gray-900
-                hover:text-gray-700
-                rounded-md 
-                focus:outline-none 
-                focus:ring-2 
-                focus:ring-offset-2 
-                focus:ring-green-400"  
+                class="forgot-password-btn-style"  
                 href="{{ route('password.request') }}"
                 >
                     {{ __('Forgot your password?') }}

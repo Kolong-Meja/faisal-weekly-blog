@@ -8,7 +8,7 @@
 
 <x-guest-layout>
     @section('header')
-        <div class="home-header-screen" style="background-image: url(images/faisal-weekly-bg.jpg)">
+        <div class="home-header-screen-style" style="background-image: url(images/faisal-weekly-bg.jpg)">
             <div>
                 <a title="Faisal Weekly Blog">
                     <x-application-logo />
@@ -18,32 +18,15 @@
     @endsection
 
     @section('content')
-        <section class="container mx-auto">
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
-                <div class="flex items-center justify-center md:border-r md:border-gray-100">
-                    <div class="max-w-md px-4 space-y-8 py-8 md:max-w-xl md:py-16 md:px-0">
-                        <h1 class="head-title">Latest Articles</h1>
-                        @forelse ($articles as $article)
-                            @if ($article->status !== "pending")
-                                <a href="{{ route('guestArticle.show', $article->slug) }}" class="block pr-8">
-                                    <h1 class="text-lg md:text-xl font-semibold leading-relaxed">{{ $article->title }}</h1>
-                                    <p class="desc-text text-gray-600">{{ $article->description }}</p>
-                                </a>
-                            @endif
-                        @empty
-                            <div class="flex items-center justify-center py-4">
-                                <p class="font-serif text-lg text-gray-500">No article's found.</p>
-                            </div>
-                        @endforelse
-                    </div>
-                </div>
-                <div class="flex items-center justify-center md:pl-8">
-                    <div class="max-w-md px-4 space-y-8 py-8 md:max-w-xl md:py-16 md:px-0">
-                        <h1 class="head-title">Who am I?</h1>
-                        <p class="desc-text">
+        <section class="container-style">
+            <div class="home-main-grid-style">
+                <div class="home-main-about-section-style">
+                    <div class="home-main-about-section-inner-style">
+                        <h1 class="head-title-style">Who am I?</h1>
+                        <p class="desc-text-style">
                             Hello my dear friends, my name is Faisal Ramadhan, you can call me as Mr. Faisal. I am a web developer that recently create this personal blog website called "Faisal Weekly Blog". I created this personal blog with great patience and dedication to be able to provide useful articles for all of you.
                         </p>
-                        <p class="desc-text">
+                        <p class="desc-text-style">
                             Besides being a web developer, I am also a student majoring in Information Systems. I learned many things in the world of technology, especially in web development. I spent almost 2 years learning what a website is, how to make one, even to the realm of creating APIs. This is also the main reason why I created the Faisal Weekly Blog, because it just proves that I can create my own personal blog website.
                         </p>
                         <div>
@@ -78,6 +61,29 @@
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+                <div class="home-main-article-section-style">
+                    <div class="home-main-article-inner-section-style">
+                        <h1 class="head-title-style">Latest Articles</h1>
+                        @forelse ($articles as $article)
+                            @if ($article->status !== "pending")
+                                <a href="{{ route('guestArticle.show', $article->slug) }}" class="block pr-6">
+                                    <div class="flex flex-col space-y-2">
+                                        <h1 class="sub-head-title-style">{{ $article->title }}</h1>
+                                        <p class="desc-text-style">{{ $article->description }}</p>
+                                        <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                                            <p class="font-serif text-gray-900 font-medium text-base">{{ $article->readDuration }} minutes read</p>
+                                            <p class="font-serif text-gray-900 font-medium text-base">{{ $article->created_at->format('M j, Y') }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endif
+                        @empty
+                            <div class="flex items-center justify-center py-4">
+                                <p class="font-serif text-lg text-gray-500">No article's found.</p>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>

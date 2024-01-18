@@ -24,46 +24,22 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div 
-        class="
-        min-h-screen 
-        flex 
-        flex-col 
-        sm:justify-center 
-        items-center 
-        py-16 
-        md:py-20 
-        pt-6 
-        sm:pt-0 
-        bg-no-repeat
-        bg-center
-        "
+        class="login-bg-screen-style"
         style="background-image: url(images/faisal-weekly-bg.jpg)"
         >
-        
+            <!-- Logo -->
             <div>
                 <a title="Faisal Weekly Blog">
                     <x-application-logo />
                 </a>
             </div>
 
-            <div 
-            class="
-            w-full 
-            max-w-md 
-            md:max-w-lg 
-            mt-6 
-            px-6 
-            py-4 
-            bg-gray-100
-            shadow-md 
-            rounded-lg
-            overflow-hidden 
-            drop-shadow-lg 
-            "
-            >
+            <!-- Login Section -->
+            <div class="login-section-style">
                 {{ $slot }}
             </div>
 
+            <!-- Footer -->
             <footer>
                 <x-auth-footer />
             </footer>

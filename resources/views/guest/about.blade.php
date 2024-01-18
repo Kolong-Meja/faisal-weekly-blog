@@ -13,7 +13,7 @@
             <div class="flex w-full">
                 <div class="flex-col space-y-6 py-16 leading-relaxed text-center">
                     <div>
-                        <h1 class="head-title">Dear fellas</h1>
+                        <h1 class="head-title-style">Dear fellas</h1>
                     </div>
                     <p class="font-serif text-base md:text-lg">
                         my name is Faisal Ramadhan, you can call me as Mr. Faisal. I am a web developer that recently create this personal blog website called "Faisal Weekly Blog". I created this personal blog with great patience and dedication to be able to provide useful articles for all of you.
@@ -60,7 +60,7 @@
             <div class="flex w-full">
                 <div class="flex-col space-y-6 py-16 leading-relaxed text-center">
                     <div>
-                        <h1 class="head-title">What articles included?</h1>
+                        <h1 class="head-title-style">What articles included?</h1>
                     </div>
                     <p class="font-serif text-base md:text-lg">
                         The first thing I want to clarify is that the articles I write will contain about my personal life, my thoughts and opinions about things in the world (including events that may be happening right now), and then my personal hobbies.
