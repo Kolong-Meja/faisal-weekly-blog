@@ -21,10 +21,7 @@
         @endif -->
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div 
-        class="login-bg-screen-style"
-        style="background-image: url(images/faisal-weekly-bg.jpg)"
-        >
+        <div class="login-bg-screen-style" style="background-image: url(images/faisal-weekly-bg.jpg)">
             <!-- Logo -->
             <div>
                 <a title="Faisal Weekly Blog">

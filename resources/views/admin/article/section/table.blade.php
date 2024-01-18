@@ -66,7 +66,7 @@
             </button>
                 
             <!-- Dropdown menu -->
-            <div id="dropdown" class="z-10 hidden bg-gray-100 divide-y divide-gray-100 rounded-lg border border-gray-200 shadow-xl w-50">
+            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg border border-gray-200 shadow-xl w-50">
                 <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
                     <li>
                         @if (Auth::check() && str_contains(Auth::user()->role->abilities, 'create'))
