@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description" content="{{ $article->meta_description }}">
-
+        <link rel="shortcut icon" href="{{ asset('images/Faisal Weekly Blog Favicon.jpg') }}" type="image/x-icon">
         <title>Faisal Weekly Blog | Article — {{ $article->meta_title }}</title>
 
         <!-- Fonts -->
@@ -60,7 +60,7 @@
 
             <!-- Sidebar -->
             <div class="hidden md:block sticky top-2 md:w-1/4 md:h-[100px]">
-                <p class="font-semibold text-center text-gray-900 text-lg py-5">Next to read</p>
+                <p class="font-semibold text-center text-gray-900 text-lg py-5">Next article to read</p>
                 <div class="px-10">
                     <div class="flex flex-col w-full space-y-6">
                         @foreach ($articles as $article)
@@ -76,7 +76,7 @@
         <!-- Bottom articles -->
         <div class="flex flex-col space-y-6 w-full md:hidden">
             <div class="w-full border-t border-gray-100 px-4 py-16">
-                <p class="font-semibold text-gray-900 mb-4 text-lg">Next to read</p>
+                <p class="font-semibold text-gray-900 mb-4 text-lg">Next article to read</p>
                 @foreach ($articles as $article)
                 <a href="{{ route('guestArticle.show', $article->slug) }}">
                     <ul class="list-disc list-inside">    
